@@ -1,0 +1,123 @@
+<%! 
+    from django.utils.translation import ugettext as _ 
+    from datetime import datetime
+    from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
+    from opaque_keys.edx.keys import CourseKey
+%>
+<%namespace name='static' file='../static_content.html'/>
+<%
+course_mode_class = course_mode if course_mode else ''
+%>
+<link href="${static.url('css/certificate.css')}" rel="stylesheet" type="text/css">
+<main class="accomplishment accomplishment-main">
+    <div class="wrapper-accomplishment-rendering">
+        <div class="accomplishment-rendering">
+            <div id="page_1">
+                <div id="top-bar" class="top-bar">
+                    <div class="first-part"></div>
+                    <div class="sec-part"></div>
+                </div>
+                <div class="image-section">
+                    <div class="left-img">
+                        <img src="${static.url('images/iimb-result-logo.jpg')}" class="first-logo" alt="" >
+                    </div>
+                    <div class="right-img">
+                        <img src="${static.url('images/iimbx-logo-brand-color-small_asset.png')}" alt="" class="first-logo">
+                    </div>
+                </div>
+                <div id="id_1">
+                    <!-- <p class="p1 ft1">COURSE COMPLETION CERTIFICATE</p> -->
+                    <p class="p2 ft2">This is to certify that</p>
+                    <p class="student">${accomplishment_copy_name | h}</p>
+                    <p class="p3 ft2">has successfully completed</p>
+                    <p class="p4 ft3">${accomplishment_copy_course_name}</p>
+                    <p class="p5 ft2">an online course of study offered by the</p>
+                    <p class="p6 ft2">Indian Institute of Management Bangalore through <b>IIMBx.</b></p>
+                </div>
+                
+                <!-- <div class="qr_code" id="qrcode" data-url=${share_url}>
+                   
+                </div> -->
+                <div id="id_2">
+                    <div class="row">
+                        <div class="col-sm-4 sign">
+                            <div class="left">
+                                <div class="qr_code" id="qrcode" data-url=${share_url}>
+                                </div>
+                                <% date = datetime.strptime(certificate_date_issued, '%B %d, %Y') %>
+                                <p class="p10 ft8">Issued on ${date.strftime("%d-%m-%Y")}</p>
+                                <% course_code = CourseKey.from_string(course_id) %>
+                                <% course = CourseOverview.objects.get(id=course_code).display_number_with_default %>
+                                <p class="p10 ft8">IIMBx${accomplishment_user_id}${course}${date.strftime("%m")}${date.strftime("%Y")}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 right1">
+                            % if mode != 'base':
+                                <div class="signature-data">
+                                    % if certificate_data:
+					<div class="row">
+	                                % for signatory in certificate_data.get('signatories', []):
+                                        <div class="col-sm-6 sign">
+                                            <img class="signatory-signature" src="${signatory['signature_image_path']}" alt="${signatory['name']}">
+                                            <h4 class="signatory-name hd-5">${signatory['name']}</h4>
+                                            <div class="signatory-credentials copy copy-micro">
+                                                <h5 class="role">${signatory['title']}</h5>
+                                                <h5 class="organization">${signatory['organization']}</h5>
+                                            </div>
+                                        </div>
+                                        %endfor
+					</div>
+                                    </div>
+                                    %endif
+                                </div>
+                            % endif
+                    </div>
+                </div>
+                <div id="top-bar" class="top-bar">
+                    <div class="first-part"></div>
+                    <div class="sec-part"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper-accomplishment-metadata">
+        <div class="accomplishment-metadata">
+            <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about | h}</h2>
+            <div class="wrapper-metadata">
+                <dl class="metadata accomplishment-recipient">
+                    <dt class="label sr-only">Awarded to:</dt>
+                    <dd class="value copy copy-meta">
+                        <span class="recipient-img">
+                            <img class="src" src="/static/certificates/images/demo-user-profile.png" alt="">
+                        </span>
+                        <div class="recipient-details">
+                            <h3 class="recipient-name">${accomplishment_copy_name | h}</h3>
+                            <p class="recipient-username">${accomplishment_copy_username} @ IIMBx</p>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="metadata accomplishment-id">
+                    <dt class="label copy copy-meta">${certificate_id_number_title}:</dt>
+                    <dd class="value copy copy-base">${certificate_id_number}</dd>
+                </dl>
+                <dl class="metadata accomplishment-date">
+                    <dt class="label copy copy-meta">${certificate_date_issued_title}</dt>
+                    <dd class="value copy copy-base">${certificate_date_issued}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</main>
+<script type="text/javascript" src="${static.url('js/qrcode.min.js')}"></script>
+<script type="text/javascript">
+    var url = document.getElementById("qrcode").getAttribute("data-url");
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+    text: url,
+    width: 256,
+    height: 256,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+});
+</script>
+

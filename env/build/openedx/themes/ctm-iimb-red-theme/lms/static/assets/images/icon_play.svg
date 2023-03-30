@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45">
+  <g id="Play_Button" data-name="Play Button" transform="translate(-778 -3717)">
+    <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(778 3717)" fill="rgba(0,0,0,0.2)" stroke="#fff" stroke-width="1.5">
+      <circle cx="22.5" cy="22.5" r="22.5" stroke="none"/>
+      <circle cx="22.5" cy="22.5" r="21.75" fill="none"/>
+    </g>
+    <g id="play-arrow" transform="translate(757.75 3734)">
+      <g id="play-arrow-2" data-name="play-arrow" transform="translate(38.25)">
+        <path id="Path_6" data-name="Path 6" d="M38.25,0V12l9.429-6Z" transform="translate(-38.25)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

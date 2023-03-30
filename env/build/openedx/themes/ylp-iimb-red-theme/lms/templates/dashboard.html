@@ -1,0 +1,202 @@
+<%page expression_filter="h"/>
+<%inherit file="custom_main.html" />
+<%def name="online_help_token()"><% return "learnerdashboard" %></%def>
+<%namespace name='static' file='static_content.html'/>
+<%!
+import pytz
+import six
+from datetime import datetime, timedelta
+from django.urls import reverse
+from django.utils.translation import ugettext as _
+from entitlements.models import CourseEntitlement
+from common.djangoapps.util.date_utils import strftime_localized
+from opaque_keys.edx.keys import CourseKey
+from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
+from openedx.core.djangolib.js_utils import dump_js_escaped_json
+from openedx.features.course_experience import course_home_url_name
+from student.models import CourseEnrollment
+%>
+
+<%block name="pagetitle">${_("Dashboard")}</%block>
+<%block name="bodyclass">view-dashboard is-authenticated</%block>
+
+<%block name="js_extra">
+  % if redirect_message:
+    <%static:require_module module_name="js/views/message_banner" class_name="MessageBannerView">
+        var banner = new MessageBannerView({urgency: 'low', type: 'warning'});
+        $('#content').prepend(banner.$el);
+        banner.showMessage(${redirect_message | n, dump_js_escaped_json})
+    </%static:require_module>
+  % endif
+</%block>
+
+<%include file="banner.html"/>
+
+
+<div class="dashboard-notifications" tabindex="-1">
+
+    %if banner_account_activation_message:
+        <div class="dashboard-banner">
+            ${banner_account_activation_message | n, decode.utf8}
+        </div>
+    %endif
+
+    %if enrollment_message:
+        <div class="dashboard-banner">
+            ${enrollment_message | n,  decode.utf8}
+        </div>
+    %endif
+
+    %if enterprise_message:
+        <div class="dashboard-banner">
+            ${ enterprise_message | n, decode.utf8 }
+        </div>
+    %endif
+
+    %if account_activation_messages:
+      <div class="activation-message-container">
+        % for account_activation_message in account_activation_messages:
+          <div class="account-activation ${account_activation_message.tags}" role="alert" aria-label="Account Activation Message" tabindex="-1">
+            <div class="message-copy" >
+              ${ account_activation_message | n, decode.utf8 }
+            </div>
+          </div>
+        % endfor
+      </div>
+    %endif
+
+</div>
+
+<div class="wrap-inner">
+  <div class="container">
+    <h2 class="course_main_title">My Courses</h2>
+    <section class="mycourse_grid_sec catalog_grid">
+      % if len(course_entitlements + course_enrollments) > 0:
+        % for dashboard_index, enrollment in enumerate(course_entitlements + course_enrollments):
+          <%
+            # Check if the course run is an entitlement and if it has an associated session
+            entitlement = enrollment if isinstance(enrollment, CourseEntitlement) else None
+            entitlement_session = entitlement.enrollment_course_run if entitlement else None
+            entitlement_days_until_expiration = entitlement.get_days_until_expiration() if entitlement else None
+            entitlement_expiration = datetime.now(tz=pytz.UTC) + timedelta(days=entitlement_days_until_expiration) if (entitlement and entitlement_days_until_expiration < settings.ENTITLEMENT_EXPIRED_ALERT_PERIOD) else None
+            entitlement_expiration_date = strftime_localized(entitlement_expiration, 'SHORT_DATE') if entitlement and entitlement_expiration else None
+            entitlement_expired_at = strftime_localized(entitlement.expired_at_datetime, 'SHORT_DATE') if entitlement and entitlement.expired_at_datetime else None
+
+            is_fulfilled_entitlement = True if entitlement and entitlement_session else False
+            is_unfulfilled_entitlement = True if entitlement and not entitlement_session else False
+
+            entitlement_available_sessions = []
+            if entitlement:
+              # Grab the available, enrollable sessions for a given entitlement and scrape them for relevant attributes
+              entitlement_available_sessions = [{
+                'session_id': course['key'],
+                'enrollment_end': course['enrollment_end'],
+                'pacing_type': course['pacing_type'],
+                'advertised_start': CourseOverview.get_from_id(CourseKey.from_string(course['key'])).advertised_start,
+                'start': CourseOverview.get_from_id(CourseKey.from_string(course['key'])).start,
+                'end': CourseOverview.get_from_id(CourseKey.from_string(course['key'])).end,
+                } for course in course_entitlement_available_sessions[str(entitlement.uuid)]]
+              if is_fulfilled_entitlement:
+                # If the user has a fulfilled entitlement, pass through the entitlements CourseEnrollment object
+                enrollment = entitlement_session
+              else:
+                # If the user has an unfulfilled entitlement, pass through a bare CourseEnrollment object to populate card with metadata
+                pseudo_session = unfulfilled_entitlement_pseudo_sessions[str(entitlement.uuid)]
+                if not pseudo_session:
+                    continue
+                enrollment = CourseEnrollment(user=user, course_id=pseudo_session['key'], mode=pseudo_session['type'])
+              # We only show email settings for entitlement cards if the entitlement has an associated enrollment
+              show_email_settings = is_fulfilled_entitlement and (entitlement_session.course_id in show_email_settings_for)
+            else:
+              show_email_settings = (enrollment.course_id in show_email_settings_for)
+
+            session_id = enrollment.course_id
+            show_courseware_link = (session_id in show_courseware_links_for)
+            cert_status = cert_statuses.get(session_id)
+            can_refund_entitlement = entitlement and entitlement.is_entitlement_refundable()
+            can_unenroll = (not cert_status) or cert_status.get('can_unenroll') if not unfulfilled_entitlement else False
+            credit_status = credit_statuses.get(session_id)
+            course_mode_info = all_course_modes.get(session_id)
+            is_paid_course = True if entitlement else (session_id in enrolled_courses_either_paid)
+            is_course_blocked = (session_id)
+            course_verification_status = verification_status_by_course.get(session_id, {})
+            course_requirements = courses_requirements_not_met.get(session_id)
+            related_programs = inverted_programs.get(six.text_type(entitlement.course_uuid if is_unfulfilled_entitlement else session_id))
+            show_consent_link = (session_id in consent_required_courses)
+            course_overview = enrollment.course_overview
+            resume_button_url = resume_button_urls[dashboard_index]
+          %>
+          <div class="col-md-4 col-sm-6 col-xs-6 ">
+            <% course_target = reverse(course_home_url_name(course_overview.id), args=[six.text_type(course_overview.id)]) %>
+            <div class="mycourse_block" style="background-image: url(${course_overview.image_urls['small']})">
+              % if course_overview.start:
+                <span class="date">
+                  <i class="fa fa-clock-o" aria-hidden="true"></i>Course Start: ${course_overview.start.strftime("%d %b %Y")}
+                </span>
+              %endif
+              
+              % if course_overview.end:
+                <span class="date end_date">
+                  <i class="fa fa-clock-o" aria-hidden="true"></i>Course End: ${course_overview.end.strftime("%d %b %Y")}
+                </span>
+              %endif
+              <div class="mycourse_info">
+                <h2 class="mycourse_title">
+                  % if show_courseware_link and not is_unfulfilled_entitlement:
+                    % if not is_course_blocked:
+                      <a href="${course_target}" title="${course_overview.display_name_with_default}">${course_overview.display_name_with_default}</a>
+                    % else:
+                       <a href="" title="${course_overview.display_name_with_default}">${course_overview.display_name_with_default}</a>
+                    % endif
+                  % else:
+                      <a title="${course_overview.display_name_with_default}">${course_overview.display_name_with_default}</a>
+                  % endif
+                </h2>
+                <!-- <p>Lorem Ipsum</p> -->
+                <ul class="list-unstyled course-list">
+                  <li>${course_overview.display_number_with_default}</li>
+                  <li>${course_overview.display_org_with_default}</li>
+                  <li>${course_overview.id.run}</li>
+                </ul>
+                % if show_courseware_link or is_unfulfilled_entitlement:
+                  % if course_overview.has_ended():
+                    % if not is_course_blocked:
+                      <div class="course_action text-right"><a href="${course_target}" class="btn btn-theme btn-theme-white text-capitalize">View Archived Course</a></div>
+                    % else:
+                      <div class="course_action text-right"><a href="" class="btn btn-theme btn-theme-white text-capitalize">View Archived Course</a></div>
+                    % endif
+                  % else:
+                    % if resume_button_url != '':
+                      <div class="course_action text-right"><a href="${resume_button_url}" class="btn btn-theme btn-theme-white text-capitalize">Resume Course</a></div>
+                    % elif not is_course_blocked:
+                      <div class="course_action text-right"><a href="${course_target}" class="btn btn-theme btn-theme-white text-capitalize">View Course</a></div>
+                    % else:
+                      <div class="course_action text-right"><a href="" class="btn btn-theme btn-theme-white text-capitalize">View Course</a></div>
+                    % endif
+                  % endif
+                % endif                
+              </div> 
+            </div>
+          </div>
+        % endfor
+      % else:
+        <div class="empty-dashboard-message">
+          % if display_dashboard_courses and user.is_active:
+            <p>${_("You are not enrolled in any courses yet.")}</p>
+            % if empty_dashboard_message:
+              <p class="custom-message">${empty_dashboard_message | n, decode.utf8}</p>
+            %endif
+            % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
+              <a class="btn btn-primary" href="${marketing_link('COURSES')}">
+                ${_("Explore courses")}
+              </a>
+            %endif
+          % else:
+            <p>${_("Activate your account!")}</p>
+            <p class="custom-message">${ activate_account_message | n, decode.utf8 }</p>
+          % endif
+        </div>
+      % endif
+    </section>
+  </div><!--end Container-->
+</div><!--wrap inner--> 

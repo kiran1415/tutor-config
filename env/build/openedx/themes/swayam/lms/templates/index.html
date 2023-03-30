@@ -1,0 +1,508 @@
+<%! 
+from django.utils.translation import ugettext as _ 
+from django.urls import reverse
+%>
+
+<%page expression_filter="h"/>
+
+<%namespace file='main.html' import="login_query"/>
+<%namespace name='static' file='static_content.html'/>
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>SWAYAM</title>
+   <meta name="description" content="">
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+   <link rel="icon" type="image/x-icon" href="${static.url(static.get_value('favicon_path', settings.FAVICON_PATH))}" />
+   <link rel="stylesheet" href="${static.url('assets/css/main.css')}">
+   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet">
+   <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
+   
+</head>
+<body class="homepage">
+           <!--[if lte IE 9]>
+           <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+           <![endif]-->
+   <div class="banner-bg">
+       <header class="top">
+         <div class="container">
+           <a href="https://www.iimb.ac.in/" class="logo" target="_blank">
+             <img src="${static.url('assets/images/logo.svg')}" alt=""></a>
+           <div class="navbtn">
+             <div class="bar"></div>
+           </div>
+           <span class="mobile_bg">
+             <nav class="main-nav">
+               <ul class="site-nav">
+                 <li>
+                   <a href="" class="link_home">Home</a>
+                 </li>
+                 <li>
+                   <a href="#" class="link_iimbx">IIMB on SWAYAM</a>
+                 </li>
+                 <li>
+                   <a href="${static.url('assets/downloads/swayam_guidelines.pdf')}" target="_blank">SWAYAM Guidelines</a>
+                 </li>
+                 <li>
+                   <a href="https://docs.google.com/forms/d/e/1FAIpQLSew4qrVHiuMMYRub9q1007uawWXG1va2bDCpkY759b4e58tHw/viewform"  target="_blank">Submit Proposal</a>
+                 </li>
+                 <li>
+                   <a href="#" class="link_contact">Contact</a>
+                 </li>
+               </ul>
+             </nav>
+           </span>
+         </div>
+       </header>
+       
+      
+        <!-- banner -->
+        <div class="banner">
+          <div class="container">
+            <div class="banner_text">
+              <h1>SWAYAM</h1>
+              <p>The SWAYAM Programme was established under the aegis of the Ministry of Human Resources Development, Government of India, for expanding educational access and opportunities courses and pedagogies.  Swayam courses cover all subjects and skill sectors from high school to higher education.  SWAYAM seeks to bridge the digital divide for students who have hitherto remained untouched by the digital revolution and have not been able to join the mainstream of the knowledge economy. SWAYAM designed to achieve the three cardinal principles of Education Policy viz., access, equity and quality.
+              </p>
+      
+            </div>
+          </div>
+        </div>
+        <!-- end banner -->
+      
+      </div>
+      <!-- banner bg end -->
+      <div class="banner-contents">
+        <div class="container">
+          <div class="img-content">
+            <div class="banner-img">
+             <video width="100%" height="100%" autoplay controls>
+        <source src="${static.url('assets/images/swayam_new.mp4')}" type="video/mp4">
+        <!--<source src="${static.url('assets/images/swayam.ogg')}" type="video/ogg">-->
+      Your browser does not support the video tag.
+      </video>
+            </div>
+            <p>Through SWAYAM integrated learning platform courses from India’s top-ranking institutions and faculty are made available to learners anywhere in an asynchronous mode.</p>
+      <p>All courses on the Swayam platform are free. Learners, if they are students currently enrolled in an educational institution or university, have also the option of transferring credits earned through the SWAYAM courses to their respective home institutions.</p>      
+          </div>
+        </div>
+      </div>
+      
+   <section class="objective_section">
+           <div class="container">
+             <div class="row">
+               <div class="col-md-4">
+                 <h3 class="sub_section_heading">SWAYAM Objective</h4>
+         <p>The objective of SWAYAM effort is to take the best teaching learning resources to all, including the most disadvantaged</p>
+               </div>
+               <div class="col-md-8">
+                 <h5 class="sub-heading"><span class="head"></span> <span class="line">
+                               <hr></span></h5>
+           <ul class="objectives">
+             <li>To bridge the digital divide for students who have hitherto remained untouched by the digital revolution and have not been able to join the mainstream of the knowledge economy</li>
+             <li>To provide one-stop web and mobile based interactive e-content for all courses from High School to University level</li>
+             <li>To provide high quality learning experience using multimedia on an anytime, anywhere basis</li>
+             <li>To provide state of the art system that allows easy access, monitoring and certification</li>
+             <li>To provide peer interaction and discussion forum to clarify doubts</li>
+           </ul>
+         
+               </div>
+             </div>
+           </div>
+         </section>
+         
+   <section class="quadrant_section">
+            
+                <div class="container">
+                    <h3 class="section_heading">Four Quadrant Approach</h3>
+                    <p class="section_para">The four Quadrant approach implies an e-learning system that has the following components:</p>
+            
+                    <ul class="quodrant">
+                        <li>
+                            <img src="${static.url('assets/images/video_lecture.svg')}" alt="">
+                            <span class="item_name">Video Lecture</span>
+                        </li>
+                        <li>
+                            <img src="${static.url('assets/images/reading_material.svg')}" alt="">
+                            <span class="item_name">Reading Material</span>
+                        </li>
+                        <li>
+                            <img src="${static.url('assets/images/self_assessment_tests.svg')}" alt="">
+                            <span class="item_name">Self-Assessment Tests</span>
+                        </li>
+                        <li>
+                            <img src="${static.url('assets/images/online_discussion.svg')}" alt="">
+                            <span class="item_name">Online Discussion</span>
+                        </li>
+                    </ul>
+            
+                </div>
+            </section>
+            
+   <section class="examination_section">
+                       <div class="container">
+                         <h3 class="section_heading">Examination</h3>
+                         <p class="section_para">Timed and proctored examinations are conducted twice every year; in April/ May and December for Management courses. The details of the examination will be communicated to students through the SWAYAM Website. The details of Exam dates, time, venue, procedure to apply for exam, the status of application, hall tickets and results will also be communicated through the SWAYAM Website</p>
+                         <p>SWAYAM Website: <a href="https://swayam.gov.in">https://swayam.gov.in</a></p>
+                       </div>
+                     </section>
+               
+   <section class="iimbx_section domain">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-lg-4">
+                          <h3 class="sub_section_heading">IIMB on SWAYAM</h3>
+                          <p>IIMB is one of the nine national coordinators and has offered more than 20 courses on SWAYAM since 2017. As a National Coordinator, IIMB receives and evaluates MOOC (Massive Open Online Course) proposals in the area of management studies from Universities and Institutions willing to offer their course on SWAYAM. Universities and Institutions can send the proposals to IIMBx, the digital learning division of IIM Bangalore.</p>
+                          <p>To Know More: <a href="https://swayam.gov.in/nc_details/IIMB" target="_blank">Click Here</a></p>
+                        </div>
+                        <div class="col-lg-8">
+                          <h5 class="sub-heading"><span class="head">Courses</span> <span class="line">
+                              <hr></span>
+                            <div class="dropdown">
+                              <a href="#" class="dropdown__head">View All</a>
+                              <div class="dropdown__body">
+                                <ul role="menu">
+                                  <li><a href="#viewall">View All</a></li>
+                                  <li><a href="#marketing">Marketing</a></li>
+                                  <li><a href="#cmc">Centre for Management Communication</a></li>
+                                  <li><a href="#strategy">Strategy</a></li>
+                                  <li><a href="#finance">Finance & Accounting</a></li>
+                                  <li><a href="#pom">Production & Operations Management</a></li>
+                                  <li><a href="#enterpreneurship">Entrepreneurship</a></li>
+                                  <li><a href="#ess">Economics & Social Sciences</a></li>
+                                  <li><a href="#ob">Organizational Behaviour</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </h5>
+                          <div id="viewall" class="card-cont">
+                            <ul class="card-list domain-slider">
+                              <li>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg04/preview" target="_blank" class="card marketing">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/brand_management.jpg')}" alt=""> </div> <span class="course_name">Brand Management </span> <span class="pro">Preeti Krishnan Lyndem</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg22/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/continuous_quality_improvement.jpg')}" alt=""> </div> <span class="course_name">Continuous Quality Improvement</span> <span class="pro">Sanjeev Singh</span> <span class="place">Quality Council of India</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg20/preview" target="_blank" class="card  marketing">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/consumer_buyer_behaviour.jpg')}" alt=""> </div> <span class="course_name">Consumer Buyer Behaviour</span> <span class="pro">Ashish Hathi</span> <span class="place">Welingkar</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg13/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/creating_happy_and_meaningful_career.jpg')}" alt=""> </div> <span class="course_name">Creating a Happy and Meaningful career</span> <span class="pro">Ramya Ranganathan</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg10/preview" target="_blank" class="card  marketing">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/customer_relationship_management.jpg')}" alt=""> </div> <span class="course_name">Customer Relationship Management</span> <span class="pro">Shainesh G</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg14/preview" target="_blank" class="card cmc">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/effective_business_communication.jpg')}" alt=""> </div> <span class="course_name">Effective Business Communication</span> <span class="pro">Bringi Dev & Rakesh Godhwani</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg03/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/entrepreneurship_do_your_venture.jpg')}" alt=""> </div> <span class="course_name">Entrepreneurship: Do your Venture</span> <span class="pro">Suresh Bhagavatula</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg07/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/financial_accounting_and_analysis.jpg')}" alt=""> </div> <span class="course_name">Financial Accounting and Analysis</span> <span class="pro">Padmini Srinivasan</span> <span class="place">IIMB</span> </a>
+                              </li>
+                              <li>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg18/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/intellectual_property_rights.jpg')}" alt=""> </div> <span class="course_name">Intellectual Property Rights</span> <span class="pro">Damodaran A</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg09/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/introduction_to_investments.jpg')}" alt=""> </div> <span class="course_name">Introduction to Investments</span> <span class="pro">S.G. Badrinath</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg16/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/introduction_to_managerial_economics.jpg')}" alt=""> </div> <span class="course_name">Introduction to Managerial Economics</span> <span class="pro">Subhashish Gupta</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg11/preview" target="_blank" class="card  marketing">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/introduction_to_marketing_essentials.jpg')}" alt=""> </div> <span class="course_name">Introduction to Marketing Essentials</span> <span class="pro">Ashis Mishra</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg02/preview" target="_blank" class="card  marketing">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/introduction_to_retail_management.jpg')}" alt=""> </div> <span class="course_name">Introduction to Retail Management</span> <span class="pro">Ashis Mishra</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg06/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/management_accounting_for_decision_making.jpg')}" alt=""> </div> <span class="course_name">Management Accounting for Decision Making</span> <span class="pro">M S Narasimhan</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg05/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/managing_innovation.jpg')}" alt=""> </div> <span class="course_name">Managing Innovation</span> <span class="pro">Rishikesha T Krishnan & Vinay Dabholkar</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg21/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/manufacturing_competitiveness.jpg')}" alt=""> </div> <span class="course_name">Manufacturing Competitiveness</span> <span class="pro">Shishir Bharadwaj</span> <span class="place">IIMB</span> </a>
+                              </li>
+                              <li>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg19/preview" target="_blank" class="card  marketing">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/marketing_and_innovation.jpg')}" alt=""> </div> <span class="course_name">Marketing and Innovation</span> <span class="pro">Smitha Girija & Jagdish Sheth</span> <span class="place">IILM</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg01/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/new_product_development.jpg')}" alt=""> </div> <span class="course_name">New Product Development</span> <span class="pro">Ganesh N Prabhu</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg17/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/introduction_to_operations_management.jpg')}" alt=""> </div> <span class="course_name">Introduction to Operations Management</span> <span class="pro">Mahadevan B</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg15/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/organizational_design.jpg')}" alt=""> </div> <span class="course_name">Organizational Design</span> <span class="pro">Sourav Mukherji</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg08/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/strategic_management.jpg')}" alt=""> </div> <span class="course_name">Strategic Management</span> <span class="pro">PD Jose, Rejie George & Sai Yayavaram</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg12/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/strategy_and_the_sustainable_enterprise.jpg')}" alt=""> </div> <span class="course_name">Strategy and Sustainable Enterprise</span> <span class="pro">Jose P D</span> <span class="place">IIMB</span> </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div id="marketing" class="card-cont">
+                            <ul class="card-list">
+                              <li>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg04/preview" target="_blank" class="card marketing">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/brand_management.jpg')}" alt=""> </div> <span class="course_name">Brand Management </span> <span class="pro">Preeti Krishnan Lyndem</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg20/preview" target="_blank" class="card  marketing">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/consumer_buyer_behaviour.jpg')}" alt=""> </div> <span class="course_name">Consumer Buyer Behaviour</span> <span class="pro">Ashish Hathi</span> <span class="place">Welingkar</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg10/preview" target="_blank" class="card  marketing">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/customer_relationship_management.jpg')}" alt=""> </div> <span class="course_name">Customer Relationship Management</span> <span class="pro">Shainesh G</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg11/preview" target="_blank" class="card  marketing">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/introduction_to_marketing_essentials.jpg')}" alt=""> </div> <span class="course_name">Introduction to Marketing Essentials</span> <span class="pro">Ashis Mishra</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg02/preview" target="_blank" class="card  marketing">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/introduction_to_retail_management.jpg')}" alt=""> </div> <span class="course_name">Introduction to Retail Management</span> <span class="pro">Ashis Mishra</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg19/preview" target="_blank" class="card  marketing">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/marketing_and_innovation.jpg')}" alt=""> </div> <span class="course_name">Marketing and Innovation</span> <span class="pro">Smitha Girija & Jagdish Sheth</span> <span class="place">IILM</span> </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div id="cmc" class="card-cont">
+                            <ul class="card-list">
+                              <li>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg14/preview" target="_blank" class="card cmc">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/effective_business_communication.jpg')}" alt=""> </div> <span class="course_name">Effective Business Communication</span> <span class="pro">Bringi Dev & Rakesh Godhwani</span> <span class="place">IIMB</span> </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div id="strategy" class="card-cont">
+                            <ul class="card-list">
+                              <li>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg12/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/strategy_and_the_sustainable_enterprise.jpg')}" alt=""> </div> <span class="course_name">Strategy and Sustainable Enterprise</span> <span class="pro">Jose P D</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg08/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/strategic_management.jpg')}" alt=""> </div> <span class="course_name">Strategic Management</span> <span class="pro">PD Jose, Rejie George & Sai Yayavaram</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg01/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/new_product_development.jpg')}" alt=""> </div> <span class="course_name">New Product Development</span> <span class="pro">Ganesh N Prabhu</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg05/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/managing_innovation.jpg')}" alt=""> </div> <span class="course_name">Managing Innovation</span> <span class="pro">Rishikesha T Krishnan & Vinay Dabholkar</span> <span class="place">IIMB</span> </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div id="finance" class="card-cont">
+                            <ul class="card-list">
+                              <li>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg06/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/management_accounting_for_decision_making.jpg')}" alt=""> </div> <span class="course_name">Management Accounting for Decision Making</span> <span class="pro">M S Narasimhan</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg07/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/financial_accounting_and_analysis.jpg')}" alt=""> </div> <span class="course_name">Financial Accounting and Analysis</span> <span class="pro">Padmini Srinivasan</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg09/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/introduction_to_investments.jpg')}" alt=""> </div> <span class="course_name">Introduction to Investments</span> <span class="pro">S.G. Badrinath</span> <span class="place">IIMB</span> </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div id="pom" class="card-cont">
+                            <ul class="card-list">
+                              <li>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg17/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/introduction_to_operations_management.jpg')}" alt=""> </div> <span class="course_name">Introduction to Operations Management</span> <span class="pro">Mahadevan B</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg21/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/manufacturing_competitiveness.jpg')}" alt=""> </div> <span class="course_name">Manufacturing Competitiveness</span> <span class="pro">Shishir Bharadwaj</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg22/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/continuous_quality_improvement.jpg')}" alt=""> </div> <span class="course_name">Continuous Quality Improvement</span> <span class="pro">Sanjeev Singh</span> <span class="place">Quality Council of India</span> </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div id="enterpreneurship" class="card-cont">
+                            <ul class="card-list">
+                              <li>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg03/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/entrepreneurship_do_your_venture.jpg')}" alt=""> </div> <span class="course_name">Entrepreneurship: Do your Venture</span> <span class="pro">Suresh Bhagavatula</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg01/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/new_product_development.jpg')}" alt=""> </div> <span class="course_name">New Product Development</span> <span class="pro">Ganesh N Prabhu</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg05/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/managing_innovation.jpg')}" alt=""> </div> <span class="course_name">Managing Innovation</span> <span class="pro">Rishikesha T Krishnan & Vinay Dabholkar</span> <span class="place">IIMB</span> </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div id="ess" class="card-cont">
+                            <ul class="card-list" id="ess" class="card-cont">
+                              <li>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg18/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/intellectual_property_rights.jpg')}" alt=""> </div> <span class="course_name">Intellectual Property Rights</span> <span class="pro">Damodaran A</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg16/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/introduction_to_managerial_economics.jpg')}" alt=""> </div> <span class="course_name">Introduction to Managerial Economics</span> <span class="pro">Subhashish Gupta</span> <span class="place">IIMB</span> </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div id="ob" class="card-cont">
+                            <ul class="card-list">
+                              <li>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg13/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/creating_happy_and_meaningful_career.jpg')}" alt=""> </div> <span class="course_name">Creating a Happy and Meaningful career</span> <span class="pro">Ramya Ranganathan</span> <span class="place">IIMB</span> </a>
+                                <a href="https://swayam.gov.in/nd2_imb19_mg15/preview" target="_blank" class="card">
+                                  <div class="img-cont"> <img src="${static.url('assets/images/courses/organizational_design.jpg')}" alt=""> </div> <span class="course_name">Organizational Design</span> <span class="pro">Sourav Mukherji</span> <span class="place">IIMB</span> </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+   <section class="coordinators_section">
+                       <div class="container">
+                         <div class="row">
+                           <div class="col-md-4">
+                             <h3 class="sub_section_heading">National Coordinators</h4>
+                     <p>In order to ensuer best quality content nine national coordinators have been appointed. These are</p>
+                           </div>
+                           <div class="col-md-8">
+                             <h5 class="sub-heading"><span class="head">Coordinators</span> <span class="line">
+                                           <hr></span></h5>
+                     
+                                           <ul class="coordinators">
+                                             <li>
+                                              <a href="https://www.aicte-india.org/" target="_blank">
+                                               <img src="${static.url('assets/images/aicte.svg')}" alt="">
+                                               <span class="coordinator_name">AICTE</span>
+                                               <p>For Self-paced and International courses</p>
+                                               </a>
+                                             </li>
+                                             <li>
+                                              <a href="http://cec.nic.in/Pages/Home.aspx" target="_blank">
+                                               <img src="${static.url('assets/images/cec.svg')}" alt="">
+                                               <span class="coordinator_name">CEC</span>
+                                               <p>For Under graduate Education</p>
+                                               </a>
+                                             </li>  
+                                             <li>
+                                              <a href="http://www.ignou.ac.in/ " target="_blank">
+                                               <img src="${static.url('assets/images/ignou.svg')}" alt="">
+                                               <span class="coordinator_name">IGNOU</span>
+                                               <p>For Diplomas and Certificates Programmes</p>
+                                               </a>
+                                             </li>  
+                                             <li>
+                                              <a href="https://www.iimb.ac.in/home" target="_blank">
+                                               <img src="${static.url('assets/images/iimb.svg')}" alt="">
+                                               <span class="coordinator_name">IIMB</span>
+                                               <p>For Management Programmes</p>
+                                               </a>
+                                             </li>                          
+                                             <li>
+                                              <a href="http://ncert.nic.in/" target="_blank">
+                                               <img src="${static.url('assets/images/ncert.svg')}" alt="">
+                                               <span class="coordinator_name">NCERT</span>
+                                               <p>For School  graduation Education from class 9th to 12th</p>
+                                               </a>
+                                             </li>                                                                  
+                                              <li>
+                                              <a href="https://www.nios.ac.in/" target="_blank">
+                                               <img src="${static.url('assets/images/nios.svg')}" alt="">
+                                               <span class="coordinator_name">NIOS</span>
+                                               <p>For Out of School  Children Educational Programme from class 9th to 12th</p>
+                                               </a>
+                                             </li>
+                     
+                     
+                                             <li>
+                                              <a href="http://www.nitttrc.ac.in/" target="_blank">
+                                               <img src="${static.url('assets/images/nittr.svg')}" alt="">
+                                               <span class="coordinator_name">NITTR</span>
+                                               <p>For Teacher Training Programme</p>
+                                               </a>
+                                             </li>                      
+                                             <li>
+                                              <a href="https://nptel.ac.in/" target="_blank">
+                                               <img src="${static.url('assets/images/nptel.svg')}" alt="">
+                                               <span class="coordinator_name">NPTEL</span>
+                                               <p>For Engineering</p>
+                                               </a>
+                                             </li>
+                     
+                                         
+                     
+                     
+                                             <li>
+                                              <a href="https://www.ugc.ac.in/" target="_blank">
+                                               <img src="${static.url('assets/images/ugc.svg')}" alt="">
+                                               <span class="coordinator_name">UGC</span>
+                                               <p>For Non-technical Post graduation Education</p>
+                                               </a>
+                                             </li> 
+                                           </ul>
+                           </div>
+                         </div>
+                       </div>
+                     </section>
+                     
+   <section class="proposals_section">
+                          <div class="container">
+                           
+                          <h3 class="section_heading">Submit MOOC Proposal</h3> 
+                          <p class="section_para">Expression of Interest (MOOC Proposals) are invited from those who wish to offer online course(s) on the SWAYAM platform in the area of management. Interested Institutions and Universities can apply by sending a detailed MOOC proposal with the following details:</p>
+                           <p>For Submission: <a href="https://docs.google.com/forms/d/e/1FAIpQLSew4qrVHiuMMYRub9q1007uawWXG1va2bDCpkY759b4e58tHw/viewform" target="_blank">Click Here</a></p>
+                           
+                           
+                          
+                          </div>
+                        </section>
+                        
+   <section class="contact_section">
+                                   <div class="container">
+                                     <h3 class="section_heading">Contact details</h3>
+                           
+                                     <ul class="contact-details">
+                                       <li>
+                                         <strong>E-mail : </strong><a href="maintl:iimbswayam@iimb.ac.in">iimbswayam@iimb.ac.in</a>
+                                       </li>
+                                       <li>
+                                         <strong>Phone No : </strong><a href="tel:080-26993894">080-26993894</a>
+                                       </li>
+                                     </ul>
+                                   </div>
+                                 </section>
+                           
+   <footer>
+                                <div class="container">
+                                  <div class="row">
+                                  <div class="col-md-3">
+                                    
+                                     <a href="https://www.iimbx.edu.in/" target="_blank" class="footer_logo">
+                                      <img src="${static.url('assets/images/footer-logo.png')}" alt="">
+                                      </a>
+                                    
+                                  </div>
+                                  <div class="col-md-7">
+                                        <ul class="links">
+                                          <li><a href="index.html">Home</a></li>
+                                          <li><a href="#" class="link_iimbx">IIMB on SWAYAM</a></li>
+                                          <li>  <a href="${static.url('assets/downloads/swayam_guidelines.pdf')}" target="_blank">SWAYAM Guidelines</a></li>
+                                          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSew4qrVHiuMMYRub9q1007uawWXG1va2bDCpkY759b4e58tHw/viewform"  target="_blank">Submit Proposal</a></li>
+                                        </ul>
+                                  </div>
+                                  <div class="col-md-2">
+                                    <ul class="social desktop">
+                                      <li><a href="https://www.facebook.com/iimbxonline/" target="_blank" class="fb">Facebook</a></li>
+                                      <li><a href="https://twitter.com/iimbxonline?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"  target="_blank"  class="twitter">twitter</a></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                                </div>
+                                <div class="dark-bg">
+                                  <div class="container">
+                                    <div class="row">
+                              
+                                      <div class="col-md-3"></div>
+                                      <div class="col-md-7">
+                                        <ul class="contact">
+                                        <li>Email : iimbswayam@iimb.ac.in</li>
+                                        <li>Phone : +91-80-26993894</li>
+                                      </ul>
+                                    </div>
+                                      <div class="col-md-2">
+                                        <ul class="social">
+                                          <li class="mobile"><a href="https://www.facebook.com/iimbxonline/" target="_blank" class="fb">Facebook</a></li>
+                                          <li  class="mobile"><a href="https://twitter.com/iimbxonline?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"  target="_blank"  class="twitter">twitter</a></li>
+                                          <li><a href="https://play.google.com/store/apps/details?id=in.gov.swayam.app&hl=en" class="gplay"  target="_blank" >google play</a></li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  </div>
+                              <div class="footer_message ">
+                                <p>Copyright © IIM Bangalore. All Rights Reserved.</p>
+                              
+                              </div>
+                              </footer>
+                              
+       <script src="${static.url('assets/js/jquery-min.js')}"></script>
+                                     <script src="${static.url('assets/js/jquery.bxslider-min.js')}"></script>
+                                       
+                                        <script src="${static.url('assets/js/enquire-min.js')}"></script>
+                                         <script src="${static.url('assets/js/main-min.js')}"></script>
+                                         <script src="${static.url('js/tawk.js')}"></script>
+</body>
+</html>

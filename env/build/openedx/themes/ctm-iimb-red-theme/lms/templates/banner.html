@@ -1,0 +1,65 @@
+<%page expression_filter="h"/>
+<%def name="online_help_token()"><% return "learnerdashboard" %></%def>
+<%namespace name='static' file='static_content.html'/>
+
+<%!
+import pytz
+from datetime import datetime, timedelta
+%>
+
+<%
+# SET duration & TIME IN start_dt variable ADD IST values.
+#################################################################
+duration = 60
+week_days = [2, 3] # last day will be maintenance day #1=Monday, 2=Tuesday, ..., 7=Sunday
+start_hour = 12
+start_minute = 0
+
+utc_dt = pytz.utc.localize(datetime.utcnow(), is_dst=None)
+local_tz = pytz.timezone('Asia/Kolkata')
+dt_now = local_dt = utc_dt.astimezone(local_tz)
+
+start_dt = dt_now - timedelta(days = dt_now.isoweekday())
+start_dt = start_dt.replace(hour=start_hour, minute=start_minute) + timedelta(days=week_days[-1])
+end_dt = start_dt + timedelta(minutes = duration)
+#################################################################
+%>
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+   <style>
+  .main-popup {position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 99999;  }
+  .main-popup .inner-MainBox {position: absolute; top: 50%; left: 0px; width: 100%; text-align: center; -webkit-transform: translateY(-50%); -o-transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); transform: translateY(-50%); padding: 0 20px; }
+  .main-popup .main-box {display: inline-block; width: 100%; max-width: 620px; background: #fff; border-radius: 10px; padding: 20px; }
+  .main-popup .main-box p {font-size: 28px; color: #8e0f14; line-height: 40px; margin: 0px; text-align: center; padding-bottom: 20px; }
+  .main-popup .main-box .close-icon {display: block; text-align: right; padding-bottom: 20px; }
+  .main-popup .main-box .close-icon span {display: inline-block;cursor: pointer;font-size: 22px;}
+  .main-popup .warning-icon {display: block; text-align: center; padding-bottom: 10px; }
+  .main-popup .warning-icon img {max-width: 250px; }
+  .main-popup .imported-title {font-weight: bold;font-size: 32px; line-height: 40px; padding-bottom: 10px; color: #8e0f14;}
+
+  @media (max-width:767px){
+      .main-popup .main-box .close-icon {padding-bottom: 0px;}
+  .main-popup .main-box p {font-size: 18px; line-height: 32px; padding-bottom: 10px; }    
+  .main-popup .imported-title {font-size: 22px; padding-bottom: 5px; color: #8e0f14}
+   }
+  </style>
+
+  <div class="main-popup" id="server-down" style="display:none;">
+      <div class="inner-MainBox">
+          <div class="main-box">
+            <div class="close-icon">
+                <span onclick="document.getElementById('server-down').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            </div>
+            <div class="warning-icon"><img src="${static.url('images/iimbx-logo-brand-color_asset.png')}" alt=""></div>
+            <div class="imported-title"> IMPORTANT MESSAGE</div>
+		<p>IIMBx will be unavailable due to maintenance from 08:00 AM IST to 08:00 PM IST on 1st September 2020.</p>
+	  </div>
+      </div>
+  </div>
+  </body>
+
+</html>
+

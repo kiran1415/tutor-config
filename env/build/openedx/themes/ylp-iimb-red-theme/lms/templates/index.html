@@ -1,0 +1,938 @@
+<%! 
+from django.utils.translation import ugettext as _ 
+from django.urls import reverse
+%>
+
+<%page expression_filter="h"/>
+
+<%namespace file='main.html' import="login_query"/>
+<%namespace name='static' file='static_content.html'/>
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8"/>
+        <title>General Management Programme for Young Leaders</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta content="A Joint programme by IIT Madras and IIM Bangalore" name="description"/>
+        <meta content="IIM Bangalore" name="author"/>
+        <link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="${static.url('micro_vendor/simple-line-icons/simple-line-icons.min.css')}" rel="stylesheet" type="text/css"/>
+        <link href="${static.url('micro_vendor/bootstrap/css/bootstrap.min.css')}" rel="stylesheet" type="text/css"/>
+        <link href="${static.url('micro_css/animate.css')}" rel="stylesheet">
+        <link href="${static.url('micro_vendor/swiper/css/swiper.min.css')}" rel="stylesheet" type="text/css"/>
+        <link href="${static.url('micro_css/layout.min.css')}" rel="stylesheet" type="text/css"/>
+        <link href="${static.url('micro_css/style.css')}" rel="stylesheet" type="text/css"/>
+        <link rel="icon" type="image/x-icon" href="${static.url(static.get_value('favicon_path', settings.FAVICON_PATH))}" />
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113637101-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-113637101-1');
+        </script>
+
+    </head>
+    <body id="body" data-spy="scroll" data-target=".header">
+        <header class="header navbar-fixed-top">
+            <nav class="navbar" role="navigation" style="background-color: #fff; color: #515769;">
+                <div class="container">
+                    <div class="menu-container js_nav-item">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="toggle-icon"></span>
+                        </button>
+                        <div class="logo">
+                            <a class="logo-wrap" href="https://www.iimbx.edu.in/" target="_blank">
+                                <img class="logo-img img1" src="${static.url('micro_images/iimbx-logo.png')}" alt="IIMBx Logo">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="collapse navbar-collapse nav-collapse">
+                        <div class="menu-container">
+                            <ul class="nav navbar-nav navbar-nav-right">
+                                <li class="js_nav-item nav-item nochange"><a class="nav-item-child nav-item-hover" href="#body">Home</a></li>
+                                <li class="js_nav-item nav-item nochange"><a class="nav-item-child nav-item-hover" href="#prog">Programme</a></li>
+                                <li class="js_nav-item nav-item nochange"><a class="nav-item-child nav-item-hover" href="#about">About</a></li>
+                                % if user.is_authenticated:
+                                    ## <li class="js_nav-item nav-item nochange"><a class="nav-item-child nav-item-hover" href="http://www.iimb.ac.in/regn/ctm" target="_blank">Apply Now</a></li>
+                                    <li class="js_nav-item nav-item nochange"><a class="nav-item-child nav-item-hover" href="/dashboard">DASHBOARD</a></li>
+                                    <li class="js_nav-item nav-item nochange"><a class="nav-item-child nav-item-hover" href="/logout">Logout</a></li>
+                                % else:
+                                    <li class="js_nav-item nav-item nochange"><a class="nav-item-child nav-item-hover" href="/login">Login</a></li>
+                                % endif
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+  <!-- render ylp microsite content -->
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <div class="container" style="text-align: center;">
+        <ol class="carousel-indicators">
+            <!-- <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li> -->
+        </ol>
+    </div>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img class="img-responsive banner-img" src="${static.url('micro_images/home/1850pxyoungleaders.png')}" alt="Slider Image">
+            <div class="container">
+                <div class="carousel-centered">
+                    <div class="margin-b-40 title-div-ylp">
+                        <h1 class="carousel-title">General Management Programme for Young Leaders</h1>
+                        <p class="color-white">The young CEO’s guidebook, designed and delivered by IIMB’s IIMBx</p>
+                    </div>
+                    <a href="${static.url('micro_docs/YLP-brochure.pdf')}" target="_blank" class="btn-theme btn-theme-sm btn-white-brd text-uppercase btn-brochure-trans">Download Brochure</a><br><br>
+                    <a href="${static.url('micro_docs/YLPSchedule_2018-19.pdf')}" target="_blank" class="btn-theme btn-theme-sm btn-white-brd text-uppercase btn-brochure-trans">Download Programme Schedule</a>
+                    
+
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+<!--========== SLIDER ==========-->
+
+<!--========== PAGE LAYOUT ==========-->
+<!-- About -->
+<div id="prog">            
+    <div class="bg-color-sky-light">
+        <div class="content-lg container">
+            <div class="row program margin-b-60">
+                <div class="col-sm-4">
+                    <img src="${static.url('micro_images/prog/01.png')}" class="case_disc_proj">
+                </div>
+                <div class="col-sm-4">
+                    <img src="${static.url('micro_images/home/12Month_Online_Prog.png')}">
+                </div>
+                <div class="col-sm-4">
+                    <img src="${static.url('micro_images/prog/03.png')}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 col-sm-6 md-margin-b-60">
+                    <div class="margin-t-50 margin-b-30">
+                        <h2>Programme Overview</h2>
+                        <p>The corporate landscape of this day and age has changed in several significant ways. Talented young professionals are being presented with the opportunity to take on senior roles and are given managerial responsibilities quite early in their career. In addition to this, many of them work for startups and SMEs that require them to have a more holistic understanding of businesses in addition to technical knowledge. With a steep learning curve to handle, young leaders frequently struggle to make informed decisions and, as a result, often doubt their own abilities. That's where we come in. IIMB, with its close association and interaction with industries over the last four decades, understands this challenge and has created a unique programme for the young leaders of today. The programme provides them with a strong foundation in management and gives them the confidence to vault the inevitable hurdles that arise in every successful career.</p>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-6 col-md-offset-2">
+                    <div class="accordion">
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            Programme Objective
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                        The General Management Programme for Young Leaders (YLP) aims to achieve the following objectives.
+                                        <ul>
+                                            <li>Provide analytical and communication skills to young managers</li>
+                                            <li>Gain a strong working knowledge in managing different functions like production, marketing, finance and human relations</li>
+                                            <li>Provide confidence in managing accounting and financial matters</li>
+                                            <li>Learn to read the competitive landscape and build strategies</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Pedagogy
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li>The programme is delivered using the blended learning format. This means you will learn via classroom sessions, course videos, webinars, and interviews.</li>
+                                            <li>The programme includes a live connect with IIMB faculty through webinars and campus visits. You will be able to discuss industry trends, theories, and real-life scenarios both virtually and in person.</li>
+                                            <li>This programme is designed to help you understand how each management concept is applied in the workplace. Through interviews with industry experts, you will be able to gain a real-world perspective of everything you learn.</li>
+                                            <li>Each course is closely supported by subject matter experts from the IIMBx team. They answer queries, reply to and edit posts, and communicate course updates.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingThree">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            Courses
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                    <div class="panel-body">
+                                        Module 1: Foundations for Management
+                                        <ul>
+                                            <li>Business and Economics</li>
+                                            <li>Organization Design for Creating Competitive Advantage</li>
+                                            <li>Business Communication</li>
+                                            <li>Business Statistics and Analytics</li>
+                                            <li>Accounting for Decision Making</li>
+                                        </ul>                         
+                                        Module 2: Functional Management
+                                        <ul>
+                                            <li>Operations Management</li>
+                                            <li>Marketing Management</li>
+                                            <li>Corporate Finance</li>
+                                            <li>People Management</li>
+                                            <li>Strategic Management</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingFour">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed panel-title-child headingFour_link" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            Case Discussion and Project
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                    <div class="panel-body">
+                                        <a>Statistics for Business</a>
+                                        <div style="padding-left: 20px; font-size: 14px;">
+                                            <a href="${static.url('micro_docs/YLP_2018-19_SFB_Project_1_Summary.pdf')}" target="_blank">YLP 2018-19 SFB Project 1 Summary Pdf </a>
+                                            <a href="${static.url('micro_docs/YLP_2018-19_SFB_Project_2_Summary.pdf')}" target="_blank">YLP 2018-19 SFB Project 2 Summary Pdf</a>
+                                        </div>
+                                        <a>Accounting for Decision Making</a>
+                                        <div style="padding-left: 20px; font-size: 14px;">
+                                            <a href="${static.url('micro_docs/YLP_2018-19_ADM_Project_1_(CSR).pdf')}" target="_blank">YLP 2018-19 ADM Project -1 (CSR) </a>
+                                            <a href="${static.url('micro_docs/YLP_2018-19_ADM_Project_3_CVP_Index_analysis.pdf')}" target="_blank">YLP 2018-19 ADM Project-3 CVP Index Analysis</a>
+                                        </div>
+                                        <a>Introduction to Managerial Economics</a>
+                                        <div style="padding-left: 20px; font-size: 14px;">
+                                            <a href="${static.url('micro_docs/YLP_2018-19_ME_Projects.pdf')}" target="_blank">YLP 2018-19 ME Project </a>
+                                        </div>
+                                        <a href="#" target="_blank">Organizational Design: Creating Competitive Advantage</a>
+                                        <a>Business Communication</a>
+                                        <div style="padding-left: 20px; font-size: 14px;">
+                                            <a href="${static.url('micro_docs/Business_Communication_Sample_assignment_reports.pdf')}" target="_blank">Business Communication-1- PDF </a>
+                                            <a href="https://drive.google.com/open?id=1_ND8CXmB2W6-Lcna0aQs5nXSIv8XXQ9p" target="_blank">Business commincation-2 - Link </a>
+                                        </div>
+                                        <a href="#" target="_blank">Operations Management</a>
+                                        <a href="#" target="_blank">Marketing Management</a>
+                                        <a href="#" target="_blank">Corporate Finance</a>
+                                        <a href="#" target="_blank">People Management</a>
+                                        <a href="#" target="_blank">Strategic Management </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End About -->
+
+<!-- Video Section Starts -->
+<section class="video-section">
+    <div class="video-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="video">
+                        <iframe src="https://www.youtube.com/embed/R47hiDYNuIk?showinfo=0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="video">
+                        <iframe src="https://www.youtube.com/embed/x7icVVu7eu4?showinfo=0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Video Section Ends -->
+
+<!-- Work -->
+<div id="work">
+    <div class="section-seperator">
+        <div class="content-md container">
+            <div class="row margin-b-40 work-feature">
+               <div class="col-md-12 col-sm-12 work-left">
+                   <div class="row">
+                      <div class="col-sm-12">
+                         <h2 class="mainHead">Course Curriculum</h2>
+                         <h2 class="microHead">Module 1 offers five courses on Foundations for Management</h2>
+                      </div>
+                   </div>
+                </div>
+            </div>
+            <div class="masonry-grid row">
+                <div class="col-sm-12">
+                    <!-- Accounting and Finance -->
+                    <div class="masonry-grid-item col-xs-12 col-sm-5 col-md-3 md-margin-b-30">
+                        <div class="work work-popup-trigger">
+                            <div class="work-overlay">
+                                <img class="full-width img-responsive" src="${static.url('micro_images/home/Statistics for Business - I-.jpg')}" alt="Accounting and Finance">
+                                <div class="middle">
+                                    <div class="text">Statistics for Business</div>
+                                </div>
+                            </div>
+                            <div class="work-popup-overlay">
+                                <div class="work-popup-content">
+                                    <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                    <div class="margin-b-30">
+                                        <h3 class="margin-b-5">Statistics for Business</h3>
+                                        <span></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 work-popup-content-divider sm-margin-b-20">
+                                            <div class="margin-t-10 sm-margin-t-0">
+                                                <ul class="">
+                                                    <li>This introduction to statistics course examines data from the perspective of business scenarios and demonstrates how to apply this data to make better decisions.</li>
+                                                    ## <li>Instructor: MS Narasimhan, Professor, IIM Bangalore</li>
+                                                    ## <li>Course Duration: 6 weeks</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        ## <div class="col-sm-12 faculty">
+                                        ##     <div class="margin-t-10 sm-margin-t-0">
+                                        ##         <img src="${static.url('micro_images/faculty/01.jpg')}">
+                                        ##     </div>
+                                        ## </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Work -->
+                    </div>
+                    <!-- Marketing Management -->
+                    <div class="masonry-grid-item col-xs-12 col-sm-5 col-md-3 md-margin-b-30">
+                        <!-- Work -->
+                        <div class="work work-popup-trigger">
+                            <div class="work-overlay">
+                                <img class="full-width img-responsive" src="${static.url('micro_images/home/Accounting for Decision Making-.jpg')}" alt="Marketing Management">
+                                <div class="middle">
+                                    <div class="text">Accounting for Decision Making</div>
+                                </div>
+                            </div>
+                            <div class="work-popup-overlay">
+                                <div class="work-popup-content">
+                                    <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                    <div class="margin-b-30">
+                                        <h3 class="margin-b-5">Accounting for Decision Making</h3>
+                                        <span></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 work-popup-content-divider sm-margin-b-20">
+                                            <div class="margin-t-10 sm-margin-t-0">
+                                                <ul class="">
+                                                    <li>Learn how to read and interpret financial statements and manage costs to take informed business decisions.</li>
+                                                    ## <li>Instructor: Ashis Mishra, Professor, IIM Bangalore</li>
+                                                    ## <li>Course Duration: 8 weeks</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        ## <div class="col-sm-12 faculty">
+                                        ##     <div class="margin-t-10 sm-margin-t-0">
+                                        ##         <img src="${static.url('micro_images/faculty/02.jpg')}">
+                                        ##     </div>
+                                        ## </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Work -->
+                    </div>
+                    <!-- Managerial Economics -->
+                    <div class="masonry-grid-item col-xs-12 col-sm-5 col-md-3 md-margin-b-30">
+                        <div class="work work-popup-trigger">
+                            <div class="work-overlay">
+                                <img class="full-width img-responsive" src="${static.url('micro_images/home/Managerial Economics.jpg')}" alt="Managerial Economics">
+                                <div class="middle">
+                                    <div class="text">Managerial Economics</div>
+                                </div>
+                            </div>
+                            <div class="work-popup-overlay">
+                                <div class="work-popup-content">
+                                    <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                    <div class="margin-b-30">
+                                        <h3 class="margin-b-5">Managerial Economics</h3>
+                                        <span></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 work-popup-content-divider sm-margin-b-20">
+                                            <div class="margin-t-10 sm-margin-t-0">
+                                                <ul class="">
+                                                    <li>An introduction to Microeconomics and its impact on managerial decision making in today’s business world.</li>
+                                                    ## <li>Instructor: Subhashish Gupta, Professor, IIM Bangalore</li>
+                                                    ## <li>Course Duration: 6 weeks</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        ## <div class="col-sm-12 faculty">
+                                        ##     <div class="margin-t-10 sm-margin-t-0">
+                                        ##         <img src="${static.url('micro_images/faculty/05.jpg')}">
+                                        ##     </div>
+                                        ## </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Work -->
+                    </div>
+                    <!-- Strategic Management -->
+                    <div class="masonry-grid-item col-xs-12 col-sm-5 col-md-3 md-margin-b-30">
+                        <!-- Work -->
+                        <div class="work work-popup-trigger">
+                            <div class="work-overlay">
+                                <img class="full-width img-responsive" src="${static.url('micro_images/home/Designing Organization for Competitive Advantage-.jpg')}" alt="Strategic Management">
+                                <div class="middle">
+                                    <div class="text">Organizational Design for Competitive Advantage</div>
+                                </div>
+                            </div>
+                            <div class="work-popup-overlay">
+                                <div class="work-popup-content">
+                                    <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                    <div class="margin-b-30">
+                                        <h3 class="margin-b-5">Organizational Design for Competitive Advantage</h3>
+                                        <span></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 work-popup-content-divider sm-margin-b-20">
+                                            <div class="margin-t-10 sm-margin-t-0">
+                                                <ul class="">
+                                                    <li>Learn how to design control systems, decision-making processes and a culture that enables value creation and the development of sustainable competitive advantage</li>
+                                                    ## <li>Instructors: Rejie George Pallathita, P D Jose, Sai Yayavaram, Professors, IIM Bangalore</li>
+                                                    ## <li>Course Duration: 5 weeks</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        ## <div class="col-sm-4 faculty">
+                                        ##     <div class="margin-t-10 sm-margin-t-0">
+                                        ##         <img src="${static.url('micro_images/faculty/061.jpg')}">
+                                        ##     </div>
+                                        ## </div>
+                                        ## <div class="col-sm-4 faculty">
+                                        ##     <div class="margin-t-10 sm-margin-t-0">
+                                        ##         <img src="${static.url('micro_images/faculty/062.jpg')}">
+                                        ##     </div>
+                                        ## </div>
+                                        ## <div class="col-sm-4 faculty">
+                                        ##     <div class="margin-t-10 sm-margin-t-0">
+                                        ##         <img src="${static.url('micro_images/faculty/063.jpg')}">
+                                        ##     </div>
+                                        ## </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Work -->
+                    </div>
+                    <!-- Operations Management -->
+                    <div class="masonry-grid-item col-xs-12 col-sm-5 col-md-3 md-margin-b-30">
+                        <!-- Work -->
+                        <div class="work work-popup-trigger">
+                            <div class="work-overlay">
+                                <img class="full-width img-responsive" src="${static.url('micro_images/home/BC_101x_Banner_378x225.jpg')}" alt="Operations Management">
+                                <div class="middle">
+                                    <div class="text">Business Communication</div>
+                                </div>
+                            </div>
+                            <div class="work-popup-overlay">
+                                <div class="work-popup-content">
+                                    <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                    <div class="margin-b-30">
+                                        <h3 class="margin-b-5">Business Communication</h3>
+                                        <span></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 work-popup-content-divider sm-margin-b-20">
+                                            <div class="margin-t-10 sm-margin-t-0">
+                                                <ul class="">
+                                                    <li>This Course is designed to help the learner apply the  basics of effective written and oral communication in a business scenario.</li>
+                                                    ## <li>Instructor: B. Mahadevan, Professor, IIM Bangalore</li>
+                                                    ## <li>Course Duration: 6 weeks</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        ## <div class="col-sm-12 faculty">
+                                        ##     <div class="margin-t-10 sm-margin-t-0">
+                                        ##         <img src="${static.url('micro_images/faculty/10.jpg')}">
+                                        ##     </div>
+                                        ## </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Work -->
+                    </div>
+                    <!-- Organizational Design -->
+                    
+                    <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1"></div>
+                </div>
+            </div>
+
+
+
+            <div class="row margin-b-40 work-feature" style="margin-top: 25px;">
+               <div class="col-md-12 col-sm-12 work-left">
+                   <div class="row">
+                      <div class="col-sm-12">
+                         <h2 class="microHead">Module 2 offers five courses on Functional Management</h2>
+                      </div>
+                   </div>
+
+                </div>
+              
+            </div>
+
+
+
+
+            <div class="masonry-grid row">
+                <div class="col-sm-12">
+                    <!-- Accounting and Finance -->
+                    <div class="masonry-grid-item col-xs-12 col-sm-5 col-md-3 md-margin-b-30">
+                        <div class="work work-popup-trigger">
+                            <div class="work-overlay">
+                                <img class="full-width img-responsive" src="${static.url('micro_images/home/Introduction to Operations Management_1-.jpg')}" alt="Accounting and Finance">
+                                <div class="middle">
+                                    <div class="text">Operations Management</div>
+                                </div>
+                            </div>
+                            <div class="work-popup-overlay">
+                                <div class="work-popup-content">
+                                    <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                    <div class="margin-b-30">
+                                        <h3 class="margin-b-5">Operations Management</h3>
+                                        <span></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 work-popup-content-divider sm-margin-b-20">
+                                            <div class="margin-t-10 sm-margin-t-0">
+                                                <ul class="">
+                                                    <li>Understand key aspects of business operations and lean management including capacity, productivity, quality, and supply chain.</li>
+                                                    ## <li>Instructor: MS Narasimhan, Professor, IIM Bangalore</li>
+                                                    ## <li>Course Duration: 6 weeks</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        ## <div class="col-sm-12 faculty">
+                                        ##     <div class="margin-t-10 sm-margin-t-0">
+                                        ##         <img src="${static.url('micro_images/faculty/01.jpg')}">
+                                        ##     </div>
+                                        ## </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Work -->
+                    </div>
+                    <!-- Marketing Management -->
+                    <div class="masonry-grid-item col-xs-12 col-sm-5 col-md-3 md-margin-b-30">
+                        <!-- Work -->
+                        <div class="work work-popup-trigger">
+                            <div class="work-overlay">
+                                <img class="full-width img-responsive" src="${static.url('micro_images/home/Introduction to Marketing Management-.jpg')}" alt="Marketing Management">
+                                <div class="middle">
+                                    <div class="text">Marketing Management</div>
+                                </div>
+                            </div>
+                            <div class="work-popup-overlay">
+                                <div class="work-popup-content">
+                                    <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                    <div class="margin-b-30">
+                                        <h3 class="margin-b-5">Marketing Management</h3>
+                                        <span></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 work-popup-content-divider sm-margin-b-20">
+                                            <div class="margin-t-10 sm-margin-t-0">
+                                                <ul class="">
+                                                    <li>Learn how to effectively apply marketing management theories and practices, including the marketing mix, through real-world business scenarios.</li>
+                                                    ## <li>Instructor: Ashis Mishra, Professor, IIM Bangalore</li>
+                                                    ## <li>Course Duration: 8 weeks</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        ## <div class="col-sm-12 faculty">
+                                        ##     <div class="margin-t-10 sm-margin-t-0">
+                                        ##         <img src="${static.url('micro_images/faculty/02.jpg')}">
+                                        ##     </div>
+                                        ## </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Work -->
+                    </div>
+                    <!-- Managerial Economics -->
+                    <div class="masonry-grid-item col-xs-12 col-sm-5 col-md-3 md-margin-b-30">
+                        <div class="work work-popup-trigger">
+                            <div class="work-overlay">
+                                <img class="full-width img-responsive" src="${static.url('micro_images/home/Introduction to Corporate Finance-.jpg')}" alt="Managerial Economics">
+                                <div class="middle">
+                                    <div class="text">Corporate Finance</div>
+                                </div>
+                            </div>
+                            <div class="work-popup-overlay">
+                                <div class="work-popup-content">
+                                    <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                    <div class="margin-b-30">
+                                        <h3 class="margin-b-5">Corporate Finance</h3>
+                                        <span></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 work-popup-content-divider sm-margin-b-20">
+                                            <div class="margin-t-10 sm-margin-t-0">
+                                                <ul class="">
+                                                    <li>Learn the ideas, concepts and tools managers use to make the right financial decisions.</li>
+                                                    ## <li>Instructor: Subhashish Gupta, Professor, IIM Bangalore</li>
+                                                    ## <li>Course Duration: 6 weeks</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        ## <div class="col-sm-12 faculty">
+                                        ##     <div class="margin-t-10 sm-margin-t-0">
+                                        ##         <img src="${static.url('micro_images/faculty/05.jpg')}">
+                                        ##     </div>
+                                        ## </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Work -->
+                    </div>
+                    <!-- Strategic Management -->
+                    <div class="masonry-grid-item col-xs-12 col-sm-5 col-md-3 md-margin-b-30">
+                        <!-- Work -->
+                        <div class="work work-popup-trigger">
+                            <div class="work-overlay">
+                                <img class="full-width img-responsive" src="${static.url('micro_images/home/Introduction to People Management-.jpg')}" alt="Strategic Management">
+                                <div class="middle">
+                                    <div class="text">People Management</div>
+                                </div>
+                            </div>
+                            <div class="work-popup-overlay">
+                                <div class="work-popup-content">
+                                    <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                    <div class="margin-b-30">
+                                        <h3 class="margin-b-5">People Management</h3>
+                                        <span></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 work-popup-content-divider sm-margin-b-20">
+                                            <div class="margin-t-10 sm-margin-t-0">
+                                                <ul class="">
+                                                    <li>Learn to be a better manager by developing leadership and communication skills designed to turn first time managers into great team leaders.</li>
+                                                    ## <li>Instructors: Rejie George Pallathita, P D Jose, Sai Yayavaram, Professors, IIM Bangalore</li>
+                                                    ## <li>Course Duration: 5 weeks</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        ## <div class="col-sm-4 faculty">
+                                        ##     <div class="margin-t-10 sm-margin-t-0">
+                                        ##         <img src="${static.url('micro_images/faculty/061.jpg')}">
+                                        ##     </div>
+                                        ## </div>
+                                        ## <div class="col-sm-4 faculty">
+                                        ##     <div class="margin-t-10 sm-margin-t-0">
+                                        ##         <img src="${static.url('micro_images/faculty/062.jpg')}">
+                                        ##     </div>
+                                        ## </div>
+                                        ## <div class="col-sm-4 faculty">
+                                        ##     <div class="margin-t-10 sm-margin-t-0">
+                                        ##         <img src="${static.url('micro_images/faculty/063.jpg')}">
+                                        ##     </div>
+                                        ## </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Work -->
+                    </div>
+                    <!-- Operations Management -->
+                    <div class="masonry-grid-item col-xs-12 col-sm-5 col-md-3 md-margin-b-30">
+                        <!-- Work -->
+                        <div class="work work-popup-trigger">
+                            <div class="work-overlay">
+                                <img class="full-width img-responsive" src="${static.url('micro_images/home/st101x_bannerimage_318x210-.jpg')}" alt="Operations Management">
+                                <div class="middle">
+                                    <div class="text">Strategic Management</div>
+                                </div>
+                            </div>
+                            <div class="work-popup-overlay">
+                                <div class="work-popup-content">
+                                    <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                    <div class="margin-b-30">
+                                        <h3 class="margin-b-5">Strategic Management</h3>
+                                        <span></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 work-popup-content-divider sm-margin-b-20">
+                                            <div class="margin-t-10 sm-margin-t-0">
+                                                <ul class="">
+                                                    <li>Learn how a manager or CEO develops a business strategy, including analyzing the market and creating competitive advantage.</li>
+                                                    ## <li>Instructor: B. Mahadevan, Professor, IIM Bangalore</li>
+                                                    ## <li>Course Duration: 6 weeks</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        ## <div class="col-sm-12 faculty">
+                                        ##     <div class="margin-t-10 sm-margin-t-0">
+                                        ##         <img src="${static.url('micro_images/faculty/10.jpg')}">
+                                        ##     </div>
+                                        ## </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Work -->
+                    </div>
+                    <!-- Organizational Design -->
+                    
+                    <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Work -->
+
+<!-- FAQ -->
+## <div id="faq">            
+##     <div class="bg-color-sky-light">
+##         <div class="content-lg container">
+##             <div class="row">
+##                 <div class="col-md-12 col-sm-12 md-margin-b-60">
+##                     <div class="margin-b-80">
+##                         <h2 align="center">Frequently Asked Questions</h2>
+##                     </div>
+##                 </div>
+##                 <div class="col-md-12 col-sm-12">
+##                     <div class="row">
+##                         <div class="col-md-6">
+##                             <h4 class="text-black probootstrap-check-2">How do I apply?</h4>
+##                             <p><a href="http://www.iimb.ac.in/regn/ctm" target="_blank">Please click here to apply</a></p>
+##                             <h4 class="text-black probootstrap-check-2">Is there an eligibility criterion?</h4>
+##                             <p><a href="#">Please click here for the eligibility criteria</a></p>
+##                         </div>
+##                         <div class="col-md-6">
+##                             <h4 class="text-black probootstrap-check-2">Is there any duration for the programme?</h4>
+##                             <p>The programme is designed for 10 months but you have to complete the programme within 2 years to earn the certificate.</p>
+##                             <h4 class="text-black probootstrap-check-2">Is there any scholarship?</h4>
+##                             <p>Limited financial assistance will be provided upon request to deserving candidates.</p>
+##                         </div>
+##                         <div class="col-md-6">
+##                             <h4 class="text-black probootstrap-check-2">Is there any age limit for applying for this programme?</h4>
+##                             <p>This programme is recommended for individuals above 22 years and below 50 years of age.</p>
+##                             <h4 class="text-black probootstrap-check-2">What infrastructure/ facility is needed in order to take this programme?</h4>
+##                             <p>You will require a computer and a good Internet connection.</p>
+##                         </div>
+##                         <div class="col-md-6">
+##                             <h4 class="text-black probootstrap-check-2">Should I pay the fees in one go?</h4>
+##                             <p>Fees can be paid in full during registration or in two equal instalments – (i) at time of registration and (ii) three months after course commencement.</p>
+##                             <h4 class="text-black probootstrap-check-2">What is the admission procedure?</h4>
+##                             <p>Upon registration, you will receive a link to take up a self-assessment test. Based on the result of this you will qualify for a telephonic interview. Selection into the programme depends on the test score and the interview. The first list of selected candidates will be announced by mid of April 2018. The second list of registration are now open and result for the same will be announced by mid of May 2018.</p>
+##                         </div>
+##                         <div class="col-md-6">
+##                             <h4 class="text-black probootstrap-check-2">How/where will the interview be conducted?</h4>
+##                             <p>If there is a necessity, the interview will be online or telephonic.</p>
+##                         </div>
+##                         <div class="col-md-6">
+##                             <h4 class="text-black probootstrap-check-2">How do I track my application?</h4>
+##                             <p>Once you have submitted your application form, you can write to our student support mail id (ctm-admissions@iimbx.edu.in) to know the status of your submission.</p>
+##                             <h4 class="text-black probootstrap-check-2">Do I need to hold a CAT, JEE or a similar exam rank?</h4>
+##                             <p>No. This is not required.</p>
+##                         </div>
+##                         <div class="col-md-6">
+##                             <h4 class="text-black probootstrap-check-2">May I defer my admission?</h4>
+##                             <p>Your admission will be deferred only if such a request is raised at least 10 days prior to the start of the programme. This also allows for a refund. Cancellations during the run of the programme will not be refunded.</p>
+##                             <h4 class="text-black probootstrap-check-2">How will the course be delivered - completely online or blended?</h4>
+##                             <p>The course will predominantly be delivered online. The webinars and discussion forums will help you interact with your instructor more frequently and actively. Multiple campus connect sessions held during the modules will allow you to interact with your instructors and peers face-to-face.</p>
+##                         </div>
+##                         <div class="col-md-6">
+##                             <h4 class="text-black probootstrap-check-2">Do I need to take the courses in sequence?</h4>
+##                             <p>The courses will run as per a fixed schedule.</p>
+##                             <h4 class="text-black probootstrap-check-2">On successful completion of the course, will learners become a part of IITM/IIMB Alumni?</h4>
+##                             <p>No.</p>
+##                         </div>
+##                         <div class="col-md-6">
+##                             <h4 class="text-black probootstrap-check-2">Who will the certificate be provided by?</h4>
+##                             <p>The certificate will be provided jointly by IIMBx and IITM CCE.</p>
+##                             <h4 class="text-black probootstrap-check-2"></h4>
+##                             <p></p>
+##                         </div>
+##                     </div>
+##                 </div>
+##             </div>
+##             <!--// end row -->
+##         </div>
+##     </div>
+## </div>
+<!-- End FAQ -->
+<!-- About -->
+<div id="about">
+    <div class="content-lg container">
+        <!-- Masonry Grid -->
+        <div class="masonry-grid row">
+            <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1"></div>
+            
+            <div class="masonry-grid-item col-xs-12 col-sm-12 col-md-12">
+                <div class="margin-b-60">
+                  <h2>About IIMBx</h2>
+                  <p>IIMBx is founded on the belief that management education has the potential to transform our educational systems. It is built upon our philosophy to make high-quality education available to everybody regardless of the limitations imposed by location, finances, and prior educational background. Led by the faculty at IIM Bangalore, IIMBx makes the construction of this progressive future possible by offering students online courses and programmes that cover both core and advanced subjects in the fields of business and management.</p>  
+                </div>
+                 <img class="full-width img-responsive wow fadeInUp col-xs-12 col-sm-12 iimb-img" src="${static.url('micro_images/500x500/02.jpg')}" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".3s">
+            </div>
+        </div>
+        <a style="margin-left: 45%;" href='https://play.google.com/store/apps/details?id=org.app.iimbx&rdid=org.app.iimbx&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img width=115 alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+        <!-- End Masonry Grid -->
+    </div>
+</div>
+<!-- End About -->
+<!--========== END PAGE LAYOUT ==========-->
+<!--========== FOOTER ==========-->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-2">
+                <div class="footer-logo">
+                    <ul class="clearfix">
+                        <li>
+                            <a href="http://iimb.ac.in" target="_blank">
+                                <img src="${static.url('micro_images/iimb-logo.png')}">
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <h3>About</h3>
+                <div class="footer-nav">
+                    <ul>
+                        <li><a href="http://iimb.ac.in" target="_blank">IIMB</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h3>Address</h3>
+                <div class="footer-nav">
+                    <ul>
+                        <li style="text-align: left;">Indian Institute of Management Bangalore, Bannerghatta Road, Bengaluru, India
+                        <br> Pin Code: 560 076</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3">
+                <h3>Contact us</h3>
+                <div class="footer-nav">
+                    <ul>
+                        <li>
+                            <a href="mailto:ylp.support@iimb.ac.in">ylp.support@iimb.ac.in</a>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3">
+                <div class="footer-nav">
+                    <ul class="footer-socials clearfix">
+                        <li>
+                            <a href="https://www.facebook.com/iimbxonline/" target="_blank">
+                                <i class="fa fa-facebook-square" style="font-size: 24px;"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/channel/UCQ6YVMIgJLKLMKXDzivYraQ/featured" target="_blank">
+                                <i class="fa fa-youtube-square" style="font-size: 24px;"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://quiklrn.com/">
+                                <img src="${static.url('micro_images/home/quiklrn.png')}" height="24px;">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--========== END FOOTER ==========-->
+
+
+
+
+        <!-- Back To Top -->
+        <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+
+        <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+        <!-- CORE PLUGINS -->
+        <script src="${static.url('micro_vendor/jquery.min.js')}" type="text/javascript"></script>
+        <script src="${static.url('micro_vendor/jquery-migrate.min.js')}" type="text/javascript"></script>
+        <script src="${static.url('micro_vendor/bootstrap/js/bootstrap.min.js')}" type="text/javascript"></script>
+        <!-- PAGE LEVEL PLUGINS -->
+        <script src="${static.url('micro_vendor/jquery.easing.js')}" type="text/javascript"></script>
+        <script src="${static.url('micro_vendor/jquery.back-to-top.js')}" type="text/javascript"></script>
+        <script src="${static.url('micro_vendor/jquery.smooth-scroll.js')}" type="text/javascript"></script>
+        <script src="${static.url('micro_vendor/jquery.wow.min.js')}" type="text/javascript"></script>
+        <script src="${static.url('micro_vendor/swiper/js/swiper.jquery.min.js')}" type="text/javascript"></script>
+        <script src="${static.url('micro_vendor/masonry/jquery.masonry.pkgd.min.js')}" type="text/javascript"></script>
+        <script src="${static.url('micro_vendor/masonry/imagesloaded.pkgd.min.js')}" type="text/javascript"></script>
+        <!-- PAGE LEVEL SCRIPTS -->
+        <script src="${static.url('micro_js/layout.min.js')}" type="text/javascript"></script>
+        <script src="${static.url('micro_js/components/wow.min.js')}" type="text/javascript"></script>
+        <script src="${static.url('micro_js/components/swiper.min.js')}" type="text/javascript"></script>
+        <script src="${static.url('micro_js/components/masonry.min.js')}" type="text/javascript"></script>
+
+
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+            $(".link-eligibility").click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#headingOne").offset().top - 75
+                }, 1000);
+            });
+            $(".link-fees").click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#headingTwo").offset().top - 75
+                }, 1000);
+            });
+            $(".case_disc_proj").click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#headingFour").offset().top - 75
+                }, 1000);
+                $(".headingFour_link").click();
+            });
+            // $("#contact").click(function() {
+            //     debugger;
+            //     $('html, body').animate({
+
+            //         scrollTop: $("#ctm-contact").offset().top - 75
+            //     }, 1000);
+            // });
+        });
+        </script>
+    </body>
+    <!-- END BODY -->
+</html>

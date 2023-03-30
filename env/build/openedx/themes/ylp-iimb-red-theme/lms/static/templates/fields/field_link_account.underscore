@@ -1,0 +1,9 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="form-group button_action_acc fields">
+        <button class="btn btn-theme u-field-link u-field-link-title-<%- id %> " id="u-field-link-<%- id %>" aria-describedby="u-field-message-help-<%- id %>"><%- linkTitle %></button></label>
+        <span class="u-field-message" id="u-field-message-<%- id %>">
+        <span class="u-field-message-notification" aria-live="polite"></span>
+        <span class="u-field-message-help help-block" id="u-field-message-help-<%- id %>"> <%- message %></span>
+        </span>
+    </div>
+</div>

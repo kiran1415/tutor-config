@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="53" height="53" viewBox="0 0 53 53">
+  <defs>
+    <filter id="Ellipse_28" x="0" y="0" width="53" height="53" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Right_Arrow" data-name="Right Arrow" transform="translate(-133 -1733)">
+    <g transform="matrix(1, 0, 0, 1, 133, 1733)" filter="url(#Ellipse_28)">
+      <g id="Ellipse_28-2" data-name="Ellipse 28" transform="translate(9 6)" fill="#fff" stroke="#4086a2" stroke-width="2">
+        <circle cx="17.5" cy="17.5" r="17.5" stroke="none"/>
+        <circle cx="17.5" cy="17.5" r="16.5" fill="none"/>
+      </g>
+    </g>
+    <g id="download-button" transform="translate(159 1798.384) rotate(-90)">
+      <g id="file-download" transform="translate(38.25)">
+        <path id="Path_4" data-name="Path 4" d="M46.385,3.486H44.06V-6H40.574V3.486H38.25l4.067,4.067Z" transform="translate(-38.25)" fill="#4086a2"/>
+      </g>
+    </g>
+  </g>
+</svg>

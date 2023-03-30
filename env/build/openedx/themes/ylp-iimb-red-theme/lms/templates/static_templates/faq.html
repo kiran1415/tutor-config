@@ -1,0 +1,139 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../custom_main.html" />
+
+<%block name="pagetitle">${_("FAQ")}</%block>
+
+<section class="container about" style="margin-top:74px;">
+    <div class="main_content">
+            <div class="wrapper">
+                <div class="wrapper-container">
+                    <div class="wrapper-inner">
+                        <div class="inner-class">
+                            <div class="inner-content">
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                
+                                <tr> 
+                                <td class ="table_column02" width="743px">
+                                <section class="inner-section">
+                                
+                                <h2 class="field-page-tagline view-mode-full">Learners' FAQ</h2>
+                                
+                                <div class="field-page-body view-mode-full">
+
+                                <p>Our goal is to provide you great self-service tools that ensure your success.</p>
+                                <p>Still need help after reading these? Please write to us at <a href="${marketing_link('CONTACT')}" class="links-active2" target="_blank">Contact Us</a> page or, if you are a current learner, post your question(s) in your Course Discussion forum.</p>
+                                
+                                <p><strong>${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} Basics</strong></p>
+                                
+                                <div>
+                                <section class="ac-container">
+                                
+                                <div>
+                                 
+                                <label for="ac-1">Who can take an ${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} course? How do I sign up?</label>
+                                <article class="ac-small">
+                                <p>Learners enrolled through one of our programmes can take an ${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} course.<br>Interested Institutions or Organizations can email at: digital.learning@iimbx.edu.in.</p>
+                                </article>
+                                </div>
+                                
+                                <div>
+                                <label for="ac-2">What are the various courses that ${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} will offer?</label>
+                                <article class="ac-medium">
+                                <p>Courses from ${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} will cover a wide range of management disciplines at introductory, intermediate and advanced levels. ${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} offers courses on core management topics such as Accounting, Information Systems, Operations Management, Human Relations, Marketing, Strategy, Finance and Statistics, as well as other management topics such as Analytics, Banking and Financial Markets, Information Technology Management, International Business Management and Sustainability.</p>
+                                </article>
+                                </div>
+                                
+                                <div>
+                                <label for="ac-3">Whom should I contact for any login related issues?</label>
+                                <article class="ac-esmall">
+                                <p>All login related issues need to be raised with the Programme Co-ordinator, who is assigned for the specific programme.</p>
+                                </article>
+                                </div>
+                                
+                                <div>
+                                <label for="ac-4">Do I need a dedicated Internet connection?</label>
+                                <article class="ac-esmall">
+                                                                <p>You need an Internet connection to access the course. The transcripts are downloadable and can be viewed ‘offline’.</p>
+                                </article>
+                                </div>
+
+                                <div>
+                                <label for="ac-5">What browsers are supported for use with ${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} courses?</label>
+                                <article class="ac-esmall">
+                                                                <p>Our courseware works best with current versions of Chrome, Firefox or Safari, or with Internet Explorer version 11 and above.</p>
+                                </article>
+                                </div>
+
+                                <div>
+                                <label for="ac-6">Can I access ${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} courses on my smart phone or tablet computer?</label>
+                                <article class="ac-esmall">
+                                                                <p>At this time, ${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} does not fully support access with mobile devices. While many components of your courses will function, some may not.</p>
+                                </article>
+                                </div>
+
+                                <br><p><strong>Courses</strong></p>
+
+                                <div>
+                                <label for="ac-7">How can learners access the ${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} course?</label>
+                                <article class="ac-esmall">
+                                <p>Learners will receive an invitation email to enrol for the course. Once enrolled students can access that particular course.</p>
+                                </article>
+                                </div>
+                                
+                                <div>
+                                <label for="ac-8">How can I get my course-related doubts clarified?</label>
+                                <article class="ac-esmall">
+                                <p>The course discussion forum is the best place to reach out to the ${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} teaching team for your class; just post your questions. We do our best to respond as promptly as possible.</p>
+                                </article>
+                                </div>
+                                
+                                <div>
+                                <label for="ac-9">What is the duration of the course?</label>
+                                                                <article class="ac-esmall">
+                                <p>The typical duration of courses from ${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} range between 4-7 weeks.</p>
+                                </article>
+                                </div>
+                            
+        
+                                <div>
+                                <label for="ac-10">How much time do I need to spend per week for a course?</label>
+                                <article class="ac-esmall">
+                                <p>The typical learner effort for a course from ${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} is expected to be 5-6 hours per week.</p>
+                                </article>
+                                </div>
+                                
+                                                                <div>
+                                <label for="ac-11">What is the minimum grade to get a certificate?</label>
+                                <article class="ac-esmall">
+                                <p>The pass grade for each course is different. This will be clearly stated as part of the “Grading Policy” for the individual course.</p>
+                                </article>
+                                </div>
+                                
+                                <br><p><strong>Certificates</strong></p>
+
+                                <div>
+                                <label for="ac-12">Will learners receive a certificate from ${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} on completion of the course?</label>
+                                <article class="ac-large">
+                                <p>Learners will get programme-specific certificate from ${_('{platform_name}').format(platform_name=settings.PLATFORM_NAME)} on completion of the course. Physical certificates will be issued to learners upon successful completion.<br>Visit individual programme page to know more about certificates.</p>
+                                </article>
+                                </div>
+
+                                                               </section>
+                                </div>
+                                                                 
+                                
+                                </div>
+                                </section>
+                                </td>
+                                
+                                </tr>
+                                
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section>

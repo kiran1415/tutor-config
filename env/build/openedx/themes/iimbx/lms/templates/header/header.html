@@ -1,0 +1,75 @@
+## mako
+
+<%page expression_filter="h" args="online_help_token, use_cookie_banner=False"/>
+
+<%namespace name='static' file='../static_content.html'/>
+<%namespace file='../main.html' import="login_query"/>
+<%!
+from django.urls import reverse
+from django.utils.translation import ugettext as _
+from openedx.core.djangolib.markup import HTML, Text
+%>
+
+## Provide a hook for themes to inject branding on top.
+<%block name="navigation_top"/>
+
+## Add UI Toolkit components if using the Pattern Library
+% if uses_pattern_library:
+    <%block name="js_extra">
+    <%static:require_module module_name="js/header_factory" class_name="HeaderFactory">
+    HeaderFactory();
+    </%static:require_module>
+    </%block>
+% endif
+
+<header class="main-header">
+  % if use_cookie_banner:
+    ${static.renderReact(
+      component="CookiePolicyBanner",
+      id="cookie-policy-banner",
+      props={}
+    )}
+  % endif  
+  <div class="container">
+    <nav class="navbar">
+      <%include file="navbar-logo-header.html" args="online_help_token=online_help_token"/>
+      <div class="iimbx-navbar-header">
+        <button type="button" class="iimbx-toggle">
+          <span class="sr-only">${_("Toggle navigation")}</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      % if user.is_authenticated:
+        <%include file="navbar-authenticated.html" args="online_help_token=online_help_token"/>
+      % else:
+        <%include file="navbar-not-authenticated.html" args="online_help_token=online_help_token"/>
+      % endif
+    </nav>
+  </div>
+</header>
+
+% if course:
+<!--[if lte IE 9]>
+<div class="ie-banner" aria-hidden="true">${Text(_('{begin_strong}Warning:{end_strong} Your browser is not fully supported. We strongly recommend using {chrome_link} or {ff_link}.')).format(
+    begin_strong=HTML('<strong>'),
+    end_strong=HTML('</strong>'),
+    chrome_link=HTML('<a href="https://www.google.com/chrome" target="_blank">Chrome</a>'),
+    ff_link=HTML('<a href="http://www.mozilla.org/firefox" target="_blank">Firefox</a>'),
+)}</div>
+<![endif]-->
+% endif
+
+% if settings.FEATURES.get('ENABLE_COOKIE_CONSENT', False):
+  <%include file="../widgets/cookie-consent.html" />
+% endif
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P5QNR3KBBG');
+</script>
+

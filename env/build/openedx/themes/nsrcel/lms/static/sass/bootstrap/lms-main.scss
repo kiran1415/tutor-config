@@ -1,0 +1,10 @@
+// -----------------------------
+// LMS main styles for Bootstrap
+// -----------------------------
+
+
+@import '../override';
+@import 'lms/static/sass/bootstrap/lms-main';
+
+// Set the relative path to the static root
+$static-path: '../..';

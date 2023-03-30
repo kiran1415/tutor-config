@@ -1,0 +1,115 @@
+<%page expression_filter="h"/>
+<%namespace name='static' file='static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+from django.urls import reverse
+
+from openedx.core.djangolib.markup import HTML, Text
+%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>${settings.PLATFORM_NAME}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="KKEoG2WqHoqsH_bzFm7Pdez3xZ-sgH-105V6UO77eQo" />
+  <link rel="icon" type="image/x-icon" href="${static.url(static.get_value('favicon_path', settings.FAVICON_PATH))}" />
+  <link href="${static.url('css/bootstrap.min.css')}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Playfair+Display:400,400i,700,700i,900,900i&amp;subset=cyrillic,latin-ext,vietnamese" rel="stylesheet">
+  <link rel="stylesheet" href="${static.url('css/font-awesome.min.css')}">
+  <link rel="stylesheet" href="${static.url('css/slick.css')}">
+  <link rel="stylesheet" href="${static.url('css/custom.css')}">
+</head>
+<body>
+    <div class="main-wrapper">
+      <section class="landing_section sign-inpage indexpage">
+        <div class="col-half">
+            <div class="landing-slider"  style="background-image: url('${static.url('images/landing-bg.png')}')">
+              <div class="landing-wrap">
+                <div class="landing-logo">
+                  <a href="" tittle="landing logo"><img src="${static.url('images/logo.png')}" alt="logo"></a>
+                </div>
+                <div class="slider_landing">
+                     <div class="landingslider-item text-left">
+                       <h2>डू योर वेंचर : उद्यमिता से आत्मनिर्भरता</h2>
+                          <p class="landingslider-info">
+                          <b> पाठ्यक्रम के बारे में:</b><br>
+ यह एक व्यावहारिक, क्रिया-उन्मुख व्यवसाय और प्रबंधन पाठ्यक्रम है जो प्रतिभागियों को एक व्यवस्थित, वैज्ञानिक और आपके विचारों और अवसरों के परीक्षण की एक आसान प्रक्रिया से परिचित कराता है। चयनित प्रतिभागी "डू योर वेंचर" विचारधारा सीखेंगे, जो उन्हें उद्यमियों द्वारा अपना स्वयं का उद्यम शुरू करने के सामान्य रास्ते सिखाएगा। वे विचारों को उत्पन्न करने के लिए उपकरणों और तकनीकों को भी सीखेंगे और फिर क्षेत्र में अपने विचारों का परीक्षण करेंगे और प्रतिक्रिया एकत्र करेंगे...<a href="https://nsrcel.iimbx.edu.in/courses/course-v1:NSRCEL+EP101x+EWE_March2022/about">Read more </a>
+                          </p>
+                     </div>
+                </div>
+              </div> 
+            </div>  
+        </div>
+        <div class="col-half">
+          <div class="content-landing text-left">
+            <h2 class="content-title title-after-line">Open • Knowledge • Now</h2>
+            <div class="landing-wrap-max">
+              <p>  
+                IIMBx’ s vision is to create a positive social impact by leveraging educational technology to create a world-class repository of digital courseware in management for learners across the globe.
+              </p>  
+              <p><a href="https://iimbx.iimb.ac.in/about-iimbx/" title="Learn More About IIMBx" class="default-link">Learn More About IIMBx</a></p>
+              <div class="button_action">
+                <a href="/login" class="btn btn-theme text-capitalize">sign in</a>
+              </div>
+            </div> 
+          </div>
+        </div>   
+      </section>
+      
+    </div><!-- end Main Wrapper class--> 
+
+<style>
+  .slick-dots{
+    display:none;
+  }
+</style>
+
+<script src="${static.url('js/jquery-1.11.2.min.js')}"></script>
+<script src="${static.url('js/bootstrap.min.js')}"></script>
+<script src="${static.url('js/slick.min.js')}"></script>
+<script src="${static.url('js/custom.js')}"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P5QNR3KBBG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P5QNR3KBBG');
+</script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBW_rboVItoQlMNoP4MrawVEsTza1UKgz4",
+    authDomain: "iimbx-24af5.firebaseapp.com",
+    databaseURL: "https://iimbx-24af5.firebaseio.com",
+    projectId: "iimbx-24af5",
+    storageBucket: "iimbx-24af5.appspot.com",
+    messagingSenderId: "226135865802",
+    appId: "1:226135865802:web:436d66db50c2e63d5ff733",
+    measurementId: "G-3Y8PJGCMDL"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="IIMBx-Support"
+  agent-id="ab2f648a-25d6-46dd-a9b8-0b0aeb20044e"
+  language-code="en"
+></df-messenger>
+</body>
+</html>

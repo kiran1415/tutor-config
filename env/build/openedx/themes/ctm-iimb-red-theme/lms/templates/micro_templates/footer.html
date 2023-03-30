@@ -1,0 +1,60 @@
+## mako
+<%page expression_filter="h"/>
+<%!
+  from django.core.urlresolvers import reverse
+  from branding.api import get_footer
+  from django.conf import settings
+  from datetime import datetime
+
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<%namespace name='static' file='../static_content.html'/>
+<footer>
+  <div class="container">
+    <section class="row">
+      <div class="col-md-3">
+        <div class="footer_logo">
+          <img src="${static.url('assets/images/footer-logo.svg')}" alt="">
+        </div>
+      </div>
+      <div class="col-md-7">
+
+            <ul class="links">
+              <li><a href="/">Home</a></li>
+              <li><a href="${marketing_link('ABOUT')}">About Us</a></li>
+              <li><a href="${marketing_link('FAQ')}">FAQs</a></li>
+            </ul>
+
+
+      </div>
+      <div class="col-md-2">
+        <ul class="social desktop">
+          <li><a href="https://www.facebook.com/iimbxonline/" target="_blank" class="fb">Facebook</a></li>
+          <li><a href="https://www.youtube.com/channel/UCQ6YVMIgJLKLMKXDzivYraQ"  target="_blank"  class="yt">Youtube</a></li>
+        </ul>
+      </div>
+  </section>
+  </div>
+  <div class="dark-bg">
+    <div class="container">
+      <section class="row">
+
+        <div class="col-md-3"></div>
+        <div class="col-md-7">
+          <ul class="contact">
+          <li>Email : <a href="mailto:ctm-admissions@iimbx.edu.in">ctm-admissions@iimbx.edu.in</a></li>
+          <li>Phone : <a href="tel:+9180-26993894">+9180-26993894</a></li>
+        </ul>
+      </div>
+        <div class="col-md-2">
+          <ul class="social">
+            <li class="mobile"><a href="https://www.facebook.com/iimbxonline/" target="_blank" class="fb">Facebook</a></li>
+            <li  class="mobile"><a href="https://www.youtube.com/channel/UCQ6YVMIgJLKLMKXDzivYraQ"  target="_blank"  class="yt">Youtube</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=org.app.iimbx"  target="_blank"   class="gplay">google play</a></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    </div>
+
+</footer>

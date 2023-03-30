@@ -1,0 +1,36 @@
+## mako
+
+<%page expression_filter="h"/>
+
+<%!
+from django.utils.translation import ugettext as _
+from openedx.core.djangolib.markup import HTML
+%>
+
+<%inherit file="/static_tab_main.html" />
+<%block name="bodyclass">view-in-course view-statictab ${course.css_class or ''}</%block>
+<%namespace name='static' file='/static_content.html'/>
+
+<%block name="head_extra">
+<link rel="stylesheet" type="text/css" href="${static.url('css/developer.css')}">
+${HTML(fragment.head_html())}
+</%block>
+
+<%block name="footer_extra">
+<%include file="/mathjax_include.html" args="disable_fast_preview=True"/>
+${HTML(fragment.foot_html())}
+</%block>
+
+<%block name="pagetitle">${_(tab['name'])} | ${course.display_number_with_default}</%block>
+
+<%include file="/courseware/course_navigation.html" args="active_page=active_page" />
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <div class="static_tab_wrapper">
+        <section class="cource-section catalog-tabs-section">
+            <div class="container">
+                ${HTML(fragment.body_html())}
+            </div>
+        </section>
+    </div>
+</main>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load sekizai_tags i18n configuration theme_pipeline optional_include static %}
+<html lang="{{LANGUAGE_CODE}}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ platform_name }}{% endblock %}</title>
+
+  <link rel="icon" type="image/x-icon" href="{% favicon_path %}" />
+
+  {% with "js/i18n/"|add:LANGUAGE_CODE|add:"/djangojs.js" as i18njs_path %}
+    <script type="text/javascript" src="{% static i18njs_path %}"></script>
+  {% endwith %}
+
+  {% stylesheet 'style-vendor' %}
+  {% stylesheet 'style-main-v1' %}
+
+  {% block main_vendor_js %}
+  {% javascript 'main_vendor' %}
+  {% endblock %}
+  {% block headextra %}{% endblock %}
+  {% render_block "css" %}
+
+  {% optional_include "head-extra.html"|microsite_template_path %}
+
+  <meta name="path_prefix" content="{{EDX_ROOT_URL}}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Playfair+Display:400,400i,700,700i,900,900i&subset=cyrillic,latin-ext,vietnamese">
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/custom_css/header.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/custom_css/footer.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/tabs.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/edx.css' %}">
+</head>
+
+<body class="{% block bodyclass %}{% endblock %} lang_{{LANGUAGE_CODE}}">
+    {% load render_bundle from webpack_loader %}
+    {% render_bundle "commons" %}
+  <div class="window-wrap" dir="{{LANGUAGE_BIDI|yesno:'rtl,ltr'}}">
+    <a class="nav-skip" href="#main">{% trans "Skip to main content" %}</a>
+    {% with course=request.course %}
+      {% include "header.html"|microsite_template_path with online_help_token=online_help_token  %}
+    {% endwith %}
+    <div class="content-wrapper" id="content">
+      {% block body %}{% endblock %}
+      {% block bodyextra %}{% endblock %}
+    </div>
+    {% with course=request.course %}
+      {% include "footer.html"|microsite_template_path %}
+    {% endwith %}
+
+  </div>
+
+    {% javascript 'base_application' %}
+
+    {% render_block "js" %}
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBW_rboVItoQlMNoP4MrawVEsTza1UKgz4",
+    authDomain: "iimbx-24af5.firebaseapp.com",
+    databaseURL: "https://iimbx-24af5.firebaseio.com",
+    projectId: "iimbx-24af5",
+    storageBucket: "iimbx-24af5.appspot.com",
+    messagingSenderId: "226135865802",
+    appId: "1:226135865802:web:436d66db50c2e63d5ff733",
+    measurementId: "G-3Y8PJGCMDL"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+</body>
+</html>
+
+{% comment %}
+  This is a django template version of our main page from which all
+  other pages inherit. This file should be rewritten to reflect any
+  changes in main.html! Files used by {% include %} can be written
+  as mako templates.
+
+  Inheriting from this file allows us to include apps that use the
+  django templating system without rewriting all of their views in
+  mako.
+{% endcomment %}

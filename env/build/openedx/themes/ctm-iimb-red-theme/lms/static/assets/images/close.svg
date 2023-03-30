@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31">
+  <g id="Close_button" data-name="Close button" transform="translate(-1213 -107)">
+    <circle id="Ellipse_58" data-name="Ellipse 58" cx="15.5" cy="15.5" r="15.5" transform="translate(1244 138) rotate(180)" fill="#4086a2" opacity="0.1"/>
+    <g id="close-button" transform="translate(1222 116)">
+      <g id="close">
+        <path id="Path_217" data-name="Path 217" d="M12.2,1.22,10.976,0,6.1,4.878,1.22,0,0,1.22,4.878,6.1,0,10.976,1.22,12.2,6.1,7.317,10.976,12.2l1.22-1.22L7.317,6.1Z" fill="#4086a2" stroke="#4086a2" stroke-width="0.2"/>
+      </g>
+    </g>
+  </g>
+</svg>

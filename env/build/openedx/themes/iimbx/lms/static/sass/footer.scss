@@ -1,0 +1,238 @@
+/*Footer Css for IIMBX*/
+/*@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Playfair+Display:400,400i,700,700i,900,900i&subset=cyrillic,latin-ext,vietnamese');
+*/
+ body {
+     margin: 0px;
+     padding: 0px;
+}
+ .footer_wrap * {
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     box-sizing: border-box;
+}
+ :after, :before {
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     box-sizing: border-box;
+}
+ .footer_wrap {
+     font-family: 'Lato', sans-serif;
+     padding: 15px 0;
+}
+ .footer_wrap a {
+     background-color: transparent;
+}
+ .footer_wrap a, .footer_wrap p, .footer_wrap a:focus, .footer_wrap a:hover, .footer_wrap a:active {
+     outline: none;
+     text-decoration: none;
+}
+ .footer_wrap .container {
+     padding-left: 15px;
+     padding-right: 15px;
+     margin-right: auto;
+     margin-left: auto;
+     background-color: #f2f2f2;
+    /* to override open-edx css */
+     padding-top: 0;
+     padding-bottom: 0;
+     min-width: inherit;
+     max-width: inherit;
+}
+ .footer_wrap .container .footer_content_section, .footer_wrap .container .footer_bottom_section {
+     background: #f2f2f2;
+     border: none;
+     box-shadow: none;
+     display: block;
+     width: 100%;
+     table-layout: inherit;
+}
+ .footer_content_section .ft-row {
+     display: flex;
+     flex-flow: row wrap;
+     align-items: center;
+}
+ .footer_content_section .ft-row .copy-right-text {
+     font-size: 12px;
+     padding-right: 5px;
+}
+ .footer_content_section .ft-row .footer_links {
+     font-size: 12px;
+}
+ .footer_content_section .ft-row .footer_links li a {
+     color: #333;
+     padding: 0 5px;
+     border-left: 1px solid #333;
+}
+ .footer_content_section .ft-row .social_icons {
+     margin-left: auto;
+}
+ .footer_content_section .ft-row .social_icons li a {
+     color: #b11217;
+     border: none;
+     font-size: 14px;
+}
+ .footer_content_section .ft-row .social_icons li a:hover {
+     color: #333;
+}
+ @media (min-width: 768px) {
+     .footer_wrap .container {
+         width: 750px !important;
+    }
+}
+ @media (min-width: 992px) {
+     .footer_wrap .container {
+         width: 970px !important;
+    }
+}
+ @media (min-width: 1200px) {
+     .footer_wrap .container {
+         width: 1170px !important;
+    }
+}
+ @media (min-width: 1040px) {
+     .footer_wrap .container {
+         width: 1040px !important;
+    }
+}
+ .footer_wrap .container:after, .footer_wrap .container:before {
+     display: table;
+     content: " ";
+}
+ .footer_wrap .container:after {
+     clear: both;
+}
+ .footer_wrap img {
+     border: 0;
+     margin: 0;
+     float: inherit;
+     vertical-align: middle;
+}
+ .footer_wrap .list-unstyled {
+     padding-left: 0;
+     list-style: none;
+}
+ .footer_wrap .pull-right {
+     float: right !important;
+}
+ .footer_wrap {
+     background-color: #f2f2f2;
+     width: 100%;
+     position: relative;
+     display: inline-block;
+     clear: both;
+}
+ .footer_links li, .fleft-logo {
+     display: inline-block;
+}
+ ul.footer_links {
+     margin-top: 0px;
+     margin-bottom: 0px;
+}
+ .footer_wrap .container .footer_bottom_section .copy-right-text, .footer_wrap .container .footer_content_section .footer_links li a {
+     display: block;
+     font-size: 0.750em;
+     font-family: 'Lato', sans-serif !important;
+     color: #31394d !important;
+     line-height: 15px;
+     padding: 10px 15px 10px 0px;
+     font-weight: 600;
+     transition: all 0.4s ease-in-out 0s;
+     -webkit-transition: all 0.4s ease-in-out 0s;
+     -moz-transition: all 0.4s ease-in-out 0s;
+     -ms-transition: all 0.4s ease-in-out 0s;
+     -o-transition: all 0.4s ease-in-out 0s;
+}
+ .footer_wrap .copy-right-text {
+     font-weight: normal;
+     margin-bottom: 0px;
+}
+ .footer_content_section {
+     padding: 20px 30px;
+}
+ .footer_bottom_section {
+     padding: 0px 35px 10px 35px;
+}
+ .fleft-logo {
+     padding-bottom: 10px;
+}
+ .footer_wrap .container .footer_content_section .footer_links li a:hover {
+     color: #9e1728 !important;
+}
+ .footer_wrap .social_icons li {
+     display: inline-block;
+}
+ .footer_wrap .social_icons li a {
+     color: #b11217;
+}
+ .footer_wrap .social_icons li a:hover {
+     color: #414141;
+}
+ .footer_content_section {
+     display: block !important;
+}
+ .footer_content_section .ft-row {
+     border: 0;
+     background: transparent;
+     box-shadow: none;
+}
+ @media (max-width: 991px) {
+     .footer_content_section .ft-row .social_icons {
+        width: 100%;
+         text-align: center;
+    }
+     .footer_content_section .ft-row .footer_links {
+        width: 100%;
+         text-align: center;
+         margin-bottom: 10px;
+         margin-top: 10px;
+    }
+     .footer_content_section .ft-row .footer_links li:first-child a {
+        border-left: none;
+    }
+     .footer_content_section .ft-row {
+        justify-content: center;
+    }
+}
+ @media (max-width: 767px) {
+     .footer_content_section .ft-row .copy-right-text {
+         text-align: center;
+    }
+     ul.footer_links {
+         width: 50%;
+         float: left;
+    }
+     .logos_section {
+         width: 50%;
+         float: right;
+    }
+     .fleft-logo {
+         display: block;
+         text-align: center;
+         margin-bottom: 30px;
+         margin-bottom: 20px;
+    }
+     .footer_wrap .frigth-logo {
+         float: none !important;
+         text-align: center;
+    }
+     .footer_wrap>.container {
+         padding-left: 24px;
+         padding-right: 24px;
+    }
+     .footer_content_section {
+         padding: 20px 15px;
+    }
+     .footer_bottom_section {
+         padding-left: 0px;
+         padding-right: 0px;
+         clear: both;
+         margin-top: 15px;
+         display: inline-block;
+    }
+     .footer_bottom_section .copy-right-text {
+         padding: 0px;
+    }
+     .fleft-logo {
+         padding-top: 15px;
+    }
+}

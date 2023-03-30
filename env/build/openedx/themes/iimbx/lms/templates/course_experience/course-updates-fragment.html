@@ -1,0 +1,91 @@
+## mako
+<%page expression_filter="h"/>
+<%namespace name='static' file='../static_content.html'/>
+
+<%!
+from django.utils.translation import ugettext as _
+
+from openedx.core.djangolib.markup import HTML
+from openedx.features.course_experience import course_home_page_title
+%>
+<%block name="header_extras">
+  <link rel="stylesheet" type="text/css" href="${static.url('css/custom.css')}">
+</%block>
+
+<%block name="content">
+<div class="wrap-inner">
+    <div class="container">
+        <div class="course-updates page-content-container" id="course-container">
+            <header class="page-header has-secondary">
+                ## Breadcrumb navigation
+                <div class="page-header-main">
+                    <nav aria-label="${_('Updates')}" class="sr-is-focusable" tabindex="-1">
+                        <div class="has-breadcrumbs">
+                            <div class="breadcrumbs">
+                                <span class="nav-item">
+                                    <a href="${course_url}">${course_home_page_title(course)}</a>
+                                </span>
+                                <span class="icon fa fa-angle-right" aria-hidden="true"></span>
+                                <span class="nav-item">${_('Updates')}</span>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <div class="page-content">
+                % if plain_html_updates:
+                    ${HTML(plain_html_updates)}
+                % else:
+                    <div class="all-updates">
+                        % if updates:
+                            % for index, update in enumerate(updates):
+                                <article class="updates-article">
+                                    % if not update.get("is_error"):
+                                        <div class="date">${update.get("date")}</div>
+                                    % endif
+                                    <div class="article-content">
+                                        ${HTML(update.get("content"))}
+                                    </div>
+                                </article>
+                            % endfor
+                        % else:
+                            <div class="well depth-0 message-area">
+                                ${_("This course does not have any updates.")}
+                            </div>
+                        % endif
+                    </div>
+                % endif
+            </div>
+        </div>
+    </div><!--end Container-->
+</div><!--wrap inner-->
+</%block>
+
+
+<%block name="js_extra">
+  <script type="text/javascript" src="${static.url('js/custom.js')}"></script>
+  <script type="text/javascript" src="${static.url('js/tawk.js')}"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBW_rboVItoQlMNoP4MrawVEsTza1UKgz4",
+    authDomain: "iimbx-24af5.firebaseapp.com",
+    databaseURL: "https://iimbx-24af5.firebaseio.com",
+    projectId: "iimbx-24af5",
+    storageBucket: "iimbx-24af5.appspot.com",
+    messagingSenderId: "226135865802",
+    appId: "1:226135865802:web:436d66db50c2e63d5ff733",
+    measurementId: "G-3Y8PJGCMDL"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+</%block>

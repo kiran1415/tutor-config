@@ -1,0 +1,64 @@
+<div class="video_news">
+  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Nq33ZyDHx8o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<ul class="videos_list">
+  <li class="active" id="Vinay" title="Vinay Sharma">
+<img src="static/ctm-iimb-red-theme/assets/images/testi/Vinay-Sharma.jpg" alt="">
+    </li>
+      <li  id="Satheesh" title="Radha Satheesh">
+<img src="static/ctm-iimb-red-theme/assets/images/testi/Radha.jpg" alt="">
+    </li>
+     <li  id="Jaegon" title="Jaegon">
+<img src="static/ctm-iimb-red-theme/assets/images/testi/JAEGONLEE.jpg" alt="">
+    </li>
+     <li  id="AnkitMittal" title="Ankit Mittal">
+<img src="static/ctm-iimb-red-theme/assets/images/testi/Ankit-Mittal.jpg" alt="">
+    </li>
+     <li  id="Vishal" title="Vishal Chemjong">
+<img src="static/ctm-iimb-red-theme/assets/images/testi/Vishal-Chemjong.jpg" alt="">
+    </li>
+     <li  id="Sricharan" title="Sricharan">
+
+<img src="static/ctm-iimb-red-theme/assets/images/testi/Sricharan.jpg" alt="">
+    </li>
+     <li  id="Aravind" title="Aravind Srinivas">
+<img src="static/ctm-iimb-red-theme/assets/images/testi/Aravind-Srinivas.jpg" alt="">  
+    </li>
+     <li  id="Pavan" title="Pavan">
+<img src="static/ctm-iimb-red-theme/assets/images/testi/Pavan_New.jpg" alt="">
+    </li>
+     <li  id="Shakthiguru" title="Shakthiguru">
+<img src="static/ctm-iimb-red-theme/assets/images/testi/Shakthiguru.jpg" alt="">
+    </li>
+     <li  id="Raghavendran" title="Raghavendran">
+<img src="static/ctm-iimb-red-theme/assets/images/testi/Raghavendran.jpg" alt="">
+    </li>
+     <li  id="ranjeet" title="ranjeet singh">
+<img src="static/ctm-iimb-red-theme/assets/images/ranjeet.jpg" alt="">
+    </li>
+  <li  id="aswini" title="Aswini Kumar">
+<img src="static/ctm-iimb-red-theme/assets/images/aswini.jpg" alt="">
+    </li>
+  <li  id="ravikumar" title="Ravikumar">
+<img src="static/ctm-iimb-red-theme/assets/images/ravikumar.jpg" alt="">
+    </li>
+</ul>
+
+<script>
+$(document).ready(function(){
+
+  var video_trigger = $('.videos_list li'),
+      containers = $('.video_news');
+    video_trigger.on('click', function(){
+      $('.videos_list li').removeClass('active');
+    var $this = $(this),
+       targets=$(this).attr('id');
+    // containers.load('partials/' +targets + '.html');
+    containers.load('static/ctm-iimb-red-theme/partials/video-content.html #' + targets);
+    $(this).addClass('active');
+    });
+    });
+
+</script> 
+

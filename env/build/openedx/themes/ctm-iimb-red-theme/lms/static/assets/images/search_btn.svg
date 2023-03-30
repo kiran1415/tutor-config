@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
+  <g id="Search_Butoon" data-name="Search Butoon" transform="translate(-998 -327)">
+    <g id="Group_13192" data-name="Group 13192">
+      <circle id="Ellipse_4" data-name="Ellipse 4" cx="17.5" cy="17.5" r="17.5" transform="translate(998 327)" fill="#fff"/>
+      <g id="searching-magnifying-glass" transform="translate(1008 337)">
+        <g id="search">
+          <path id="Path_214" data-name="Path 214" d="M10.725,9.438h-.686L9.781,9.18a5.37,5.37,0,0,0,1.373-3.6,5.577,5.577,0,1,0-5.577,5.577,5.37,5.37,0,0,0,3.6-1.373l.257.257v.686l4.29,4.29,1.287-1.287Zm-5.148,0A3.861,3.861,0,1,1,9.438,5.577,3.845,3.845,0,0,1,5.577,9.438Z" fill="#1e649b"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

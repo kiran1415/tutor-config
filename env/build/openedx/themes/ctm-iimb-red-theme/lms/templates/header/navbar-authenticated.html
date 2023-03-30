@@ -1,0 +1,84 @@
+## mako
+
+<%page expression_filter="h" args="online_help_token"/>
+
+<%namespace name='static' file='../static_content.html'/>
+<%namespace file='../main.html' import="login_query"/>
+
+<%!
+from django.urls import reverse
+from django.utils.translation import ugettext as _
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+
+from openedx.core.djangoapps.user_api.accounts.image_helpers import get_profile_image_urls_for_user
+from openedx.features.enterprise_support.utils import get_enterprise_learner_generic_name
+%>
+
+<%
+self.real_user = getattr(user, 'real_user', user)
+profile_image_url = get_profile_image_urls_for_user(self.real_user)['medium']
+username = self.real_user.username
+displayname = get_enterprise_learner_generic_name(request) or username
+
+support_link = configuration_helpers.get_value('SUPPORT_SITE_LINK', settings.SUPPORT_SITE_LINK)
+doc_link = get_online_help_info(online_help_token)['doc_url']
+
+if online_help_token == "instructor":
+  help_link = doc_link
+elif support_link:
+  help_link = support_link
+else:
+  help_link = doc_link
+%>
+
+<div id="iimbxCollapse" class="iimbxCollapse-collapse">
+  <ul class="iimbx-menulist">
+    <li class="${'active ' if '/' == request.path else ''}">
+      <a href="/">${_("Home")}</a>
+    </li>
+    <li class="${'active ' if '/about' == request.path else ''}">
+      <a href="${marketing_link('ABOUT')}">${_("About")}</a>
+    </li>
+    <li class="${'active ' if '/faq' == request.path else ''}">
+      <a href="${marketing_link('FAQ')}">${_("FAQs")}</a>
+    </li>
+    <li class="${'active ' if '/contact' == request.path else ''}">
+      <a href="#" class="link_contact">Contact</a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/pulse/ahead-curve-unique-offering-from-iitm-iimb-certificate-in/" target="_blank" class="link_blog">${_("Blog")}</a>
+    </li>
+    
+    ##<li class="${'active ' if '/dashboard' == request.path else ''}">
+    ##  <a href="${reverse('dashboard')}">${_("Dashboard")}</a>
+    ##</li>
+    ## <li class="${'active ' if '/courses' == request.path else ''}">
+    ##   <a href="${reverse('courses')}">${_("Catalog")}</a>
+    ## </li> 
+    <li>
+      <a href="${help_link}" target="_blank">${_("Help")}</a>
+    </li>
+  </ul>
+</div>
+<div class="header-signin">
+  <div class="profile-dropdown">
+    <button class="btn-profile" type="button">
+      <span class="profile-icon">
+        <img src="${profile_image_url}" alt="">
+      </span>
+      <span class="pbtn-text">${displayname}</span>
+      <span class="caret"></span>
+    </button>
+    <%include file="user_dropdown.html"/>
+  </div>
+</div>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-165069384-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-165069384-2');
+</script>
+

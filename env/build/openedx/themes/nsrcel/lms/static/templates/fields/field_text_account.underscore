@@ -1,0 +1,10 @@
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+	<div class="form-group fields u-field-value field">
+		<label class="u-field-title field-label input-label" for="field-input-<%- id %>">
+			<input class="field-input input-text form-control" autofocus placeholder="<%- placeholder %>" type="text" id="field-input-<%- id %>" title="Input field for <%- id %>" aria-describedby="u-field-message-help-<%- id %>" name="input" value="<%- value %>" />
+		</label>
+		<p class="u-field-message-help help-block" id="u-field-message-help-<%- id %>"><%= HtmlUtils.ensureHtml(message) %></p>
+		<p class="u-field-message-notification" aria-live="polite"></p>
+	</div>
+</div>

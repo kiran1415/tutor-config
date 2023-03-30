@@ -1,0 +1,36 @@
+## mako
+<%page expression_filter="h"/>
+<%namespace name='static' file='static_content.html'/>
+
+<%!
+from django.urls import reverse
+from django.utils.translation import ugettext as _
+from openedx.core.djangoapps.user_api.accounts.utils import retrieve_last_sitewide_block_completed
+%>
+
+<%
+## This template should not use the target student's details when masquerading, see TNL-4895
+self.real_user = getattr(user, 'real_user', user)
+username = self.real_user.username
+resume_block = retrieve_last_sitewide_block_completed(self.real_user)
+%>
+
+<ul class="profile-dropdown-menu">
+    % if resume_block:
+        <li>
+            <a href="${resume_block}">${_("Resume your last course")}</a>
+        </li>
+    % endif
+    <li>
+        <a href="${reverse('dashboard')}">${_("Dashboard")}</a>
+    </li>
+    <li>
+        <a href="${reverse('learner_profile', kwargs={'username': username})}">${_("Profile")}</a>
+    </li>
+    <li>
+        <a href="${reverse('account_settings')}">${_("Account")}</a>
+    </li>
+    <li>
+        <a href="${reverse('logout')}">${_("Sign Out")}</a>
+    </li>
+</ul>

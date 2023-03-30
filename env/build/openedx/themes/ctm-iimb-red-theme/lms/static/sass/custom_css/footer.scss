@@ -1,0 +1,176 @@
+/*Footer Css for IIMBX*/
+/*@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700');
+*/
+ body{
+    margin: 0px;
+    padding: 0px;
+}
+ .footer_wrap{
+    min-height: 200px;
+    background-color: #f2f2f2;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    clear: both;
+}
+ .footer_links li, .fleft-logo{
+    display: inline-block;
+}
+ ul.footer_links{
+    margin-bottom: 0px;
+}
+ .footer_wrap .copy-right-text, .footer_links li a{
+    display: block;
+    font-size: 0.750em;
+    font-family: "Titillium Web", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: #31394d;
+    line-height: 15px;
+    padding: 10px 15px 10px 0px;
+    font-weight: 600;
+    transition: all 0.4s ease-in-out 0s;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    -ms-transition: all 0.4s ease-in-out 0s;
+    -o-transition: all 0.4s ease-in-out 0s;
+}
+ .footer_wrap .copy-right-text{
+    font-weight: normal;
+    margin-bottom: 0px;
+}
+ .footer_content_section{
+    padding: 40px 35px 0px 35px;
+}
+ .footer_bottom_section{
+    padding: 0px 35px 10px 35px;
+}
+ .fleft-logo{
+    padding-bottom: 10px;
+}
+ .footer_links li a:hover{
+    color: #9e1728;
+}
+ .footer_wrap .social_icons{
+    float: none !important;
+    clear: both;
+    width: 100% !important;
+}
+ .footer_wrap .social_icons li{
+    display: inline-block;
+}
+ .footer_wrap .social_icons li a {
+    color: #b11217;
+}
+ .footer_wrap .social_icons li a:hover {
+    color: #414141;
+}
+ .links .social_twitter{
+     color: #38A1F3!important;
+}
+ .links .social_linkdin{
+     color: #0077B5!important;
+}
+ footer > .container > .row{
+    display: flex !important;
+    border: none !important;
+    background: transparent !important;
+}
+ footer > .dark-bg > .container > .row{
+    display: flex !important;
+    border: none !important;
+    background: transparent !important;
+}
+ section.about h1 {
+    margin-top: 90px;
+}
+ .footer_logo{
+    margin: 0 auto;
+}
+ @media (max-width: 767px){
+     .footer_links li{
+        display: block;
+    }
+     ul.footer_links {
+        width: 50%;
+        float: left;
+    }
+     .logos_section{
+        width: 50%;
+        float: right;
+    }
+     .fleft-logo{
+        display: block;
+        text-align: center;
+        margin-bottom: 30px;
+        margin-bottom: 20px;
+    }
+     .frigth-logo{
+        float: none !important;
+        text-align: center;
+    }
+     .footer_wrap > .container{
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+     .footer_content_section{
+        padding: 30px 0px 0px 0px;
+    }
+     .footer_bottom_section {
+        padding-left: 0px;
+        padding-right: 0px;
+        clear: both;
+        margin-top: 15px;
+        display: inline-block;
+    }
+     .footer_bottom_section .copy-right-text{
+        padding:0px;
+    }
+     .fleft-logo {
+        padding-top: 15px;
+    }
+     .account_section .container{
+        width: 100%;
+        max-width: 540px !important;
+    }
+    /*css changes from designer at 06082019*/
+     section.about h1{
+        margin-top: 20px;
+    }
+     .footer_logo{
+        margin: 20px auto !important;
+    }
+}
+ @media (min-width: 768px) {
+     .footer_wrap .social_icons {
+        margin-bottom: 10px !important;
+    }
+}
+ @media (min-width: 576px){
+     header.main-header .container {
+        width: 540px;
+         max-width: 540px !important;
+    }
+}
+ @media (min-width: 768px){
+     header.main-header .container {
+        width: 720px;
+         max-width: 720px !important;
+    }
+}
+ @media (min-width: 992px){
+     header.main-header .container {
+        width: 960px;
+         max-width: 960px !important;
+    }
+}
+ @media (min-width: 1200px){
+     header.main-header .container {
+        width: 960px;
+         max-width: 960px !important;
+    }
+}
+ @media (min-width: 1360px){
+     header.main-header .container {
+        width: 1300px;
+         max-width: 1300px !important;
+    }
+}

@@ -1,0 +1,10 @@
+// ------------------------------
+// LMS discussion main styling
+
+// Set the relative path to the static root
+$static-path: '../..';
+
+//override variables
+@import '../override';
+@import 'lms/static/sass/discussion/lms-discussion-bootstrap';
+

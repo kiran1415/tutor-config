@@ -1,0 +1,164 @@
+## mako
+
+<%page expression_filter="h"/>
+
+<%namespace name='static' file='../static_content.html'/>
+<%!
+from datetime import date
+
+from django.utils.translation import ugettext as _
+from django.utils.translation import ngettext
+
+from openedx.core.djangolib.markup import HTML, Text
+%>
+
+<%block name="header_extras">
+  <link rel="stylesheet" type="text/css" href="${static.url('css/bootstrap.min.css')}" />
+  <link rel="stylesheet" type="text/css" href="${static.url('css/custom.css')}" />
+</%block>
+<%
+course_sections = blocks.get('children')
+%>
+<div class="catalog_tabpage">
+<div class="course_accordian_section course_accordian">
+
+    % if course_sections is not None:
+        <div class="acc_header text-right">
+            <span class="all-expand">All Expand</span> <span class="show-less">Show Less</span>
+        </div>
+    <div class="panel-group" id="accordion1">
+    % for count, section in enumerate(course_sections):
+        <div class="panel panel-default">
+          <%
+          section_is_auto_opened = section.get('resume_block') is True
+          %>
+          <div class="panel-heading ${'active' if section_is_auto_opened else ''}">
+                <a class="accordion-toggle1">
+                      ${ section['display_name'] }
+                  <span class="accarrow-icon pull-right"><i class="fa fa-angle-down"></i></span>
+                  % if section.get('complete'):
+                    <span class="complete-checkmark fa fa-check section-completion-check"></span>
+                  % endif
+                  </a>
+            </div>
+            <div id="Week${count}" class="panel-collapse collapse ${'opensub' if section_is_auto_opened else ''}">
+            <div class="panel-body">
+              <div class="small-contnet">
+                  % for cnt,subsection in  enumerate(section.get('children', [])):
+                        <%
+                        gated_subsection = subsection['id'] in gated_content
+                        completed_prereqs = gated_content[subsection['id']]['completed_prereqs'] if gated_subsection else False
+                        subsection_is_auto_opened = subsection.get('resume_block') is True
+                        num_graded_problems = subsection.get('num_graded_problems', 0)
+                        %>
+                        % if gated_subsection and not completed_prereqs:
+                              <a href="${ subsection['lms_web_url'] }">
+                                    <div class="lock-list">  <span class="menu-icon icon fa fa-lock"
+                                            aria-hidden="true">
+                                    </span> ${ subsection['display_name'] }
+                                    % if num_graded_problems:
+                                          ${ngettext("({number} Question)",
+                                                     "({number} Questions)",
+                                                     num_graded_problems).format(number=num_graded_problems)}
+                                    % endif
+                          <div class="details prerequisite">
+                             <strong> ${ _("Prerequisite: ") }
+                                  <%
+                                      prerequisite_id = gated_content[subsection['id']]['prerequisite']
+                                      prerequisite_name = xblock_display_names.get(prerequisite_id)
+                                  %> ${ prerequisite_name }
+                              </strong>    
+                          </div>
+                        </div>
+                        % else:
+                          <a href="javascript:void(0);" data-liid="test${count}_${cnt}" class="sub-list ${'active' if subsection_is_auto_opened else ''}">${ subsection['display_name'] }
+                            % if num_graded_problems:
+                                          ${ngettext("({number} Question)",
+                                                     "({number} Questions)",
+                                                     num_graded_problems).format(number=num_graded_problems)}
+                            % endif
+                            <span class="accarrow-icon pull-right"><i class="fa fa-angle-down"></i></span>
+                          % if subsection.get('complete'):
+                              <span class="complete-checkmark fa fa-check-circle"></span>
+                          % endif
+                          </a>
+                        % endif
+                        <%
+                          if subsection.get('due') is None:
+                              # examples: Homework, Lab, etc.
+                              data_string = subsection.get('format')
+                          else:
+                              if 'special_exam_info' in subsection:
+                                  data_string = _('due {date}')
+                              else:
+                                  data_string = _("{subsection_format} due {{date}}").format(subsection_format=subsection.get('format'))
+                        %>
+                    % if subsection.get('format') or 'special_exam_info' in subsection:
+                        <span class="subtitle">
+                        % if 'special_exam' in subsection:
+                          ## Display the exam status icon and status message
+                          <span
+                              class="menu-icon icon fa ${subsection['special_exam_info'].get('suggested_icon', 'fa-pencil-square-o')} ${subsection['special_exam_info'].get('status', 'eligible')}"
+                              aria-hidden="true"
+                          ></span>
+                          <span class="subtitle-name">
+                              ${subsection['special_exam_info'].get('short_description', '')}
+                          </span>
+
+                          ## completed exam statuses should not show the due date
+                          ## since the exam has already been submitted by the user
+                          % if not subsection['special_exam_info'].get('in_completed_state', False):
+                            <span
+                                class="localized-datetime subtitle-name"
+                                data-datetime="${subsection.get('due')}"
+                                data-string="${data_string}"
+                                data-timezone="${user_timezone}"
+                                data-language="${user_language}"
+                            ></span>
+                          % endif
+                        % else:
+                          ## non-graded section, we just show the exam format and the due date
+                          ## this is the standard case in edx-platform
+                          <span
+                              class="localized-datetime subtitle-name"
+                              data-datetime="${subsection.get('due')}"
+                              data-string="${data_string}"
+                              data-timezone="${user_timezone}"
+                              data-language="${user_language}"
+                          ></span>
+
+                          % if subsection.get('graded'):
+                                                          <span class="sr">&nbsp;${_("This content is graded")}</span>
+                          % endif
+                        % endif
+                                                </span>
+                    % endif
+                          
+                    % if gated_subsection and not completed_prereqs:
+                                    </a>
+                    % endif
+                    % if not gated_subsection or (gated_subsection and completed_prereqs):
+                            <ul class="list-unstyled test${count}_${cnt}_count ${'opensub' if subsection_is_auto_opened else ''}">
+                              % for vertical in subsection.get('children', []):
+                                <li><a href="${ vertical['lms_web_url'] }">${ vertical['display_name'] }
+
+                                %if vertical.get('complete'):
+                                  <span class="complete-checkmark fa fa-check-circle"></span>
+                                % endif
+                                </a></li>
+                              %endfor
+                            </ul>
+                    %endif
+            %endfor
+              </div>  
+            </div>
+          </div>
+        </div>
+    %endfor
+    </div>
+    %endif
+</div>
+</div>
+<%static:require_module_async module_name="js/dateutil_factory" class_name="DateUtilFactory">
+    DateUtilFactory.transform('.localized-datetime');
+</%static:require_module_async>

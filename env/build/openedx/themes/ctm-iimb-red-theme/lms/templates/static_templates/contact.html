@@ -1,0 +1,50 @@
+<%page expression_filter="h"/>
+<%namespace name='static' file='../static_content.html'/>
+<%! 
+from django.utils.translation import ugettext as _ 
+from django.conf import settings
+%>
+<%inherit file="../custom_main.html"/>
+
+<%block name="pagetitle">${_("Contact Us")}</%block>
+
+<section class="landing_section contact-wrap-sec">
+    <div class="col-half">
+      <div class="landing-slider" style="background-image: url(${static.url('images/signin-bg.png')});">
+        <div class="landing-wrap register-wrap">
+          <div class="landing_default text-left">
+                <h2>Register With Us</h2>
+                <p class="landingslider-info">
+                    Log in using the credentials emailed to you by ${settings.PLATFORM_NAME}. If you have not received your credentials and/or are interested to learn more, please write to us at
+                </p>
+                <p>
+                    <a class="email-link" href="mailto:digital.learning@iimbx.edu.in" title="digital.learning@iimbx.edu.in">   digital.learning@iimbx.edu.in
+                    </a>
+                </p>
+          </div>
+        </div> 
+      </div>  
+    </div>
+    <div class="col-half container">
+      <div class="content-landing text-left contactus-wrap">
+        <h2 class="content-title">Contact Us</h2>
+        <div class="landing-wrap-max">
+            <p>Find answers to top questions asked<br> by learners.</p> 
+            <p>
+                <a href="/" title="Search for ${settings.PLATFORM_NAME}." class="default-link hidden-xs">
+                    Search for ${settings.PLATFORM_NAME}.
+                </a>
+                <a href="/" title="Search for ${settings.PLATFORM_NAME}." class="default-link visible-xs">
+                    Search for ${settings.PLATFORM_NAME} help center.
+                </a>
+            </p>
+            % if not user.is_authenticated:
+                <p>Sign in to your ${settings.PLATFORM_NAME} so we can help you better.</p>
+                <div class="button_action">
+                    <a href="/login" class="btn btn-theme text-capitalize">sign in</a>
+                </div>
+            % endif
+        </div> 
+      </div>
+    </div>
+</section>

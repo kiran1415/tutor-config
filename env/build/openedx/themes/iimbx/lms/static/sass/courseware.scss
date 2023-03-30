@@ -1,0 +1,164 @@
+//override variables
+@import 'override';
+
+.xmodule_display.xmodule_VideoModule{
+    .video {
+        background: $white-color;
+        margin: 0;
+        padding: 0;
+    .video-wrapper{
+        margin-right: 0;
+    }
+    .subtitles {
+        background: #F6E6E6;
+        padding-left: 2.27273%;
+
+        .subtitles-menu {
+            li {
+                color: $black-color;
+            }
+            li.current  {
+                color: $btn-primary-color;
+            }
+        }
+        a {
+            color: $btn-primary-color;
+        }
+    }
+}
+}
+
+.forum-nav-thread {
+    .forum-nav-thread-link {
+        &:hover,
+        &:focus{
+            color: $btn-primary-color;
+        }
+    }
+}
+body.view-in-course {
+    .course-wrapper {
+        border: none;
+        main {
+            padding: 0;
+        }
+    }
+}
+
+
+body.view-in-course{
+    .course-heading {
+        border: none;
+
+        h2 {
+            vertical-align: middle;
+            font-size: 2.125em;
+            line-height: 41px;
+            font-family: 'PlayfairDisplay-Black';
+            color: #414141;
+            margin-bottom: 25px;
+            text-align: left;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+    }
+    .wrap-instructor-info.studio-view {
+        text-align: center;
+        display: block;
+    }
+    .pdf-download-button a {
+        &:hover, 
+        &:focus{
+            background: $btn-primary-color;
+        }
+    }
+    .page-header {
+        padding: 20px 0;
+        border: none;
+    }
+    .course-content .bookmark-button-wrapper{
+        .bookmark-button {
+            &:hover,
+            &:focus{
+                color: $btn-primary-color;
+            }
+        }
+    }
+    .xmodule_display.xmodule_SequenceModule {
+        .sequence-nav-button {
+            background: $light-grey-background;
+        }
+        .sequence-bottom .sequence-nav-button{
+            margin-right: 10px;
+            font-size: 12px;
+        }
+    }
+    .xmodule_display.xmodule_CapaModule {
+        div.problem {
+            .choicegroup {
+                .field {
+                    width: 48%;
+                    display:  inline-block;
+                    float: left;
+
+                    &:nth-of-type(odd) {
+                        margin-right: 4%;
+                    }
+                }
+            }
+            .action .submit-attempt-container .submit{
+                color: $btn-primary-color;
+                border: 1px solid;
+                box-shadow: none;
+                min-width: 140px;
+                text-align: center;
+                font-weight: normal;
+                min-height: 45px;
+                border-radius: 30px;
+                background: $white-color;
+
+                &:hover,
+                &:focus {
+                    color: $white-color;
+                    background: $btn-primary-color;
+                }
+            }
+        }
+    }
+}
+body.discussion{
+    .course-heading h2 {
+        vertical-align: middle;
+        font-size: 2.125em;
+        line-height: 41px;
+        font-family: 'PlayfairDisplay-Black';
+        color: #414141;
+        margin-bottom: 25px;
+        text-align: left;
+        display: inline-block;
+        margin-top: 20px;
+        font-weight: 500;
+    }
+    .page-content-container{
+        border: none;
+        background: inherit;
+    }
+    .page-content{
+        padding: 0;
+    }
+    .btn-outline-primary.new-post-btn{
+        color: $btn-primary-color;
+        border: 1px solid $btn-primary-color;
+        box-shadow: none;
+        min-width: 130px;
+        text-align: center;
+        font-weight: normal;
+        border-radius: 30px;
+
+        &:hover,
+        &:focus{
+            color: $white-color;
+        }        
+    }
+}

@@ -1,0 +1,39 @@
+<div class="col-md-6 col-sm-6 col-xs-12 u-field-value field">
+    <div class="select-box form-group">
+
+            <% if (iconName) { %>
+                <span class="u-field-icon icon fa <%- iconName %> fa-fw" aria-hidden="true"></span>
+            <% } %>
+
+            <% if (editable === 'never') { %>
+                <span class="sr"><%- screenReaderTitle %></span>
+                <span class="u-field-value-readonly"></span>
+            <% } else { %>
+                <select name="select" id="u-field-select-<%- id %>" aria-describedby="u-field-help-message-<%- id %>" class="select-box-js form-control">
+                    <% _.each(groupOptions, function(groupOption) { %>
+                        <% if (showBlankOption) { %>
+                            <% if (groupOption.nullValueOptionLabel) { %>
+                                <option value=""><%- groupOption.nullValueOptionLabel %></option>
+                            <% } else { %>
+                                <option value=""></option>
+                            <% } %>
+                        <% } %>
+                            <% if (groupOption.groupTitle != null) { %>
+                                <optgroup label="<%- groupOption.groupTitle %>">
+                            <% } %>
+                            <% _.each(groupOption.selectOptions, function(selectOption) { %>
+                                <option value="<%- selectOption[0] %>"><%- selectOption[1] %></option>
+                            <% }); %>
+                    <% }); %>
+                </select>
+                <span class="icon-caret-down" aria-hidden="true"></span>
+                <span class="u-field-message-notification" aria-live="polite"></span>
+                <p class="u-field-message-help help-block" id="u-field-help-message-<%- id %>"><%- message %></p>
+                <button class="u-field-value-display">
+                    <span class="sr"><%- screenReaderTitle %> &nbsp;</span>
+                    <span class="u-field-value-readonly"></span>
+                    <span class="sr"><%- gettext('Click to edit') %></span>
+                </button>
+            <% } %>
+    </div>
+</div>

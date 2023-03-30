@@ -1,0 +1,44 @@
+## mako
+<%namespace name='static' file='../static_content.html'/>
+<%namespace file='../main.html' import="login_query"/>
+<header class="top">
+  <div class="container">
+    <a href="${marketing_link('ROOT')}" class="logo">
+      <img src="${static.url('assets/images/logo.svg')}" alt=""></a>
+    <div class="navbtn">
+      <div class="bar"></div>
+    </div>
+    <span class="mobile_bg">
+      <nav class="main-nav">
+        <ul class="site-nav">
+          <li>
+            <a href="/" class="link_home">Home</a>
+          </li>
+          <li>
+            <a href="${marketing_link('ABOUT')}" class="link_aboutus">About</a>
+          </li>
+          <li>
+            <a href="${marketing_link('FAQ')}" class="link_faq">FAQs</a>
+          </li>
+          <li>
+            <a href="${marketing_link('CONTACT')}" class="link_contact">Contact</a>
+          </li>
+          % if user.is_authenticated():
+            <li>       
+              <a href="/dashboard">Dashboard</a>
+            </li>
+            <li>       
+              <a href="/logout">Logout</a>
+            </li>
+          % else :
+            <li>       
+              <div class="account">
+                <a href="/login${login_query()}">Sign in</a>
+              </div> 
+            </li>
+          % endif
+        </ul>
+      </nav>
+    </span>
+  </div>
+</header>

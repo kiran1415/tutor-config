@@ -1,0 +1,42 @@
+<%!
+  from django.utils.translation import ugettext as _
+  from django.urls import reverse
+  from six import text_type
+%>
+<%inherit file="../custom_main.html" />
+<%namespace name='static' file='../static_content.html'/>
+<%block name="pagetitle">${_("Courses")}</%block>
+
+
+<%
+
+import operator
+lms_courses = sorted(courses, key=operator.attrgetter('display_name'))
+
+%>
+
+
+<div class="wrap-inner">
+  <div class="container">  
+    <section class="catalog_grid catalog_section">
+      %for course in lms_courses:
+        %if course.catalog_visibility != "none":
+          <div class="col-md-4 col-sm-6 col-xs-12 ">
+            <div class="row">
+             <div class="catalog_block">
+              <a href="${reverse('about_course', args=[text_type(course.id)])}" title="${course.display_name_with_default}">
+                <div class="catalog_figure" style="background-image: url(${course.course_image_url})">
+                <!-- <img src="${course.course_image_url}" alt="${course.display_name_with_default} ${course.display_number_with_default}"> -->
+                </div>
+                <div class="catalog_info">
+                  <h2 class="catalog_title">${course.display_name_with_default}</h2>
+                </div>
+              </a>
+             </div> 
+           </div>
+          </div>
+        %endif
+      %endfor
+    </section>
+  </div><!--end Container-->
+</div><!--wrap inner--> 

@@ -1,0 +1,50 @@
+/* ********Course About page Css************ */
+ body .window-wrap.absolute-header .content-wrapper{
+    margin-top: 0px;
+    padding: 0px;
+}
+ body .window-wrap.absolute-header .content-wrapper.non-staff{
+    margin-top: 70px;
+    padding: 0px;
+}
+ .footer_links li a:hover{
+    text-decoration: none;
+}
+ .instructor-info .instructor-figure .instructor-name {
+    position: static;
+     margin-top: 20px;
+     display: block;
+}
+ .instructor-info .instructor-figure {
+    height: auto;
+     overflow: inherit;
+}
+ .instructor-info {
+    min-height: 196px;
+}
+ .instructor-info .staff-img {
+    height: 166px;
+     overflow: hidden;
+}
+ .faq .responses p a {
+    color: #b22832;
+}
+ .cource-heading .enroll-closed.course-Btn, .cource-heading .enroll-now.course-Btn {
+    background: #b11217;
+     margin-left: 10px;
+}
+ .catalog_block .catalog_figure {
+    height: 204px;
+     overflow: hidden;
+     background-size: cover;
+    background-position: 50% 50%;
+     background-repeat: no-repeat;
+}
+ .cource-section .welcome-message p img {
+    max-width: 100%;
+     width: auto;
+}
+ .cource-heading .action-resume-course .btn-theme-red:hover {
+    background-color: #4a4a4a;
+     color: #FFFBF7 !important;
+}

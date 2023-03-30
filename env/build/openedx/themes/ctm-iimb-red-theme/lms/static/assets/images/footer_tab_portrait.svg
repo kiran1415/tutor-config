@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 769.1 300.2" style="enable-background:new 0 0 769.1 300.2;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#323847;}
+	.st1{clip-path:url(#SVGID_2_);}
+	.st2{fill:#262A34;}
+</style>
+<g id="Group_13142" transform="translate(1.113 -2312)">
+	<path id="Path_155_1_" class="st0" d="M768,2612.2H-1.1l0.1-122.7c0,0,87.9-102.5,342.8-142.5c61.3-9.6,212.4-21.9,426.7-35.1"/>
+	<g>
+		<defs>
+			<path id="SVGID_1_" d="M1,2488.1c0,0,87.8-102.3,342.4-142.2c254.7-39.9,425.2-126.4,425.2-126.4v649.4H1V2488.1z"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+		</clipPath>
+		<g id="Mask_Group_410" transform="translate(1 -2629)" class="st1">
+			<path id="Path_165" class="st2" d="M0,5075.5h2632.6v78H0V5075.5z"/>
+		</g>
+	</g>
+	<rect id="Rectangle_1975" x="0" y="2526.5" class="st2" width="768" height="86"/>
+</g>
+</svg>

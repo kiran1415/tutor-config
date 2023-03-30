@@ -1,0 +1,70 @@
+## mako
+
+<%page expression_filter="h"/>
+
+<%namespace name='static' file='../static_content.html'/>
+<%namespace file='../main.html' import="login_query"/>
+
+<%!
+  from django.urls import reverse
+  from django.utils.translation import ugettext as _
+  from six import text_type
+%>
+
+<%
+  allows_login = not settings.FEATURES['DISABLE_LOGIN_BUTTON'] and not combined_login_and_register
+  restrict_enroll_for_course = course and settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain
+%>
+         <div class="navbtn">
+            <div class="bar"></div>
+          </div>
+          <span class="mobile_bg">
+            <nav class="main-nav">
+              <ul class="site-nav">
+                <li>
+                  <a href="/" class="link_home">Home</a>
+                </li>
+                <li>
+                  <a href="/about" class="link_aboutus">About</a>
+		 </li>
+                        <li>
+                           <a href="/student-profile" class="link_student">Student Profile</a>
+                </li>
+                <li>
+                  <a href="/faq" class="link_faq">FAQs</a>
+                </li>
+                <li>
+                  <a href="#" class="link_contact">Contact</a>
+                </li>
+                <li>
+                  <a href="/partner_with_us" class="link_contact">Partner with us</a>
+                </li>
+                 <li>
+                  <a href="https://www.linkedin.com/pulse/ctm-batch-2-virtual-valediction-technology-and-management/" target="_blank" class="link_blog">Blog</a>
+                </li>
+                <li>
+                  <div class="account">
+                    <a href="https://ctm-iitm.iimbx.edu.in/login?next=%2F" target="_blank">Sign in</a>
+                    
+                  </div>
+                </li>
+                <li class="social">
+                  <a href="https://www.facebook.com/Ctm-I-Iitm-I-Iimb-101322758177348" target="blank">
+                  <img src="${static.url('assets/images/facebook.svg')}">
+                  </a>
+                </li>
+                <li class="social">
+                  <a href="https://twitter.com/CTM_IITM_IIMB" target="blank">
+                    <img src="${static.url('assets/images/linkindin-03.svg')}">
+                  </a>
+                </li>
+                <li class="social">
+                  <a href="https://www.linkedin.com/in/certificate-in-technology-and-management/" target="blank">
+                    <img src="${static.url('assets/images/linkdin.svg')}">
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </span>
+<script src="${static.url('assets/js/main-min.js')}"></script>
+

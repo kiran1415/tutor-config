@@ -1,0 +1,65 @@
+## mako
+<%page expression_filter="h"/>
+<%!
+  from django.utils.translation import ugettext as _
+  from lms.djangoapps.branding.api import get_footer
+  from django.conf import settings
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<%namespace name='static' file='static_content.html'/>
+
+<footer class="footer_wrap">
+    <div class="footer_content_section container">
+      <div class="ft-row">
+        <a href="https://www.iimb.ac.in/" target="_blank">
+            <img src="${static.url('images/iimb-footerlogo.svg')}" alt="IIMBx logo" style="max-width: 45px;">
+        </a>
+        <a href="${footer['openedx_link']['url']}" target="_blank">
+            <img src="${static.url('images/edx-logo.png')}" style="width:150px" alt="Powered by Open edX">
+        </a>
+        <p class="copy-right-text">
+          © ${settings.PLATFORM_NAME}. ${_("All rights reserved except where noted.")}
+        </p>
+        <ul class="list-unstyled footer_links">
+          <li>
+            <a href="https://iimbx.iimb.ac.in/privacy/" alt="Privacy">${_("Privacy Policy")}</a>
+          </li>
+          <li>
+            <a href="https://iimbx.iimb.ac.in/tos/" alt="Terms of Service">${_("Terms of Service")}</a>
+          </li>
+          <li>
+            <a href="https://iimbx.iimb.ac.in/honor/" alt="Honor Code">${_("Honor Code")}</a>
+          </li>
+          <!-- <li>
+            <a href="https://iimbx.iimb.ac.in/contact/" alt="Contact">${_("Contact")}</a>
+          </li>
+          <li>
+            <a href="${marketing_link('FAQ')}" alt="FAQ">${_("FAQ")}</a>
+          </li> -->
+        </ul>
+        <ul class="list-unstyled footer_links social_icons">
+          <li title="${_('Follow us on facebook')}">
+            <a href="https://www.facebook.com/IIMBOfficial" target="_blank"><i class="fa fa-facebook"></i></a>
+          </li>
+          <li title="${_('Follow us on twitter')}">
+            <a href="https://twitter.com/iimb_official" target="_blank"><i class="fa fa-twitter"></i></a>
+          </li>
+          <li title="${_('Follow us on linkedin')}">
+            <a href="https://www.linkedin.com/school/indian-institute-of-management-bangalore/" target="_blank"><i class="fa fa-linkedin"></i></a>
+          </li>
+          <li title="${_('Watch on youtube')}">
+            <a href="https://www.youtube.com/channel/UCZAWa1UvCXDqD9pBPDAqQ0Q" target="_blank"><i class="fa fa-youtube"></i></a>
+          </li>
+          <li title="${_('Follow us on Instagram')}">
+            <a href="https://www.instagram.com/iimbofficial/" target="_blank"><i class="fa fa-instagram"></i></a>
+          </li>
+          <li title="${_('Send an email')}">
+            <a href="mailto:iimbx.support@iimb.ac.in" target="_blank"><i class="fa fa-envelope"></i></a>
+          </li>
+          ##<li title="${_('Follow us on our blog')}">
+           ## <a href="http://iimbxblog.com/" target="_blank"><i class="fa fa-github"></i></a>
+          ##</li>
+        </ul>
+      </div>
+    </div>
+</footer>

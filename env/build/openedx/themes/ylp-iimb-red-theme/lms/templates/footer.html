@@ -1,0 +1,70 @@
+## mako
+<%page expression_filter="h"/>
+<%!
+  from django.utils.translation import ugettext as _
+  from lms.djangoapps.branding.api import get_footer
+  from django.conf import settings
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<%namespace name='static' file='static_content.html'/>
+
+<footer class="footer_wrap">
+  <div class="container">
+    <div class="footer_content_section">
+      <div class="logos_section">
+        <div class="fleft-logo">
+          <a href="https://www.iimb.ac.in/" target="_blank">
+            <img src="${static.url('images/iimb-footerlogo.svg')}" alt="IIMBx logo">
+          </a>
+        </div>
+        <div class="frigth-logo pull-right">
+          <a href="${footer['openedx_link']['url']}" target="_blank">
+            <img src="${static.url('images/edx-logo.png')}" alt="Powered by Open edX">
+          </a>
+        </div>
+      </div>
+      <ul class="list-unstyled footer_links">
+        <li>
+          <a href="${marketing_link('PRIVACY')}" alt="Privacy">${_("Privacy Policy")}</a>
+        </li>
+        <li>
+          <a href="${marketing_link('TOS')}" alt="Terms of Service">${_("Terms of Service")}</a>
+        </li>
+        <li>
+          <a href="${marketing_link('HONOR')}" alt="Honor Code">${_("Honor Code")}</a>
+        </li>
+        <li>
+          <a href="${marketing_link('CONTACT')}" alt="Contact">${_("Contact")}</a>
+        </li>
+        <li>
+          <a href="https://iimbx.iimb.ac.in/faq/" alt="FAQ">${_("FAQ")}</a>
+        </li>
+      </ul>
+      <ul class="list-unstyled footer_links social_icons">
+        <li title="${_('Follow us on facebook')}">
+          <a href="https://www.facebook.com/iimbxonline/" target="_blank"><i class="fa fa-facebook"></i></a>
+        </li>
+        <li title="${_('Follow us on twitter')}">
+          <a href="https://twitter.com/iimbxonline/" target="_blank"><i class="fa fa-twitter"></i></a>
+        </li>
+        <li title="${_('Follow us on linkedin')}">
+          <a href="https://www.linkedin.com/school/indian-institute-of-management-bangalore/" target="_blank"><i class="fa fa-linkedin"></i></a>
+        </li>
+        <li title="${_('Watch on youtube')}">
+          <a href="https://www.youtube.com/channel/UCQ6YVMIgJLKLMKXDzivYraQ" target="_blank"><i class="fa fa-youtube"></i></a>
+        </li>
+        <li title="${_('Follow us on Instagram')}">
+          <a href="https://www.instagram.com/iimbx_edu" target="_blank"><i class="fa fa-instagram"></i></a>
+        </li>
+        <li title="${_('Follow us on our blog')}">
+          <a href="http://iimbxblog.com/" target="_blank"><i class="fa fa-github"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer_bottom_section">
+      <p class="copy-right-text">
+        © ${settings.PLATFORM_NAME}. All rights reserved except where noted. EdX, Open edX and their respective logos are trademarks or registered trademarks of<br> edX Inc.
+      </p>
+    </div>
+  </div>
+</footer>

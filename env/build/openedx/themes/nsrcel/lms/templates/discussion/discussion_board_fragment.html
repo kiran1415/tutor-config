@@ -1,0 +1,122 @@
+## mako
+
+<%namespace name='static' file='../static_content.html'/>
+
+<%page expression_filter="h"/>
+
+<%!
+import json
+from django.utils.translation import ugettext as _
+from django.template.defaultfilters import escapejs
+from django.urls import reverse
+
+from lms.djangoapps.discussion.django_comment_client.permissions import has_permission
+from openedx.core.djangolib.js_utils import dump_js_escaped_json, js_escaped_string
+from openedx.core.djangolib.markup import HTML
+%>
+<div class="container">
+  <div class="course-heading">
+      <h2>${course.display_name_with_default}</h2>
+  </div>
+<section class="discussion discussion-board page-content-container" id="discussion-container"
+         data-course-id="${course.id}"
+         data-user-create-comment="${json.dumps(can_create_comment)}"
+         data-user-create-subcomment="${json.dumps(can_create_subcomment)}"
+         data-read-only="false"
+         data-sort-preference="${sort_preference}"
+         data-flag-moderator="${json.dumps(flag_moderator)}"
+         data-user-group-id="${user_group_id}">
+    <header class="page-header has-secondary">
+        ## Breadcrumb navigation
+        <div class="page-header-main">
+            <nav aria-label="${_('Discussions')}" class="sr-is-focusable" tabindex="-1">
+                <div class="has-breadcrumbs"></div>
+            </nav>
+        </div>
+
+        <div class="page-header-secondary">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="sidebar-emailwidget">
+                  <!-- <label for="email-setting-checkbox">
+                    <span class="sr">Toggle Notifications Setting</span>
+                    
+                    <span class="notification-checkbox">
+                      <input type="checkbox" id="email-setting-checkbox" class="email-setting" name="email-notification"/>
+                      <span class="icon fa fa-envelope" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <span class="row-description">Check this box to receive an email digest once a day notifying you about new, unread activity from posts you are following.</span> -->
+
+
+
+                <div class="checkbox-button">
+                    <input type="checkbox" name="email-notification" class="input-block checkbox form-control email-setting" id="email-setting-checkbox">
+                    <label for="email-setting-checkbox" class="label">Check this box to receive an email digest once a day notifying you about new, unread activity from posts you are following. </label>
+                </div>
+            
+             </div> 
+            </div>            
+            <div class="col-lg-8">
+              ## Search box
+              <div class="row"> 
+                <div class="${'col-lg-9' if has_permission(user, 'create_thread', course.id) else 'col-lg-12' }">
+                    <div class="forum-search"></div>
+                </div>
+                ## Add Post button
+                % if has_permission(user, 'create_thread', course.id):
+                  <div class="col-lg-3"><div class="forum-actions float-right">
+                    <button class="btn new-post-btn"><i class="fa fa-plus-circle-o" aria-hidden="true"></i>${_("Add Post")}</button>
+                  </div>
+                </div>
+                % endif
+              </div><!--end row-->
+              
+              <div class="forum-info">
+               <ul class="list-unstyled forum-info-list">
+                <li>
+                  <span class="icon fa fa-thumbs-o-up" aria-hidden="true"></span>
+                  <span class="row-description">Vote for good posts and responses</span>
+                </li>
+                <li>
+                  <span class="icon fa fa-flag-o" aria-hidden="true"></span>
+                  <span class="row-description">Report abuse, topics, and responses</span>
+                </li>
+                <li>
+                  <span class="icon fa fa-user-plus" aria-hidden="true"></span>
+                  <span class="row-description">Follow or unfollow posts</span>
+                </li>
+              </ul>
+              </div>
+            </div>
+
+          </div><!--end row-->  
+        </div>
+    </header>
+    <div class="page-content"
+      % if getattr(course, 'language'):
+        lang="${course.language}"
+      % endif
+    >
+        <div class="discussion-body">
+          <div class="row">
+            <div class="col-lg-4">
+              <aside class="forum-nav" role="complementary" aria-label="${_("Discussion thread list")}">
+                  <%include file="_filter_dropdown.html" />
+                  <div class="discussion-thread-list-container"></div>
+              </aside>
+            </div>
+            <div class="col-lg-8">  
+              <main id="main" class="discussion-column" aria-label="Content" tabindex="-1">
+                  <article class="new-post-article is-hidden" style="display: none" tabindex="-1" aria-label="${_("New topic form")}"></article>
+                  <div class="forum-content"></div>
+              </main>
+            </div>
+          </div><!--end row-->  
+        </div>
+    </div>
+</section>
+
+<%include file="_underscore_templates.html" />
+<%include file="_thread_list_template.html" />
+</div>

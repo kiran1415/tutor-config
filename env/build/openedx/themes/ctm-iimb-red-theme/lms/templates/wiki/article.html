@@ -1,0 +1,48 @@
+{% extends "wiki/base.html" %}
+{% load wiki_tags i18n %}
+
+{% block pagetitle %}{{ article.current_revision.title }}{% endblock %}
+
+{% block wiki_breadcrumbs %}
+{% include "wiki/includes/breadcrumbs.html" %}
+{% endblock %}
+
+{% block wiki_contents %}
+
+  <div class="article-wrapper row">
+
+    <article class="main-article col-md-8 col-sm-7 col-xs-12" id="main-article">
+        {% if selected_tab != "edit" %}
+          <h3 class="entry-title">{{ article.current_revision.title }}</h3>
+
+        {% endif %}
+
+        {% block wiki_contents_tab %}
+        {% wiki_render article %}
+        {% endblock %}
+    </article>
+
+    <div class="article-functions col-md-4 col-sm-5 col-xs-12">
+      <ul class="nav nav-tabs">
+        {% include "wiki/includes/article_menu.html" %}
+      </ul>
+      <div class="timestamp">
+        <span class="label">{% trans "Last modified:" %}</span><br />
+        <span class="date">{{ article.current_revision.modified }}</span>
+      </div>
+
+      {% if urlpath %}
+      <div class="see-children">
+        <a href="{% url 'wiki:dir' path=urlpath.path %}">{% trans "See all children" %}</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+
+
+{% endblock %}
+
+{% block footer_prepend %}
+  <p><em>{% trans "This article was last modified:" %} {{ article.current_revision.modified }}</em></p>
+{% endblock %}

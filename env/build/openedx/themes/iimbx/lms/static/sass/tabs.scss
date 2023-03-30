@@ -1,0 +1,180 @@
+@font-face {
+     font-family: 'PlayfairDisplay-Black';
+     src: url("/static/iimbx/fonts/PlayfairDisplay-Black.eot");
+     src: url("/static/iimbx/fonts/PlayfairDisplay-Black.eot?#iefix") format('embedded-opentype'), url("/static/iimbx/fonts/PlayfairDisplay-Black.woff2") format('woff2'), url("/static/iimbx/fonts/PlayfairDisplay-Black.woff") format('woff'), url("/static/iimbx/fonts/PlayfairDisplay-Black..ttf") format('truetype'), url("/static/iimbx/fonts/PlayfairDisplay-Black.27b2f37ab3cb.svg") format('svg');
+     font-weight: normal;
+     font-style: normal;
+}
+ section.catalog-tabs-section{
+    padding-top: 0px;
+}
+ .catalog_tab_header{
+    background: #fcf6f6;
+    padding: 12px 0px;
+    display: inline-block;
+    width: 100%;
+}
+ .catalog_tab_header ul{
+    margin-bottom: 0px;
+    padding: 0px;
+}
+ .catalog_tab_header ul li{
+    float: left;
+}
+ .catalog_tab_header ul li a{
+    display: block;
+    color: #878787;
+    font-size: 0.750em;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    background:#f6e6e6;
+    padding: 0px 20px;
+    line-height: 32px;
+    min-height: 32px;
+    min-width: 95px;
+}
+ .catalog_tab_header ul li:hover a, .catalog_tab_header ul li.active a{
+    color: #fffbf7;
+    background:#c35457;
+}
+/*Override edx css*/
+ .catalog_tab_header ul{
+    list-style: none;
+    margin: 0;
+}
+ .catalog_tab_header ul li{
+    text-align: center;
+}
+ .content-wrapper .catalog_tab_header ul li a{
+    color: #878787;
+}
+ .content-wrapper .catalog_tab_header ul li.active a{
+    color: #fffbf7;
+}
+ .content-wrapper .catalog_tab_header ul li a:hover, .catalog_tab_header ul li a:focus{
+    color: #fff;
+}
+ body.view-in-course .catalog_tab_header *{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+ .wrapper-preview-menu {
+    margin: 0 auto;
+    padding: 0px;
+    background-color: #b11217;
+    box-sizing: border-box;
+    margin-top: 70px;
+}
+ .wrapper-preview-menu .preview-menu {
+    padding: 15px 0;
+    width: 100%;
+}
+ .wrapper-preview-menu .preview-actions {
+    padding-left: 0;
+    display: inline-block;
+    margin-bottom: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ .wrapper-preview-menu .preview-actions .action-preview {
+    display: inline-block;
+}
+ .wrapper-preview-menu .preview-actions .action-preview .action-preview-label {
+    margin-right: 10px;
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+    color: #fff;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+}
+ .wrapper-preview-menu .preview-actions .action-preview .action-preview-select {
+    margin-right: 20px;
+    border-radius: 0px;
+    border-color: rgb(169, 169, 169);
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+}
+ .wrapper-preview-menu .preview-actions .action-preview .action-preview-username-container {
+    display: none;
+}
+ body.view-wiki .wiki-wrapper{
+    border: none;
+}
+ body.view-in-course.view-wiki .content-wrapper {
+    margin: 0px;
+    padding: 0px;
+}
+ @media (min-width: 992px){
+     body.view-in-course.view-wiki .wiki-wrapper{
+        margin-top: 20px;
+    }
+}
+ body.view-in-course .footer_wrap .footer_content_section, body.view-in-course .footer_wrap .footer_bottom_section {
+     display: inherit;
+    width: auto;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+ body.view-in-course .content-wrapper{
+    padding: 0;
+    margin-top: 0;
+}
+ .wrapper-preview-menu .preview-menu .container, body.view-in-course .content-wrapper .container, body.discussion .content-wrapper .container, body.course.course-bookmarks .content-wrapper .container {
+     padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+ .wrapper-preview-menu .preview-menu .container, body.view-in-course .content-wrapper, body.discussion .content-wrapper, body.course.course-bookmarks .content-wrapper {
+     max-width: inherit;
+}
+ @media (min-width: 768px) {
+     .wrapper-preview-menu .preview-menu .container, body.view-in-course .content-wrapper .container, body.discussion .content-wrapper .container, body.course.course-bookmarks .content-wrapper .container {
+         width: 750px;
+    }
+}
+ @media (min-width: 992px) {
+     .wrapper-preview-menu .preview-menu .container, body.view-in-course .content-wrapper .container, body.discussion .content-wrapper .container, body.course.course-bookmarks .content-wrapper .container {
+         width: 970px;
+    }
+}
+ @media (min-width: 1200px) {
+     .wrapper-preview-menu .preview-menu .container, body.view-in-course .content-wrapper .container, body.discussion .content-wrapper .container, body.course.course-bookmarks .content-wrapper .container {
+         width: 1170px;
+    }
+}
+ @media (min-width: 1040px) {
+     .wrapper-preview-menu .preview-menu .container, body.view-in-course .content-wrapper .container, body.discussion .content-wrapper .container, body.course.course-bookmarks .content-wrapper .container {
+         width: 1040px;
+    }
+}
+ .wrapper-preview-menu .preview-menu .container:after, .wrapper-preview-menu .preview-menu .container:before, body.view-in-course .content-wrapper .container:after, body.discussion .content-wrapper .container:after, body.course.course-bookmarks .content-wrapper .container:after, body.view-in-course .content-wrapper .container:before, body.discussion .content-wrapper .container:before, body.course.course-bookmarks .content-wrapper .container:before {
+     display: table;
+     content: " ";
+}
+ .wrapper-preview-menu .preview-menu .container:after, body.view-in-course .content-wrapper .container:after, body.discussion .content-wrapper .container:after, body.course.course-bookmarks .content-wrapper .container:after {
+     clear: both;
+}
+ @media (max-width: 991px){
+     .catalog_tab_header {
+        margin-bottom: 15px;
+    }
+}
+ @media (max-width: 767px){
+     .wrapper-preview-menu {
+        margin-top: 54px;
+    }
+     .catalog_tab_header ul li a{
+        padding: 0px 7.5px;
+        line-height: 30px;
+        min-height: 30px;
+        min-width: auto;
+    }
+     .catalog_tab_header {
+        padding: 0px;
+    }
+}

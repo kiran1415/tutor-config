@@ -1,0 +1,75 @@
+## mako
+
+<%page expression_filter="h"/>
+
+<%namespace name='static' file='../static_content.html'/>
+<%namespace file='../main.html' import="login_query"/>
+
+<%!
+  from django.urls import reverse
+  from django.utils.translation import ugettext as _
+  from six import text_type
+%>
+
+<%
+  allows_login = not settings.FEATURES['DISABLE_LOGIN_BUTTON'] and not combined_login_and_register
+  restrict_enroll_for_course = course and settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain
+%>
+
+<div id="iimbxCollapse" class="iimbxCollapse-collapse">
+  <ul class="iimbx-menulist">
+    <!--<li class="${'active ' if '/courses' == request.path else ''}">
+      <a href="${reverse('courses')}">${_("Catalog")}</a>
+    </li>-->
+    <%doc>
+    <li class="has-child">
+      <a class="main-level" href="#">${_("Programs")}</a><i class="fa fa-angle-down"></i>
+      <ul class="sub-menu">
+        <li><a href="https://ctm-iitm.iimbx.edu.in/" target="_blank">Certificate Programme In Technology and Management</a></li>
+        <li class="active"><a href="https://ylp.iimbx.edu.in/" target="_blank">General Management Programme for Young Leaders</a></li>
+        ##<li><a href="https://swayam.iimbx.edu.in/" target="_blank">Swayam</a></li>
+      </ul>
+    </li>
+    <li>
+	<a href="https://iimbx.iimb.ac.in/swayam/" target="_blank">SWAYAM</a>
+    </li>
+    <li class="${'active ' if '/about' == request.path else ''}">
+      <a href="https://iimbx.iimb.ac.in/about-iimbx/">${_("About")}</a>
+    </li>
+    <li class="${'active ' if '/contact' == request.path else ''}">
+      <a href="https://iimbx.iimb.ac.in/contact/">${_("Contact")}</a>
+    </li>
+    </%doc>
+  </ul>
+</div>
+
+<div class="languages-form">
+  <div id="google_translate_element"></div>
+</div>
+
+<span class="header-signin pull-right">
+  % if allows_login:
+	  % if restrict_enroll_for_course:
+	    <a class="btn btn-theme btn-theme-white text-capitalize" href="${reverse('course-specific-login', args=[text_type(course.id)])}${login_query()}">${_("Sign in")}</a>
+	  % else:
+	    <a class="btn btn-theme btn-theme-white text-capitalize" href="/login${login_query()}">${_("Sign in")}</a>
+    % endif
+  % endif
+</span>
+<span class="header-register pull-right">
+    % if allows_login:
+      % if restrict_enroll_for_course:
+            <a class="register-btn btn btn-theme btn-theme-white text-capitalize" href="${reverse('course-specific-register', args=[text_type(course.id)])}">${_("Register")}</a>
+      % else:
+            <a class="register-btn btn btn-theme btn-theme-white text-capitalize" href="/register${login_query()}">${_("Register")}</a>
+      % endif
+    %endif
+</span>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P5QNR3KBBG');
+</script>
+

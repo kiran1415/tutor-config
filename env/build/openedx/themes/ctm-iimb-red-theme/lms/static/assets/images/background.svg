@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1600 630.5" style="enable-background:new 0 0 1600 630.5;" xml:space="preserve">
+<style type="text/css">
+	.st0{filter:url(#Path_211);}
+	.st1{opacity:0.2;fill:url(#Path_211-2_2_);enable-background:new    ;}
+	.st2{filter:url(#Path_167);}
+	.st3{fill:url(#Path_167-2_2_);}
+	.st4{filter:url(#Ellipse_267);}
+	.st5{fill:url(#Ellipse_267-2_2_);}
+	.st6{filter:url(#Ellipse_268);}
+	.st7{fill:url(#Ellipse_268-2_2_);}
+	.st8{filter:url(#Ellipse_269);}
+	.st9{fill:url(#Ellipse_269-2_2_);}
+</style>
+<filter  filterUnits="userSpaceOnUse" height="630.508" id="Path_211" width="1618" x="0" y="18">
+	<feOffset  dy="3" input="SourceAlpha"></feOffset>
+	<feGaussianBlur  result="blur" stdDeviation="3"></feGaussianBlur>
+	<feFlood  flood-opacity="0.161"></feFlood>
+	<feComposite  in2="blur" operator="in"></feComposite>
+	<feComposite  in="SourceGraphic" operator="over"></feComposite>
+</filter>
+<filter  filterUnits="userSpaceOnUse" height="630.508" id="Path_167" width="1618" x="0" y="0">
+	<feOffset  dy="3" input="SourceAlpha"></feOffset>
+	<feGaussianBlur  result="blur-2" stdDeviation="3"></feGaussianBlur>
+	<feFlood  flood-opacity="0.161"></feFlood>
+	<feComposite  in2="blur-2" operator="in"></feComposite>
+	<feComposite  in="SourceGraphic" operator="over"></feComposite>
+</filter>
+<filter  filterUnits="userSpaceOnUse" height="41" id="Ellipse_269" width="41" x="248" y="601">
+	<feOffset  dy="3" input="SourceAlpha"></feOffset>
+	<feGaussianBlur  result="blur-5" stdDeviation="3"></feGaussianBlur>
+	<feFlood  flood-opacity="0.161"></feFlood>
+	<feComposite  in2="blur-5" operator="in"></feComposite>
+	<feComposite  in="SourceGraphic" operator="over"></feComposite>
+</filter>
+<filter  filterUnits="userSpaceOnUse" height="53" id="Ellipse_268" width="53" x="230" y="494">
+	<feOffset  dy="3" input="SourceAlpha"></feOffset>
+	<feGaussianBlur  result="blur-4" stdDeviation="3"></feGaussianBlur>
+	<feFlood  flood-opacity="0.161"></feFlood>
+	<feComposite  in2="blur-4" operator="in"></feComposite>
+	<feComposite  in="SourceGraphic" operator="over"></feComposite>
+</filter>
+<filter  filterUnits="userSpaceOnUse" height="101" id="Ellipse_267" width="101" x="305" y="541">
+	<feOffset  dy="3" input="SourceAlpha"></feOffset>
+	<feGaussianBlur  result="blur-3" stdDeviation="3"></feGaussianBlur>
+	<feFlood  flood-opacity="0.161"></feFlood>
+	<feComposite  in2="blur-3" operator="in"></feComposite>
+	<feComposite  in="SourceGraphic" operator="over"></feComposite>
+</filter>
+<g id="Background" transform="translate(9 6)">
+	<g transform="matrix(1, 0, 0, 1, -9, -6)" class="st0">
+		
+			<linearGradient id="Path_211-2_2_" gradientUnits="userSpaceOnUse" x1="260.9031" y1="1037.4214" x2="259.9031" y2="1038.4214" gradientTransform="matrix(1600 0 0 -612.5056 -415731 636013.25)">
+			<stop  offset="0" style="stop-color:#0FB3B4"/>
+			<stop  offset="1" style="stop-color:#30077D"/>
+		</linearGradient>
+		<path id="Path_211-2_1_" class="st1" d="M0,287.9c0,0,218.7,338.9,538.3,342.5S1600,439,1600,439V18H0V287.9z"/>
+	</g>
+	<g transform="matrix(1, 0, 0, 1, -9, -6)" class="st2">
+		
+			<linearGradient id="Path_167-2_2_" gradientUnits="userSpaceOnUse" x1="260.9183" y1="1037.4442" x2="259.7573" y2="1038.5112" gradientTransform="matrix(1600 0 0 -612.5056 -415731 635995.25)">
+			<stop  offset="0" style="stop-color:#0FB3B4"/>
+			<stop  offset="1" style="stop-color:#30077D"/>
+		</linearGradient>
+		<path id="Path_167-2_1_" class="st3" d="M0,269.9c0,0,218.7,338.9,538.3,342.5S1600,421,1600,421V0H0V269.9z"/>
+	</g>
+	<g transform="matrix(1, 0, 0, 1, -9, -6)" class="st4">
+		
+			<linearGradient id="Ellipse_267-2_2_" gradientUnits="userSpaceOnUse" x1="257.2773" y1="1034.4175" x2="257.2423" y2="1033.1135" gradientTransform="matrix(83 0 0 -83 -21006 86382.5781)">
+			<stop  offset="0" style="stop-color:#0FB3B4"/>
+			<stop  offset="1" style="stop-color:#30077D"/>
+		</linearGradient>
+		<circle id="Ellipse_267-2_1_" class="st5" cx="346.5" cy="582.5" r="41.5"/>
+	</g>
+	<g transform="matrix(1, 0, 0, 1, -9, -6)" class="st6">
+		
+			<linearGradient id="Ellipse_268-2_2_" gradientUnits="userSpaceOnUse" x1="252.8326" y1="1027.8907" x2="252.7976" y2="1026.5868" gradientTransform="matrix(35 0 0 -35 -8601 36463.8203)">
+			<stop  offset="0" style="stop-color:#0FB3B4"/>
+			<stop  offset="1" style="stop-color:#30077D"/>
+		</linearGradient>
+		<circle id="Ellipse_268-2_1_" class="st7" cx="247.5" cy="511.5" r="17.5"/>
+	</g>
+	<g transform="matrix(1, 0, 0, 1, -9, -6)" class="st8">
+		
+			<linearGradient id="Ellipse_269-2_2_" gradientUnits="userSpaceOnUse" x1="248.8226" y1="1022.0026" x2="248.7876" y2="1020.6986" gradientTransform="matrix(23 0 0 -23 -5463 24102.8809)">
+			<stop  offset="0" style="stop-color:#0FB3B4"/>
+			<stop  offset="1" style="stop-color:#30077D"/>
+		</linearGradient>
+		<circle id="Ellipse_269-2_1_" class="st9" cx="259.5" cy="612.5" r="11.5"/>
+	</g>
+</g>
+</svg>

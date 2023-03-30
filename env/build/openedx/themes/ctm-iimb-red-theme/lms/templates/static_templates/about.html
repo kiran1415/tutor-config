@@ -1,0 +1,102 @@
+<%page expression_filter="h"/>
+<%namespace name='static' file='../static_content.html'/>
+<%inherit file="../custom_main.html" />
+<%! 
+from django.utils.translation import ugettext as _
+%>
+
+<%block name="pagetitle">${_("About")}</%block>
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>CTM</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="stylesheet" href="${static.url('css/main.css')}">
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700" rel="stylesheet">
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  
+</head>
+<%block name="bodyclass">aboutus</%block>
+          <!--[if lte IE 9]>
+          <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+          <![endif]-->
+  <section class="inner-banner">
+ 
+    
+    <div class="about-banner-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h1 class="inner-banner-head">
+              About <strong>IITM CCE</strong>
+            </h1>
+            <p>The Centre for Continuing Education (CCE) at IITM coordinates the continuing education programmes of the
+              Institute. The Education Technology Cell, established by MHRD for the purpose of creating educational
+              videos and other software of broadcast quality in Science and Technology using the expertise of the
+              faculty and the facilities at IIT, is associated with this Centre. Further, the Centre facilitates
+              continuing education modules for industry and IIT Madras series in Science and Engineering.</p>
+            <span class="drops"></span>
+          </div>
+          <div class="col-md-6">
+            <div class="banner-img">
+              <img src="${static.url('assets/images/about/iitm_cce_banner.jpg')}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="about_iitm">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <h3 class="sub_section_heading">About IITM RBC-DSAI</h3>
+          <p>
+            The Robert Bosch Centre for Data Science and Artificial Intelligence (RBC-DSAI) was founded in August 2017, in IIT Madras with a vision to expand and further the research, education and outreach activities in the areas of Data Science and Artificial Intelligence. RBC-DSAI comprises faculty from several departments across the Institute, who carry out research in various areas of data science and artificial intelligence. The long-term vision of RBC-DSAI is to become a world leader in data science research, where long-standing fundamental research problems, cutting across disciplines, are targeted and solved.
+            </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about_iimbx">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="sub_section_heading mobile">About IIMBx</h3>
+          <div class="iimbx-img">
+            <img src="${static.url('assets/images/about/iimbx.jpg')}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h3 class="sub_section_heading desktop">About IIMBx</h3>
+          <p>IIMBx is founded on the philosophy that management education has strong potential to transform our
+            educational systems and that high quality education must be available to all unconstrained by limitations
+            imposed by location, finances or prior educational background. Led by the faculty at IIM Bangalore, IIMBx
+            offers online courses and programmes covering core and advanced business and management subjects.</p>
+          <h5 class="sub-heading"><span class="head">IIMB’s Vision</span><span class="line">
+              <hr></span></h5>
+          <p>To be a global renowned academic institution fostering excellence in management, innovation and
+            entrepreneurship for business, government and society</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div id="button">Goto Top</div>
+  
+  
+  
+      <script src="${static.url('assets/js/enquire-min.js')}"></script>
+        <script src="${static.url('assets/js/jquery.bxslider-min.js')}"></script>
+    
+</body>
+</html>

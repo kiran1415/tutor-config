@@ -1,0 +1,762 @@
+<%!
+from django.utils.translation import ugettext as _ 
+from django.urls import reverse
+%>
+
+<%page expression_filter="h"/>
+
+<%namespace file='main.html' import="login_query"/>
+<%namespace name='static' file='static_content.html'/>
+
+
+<!DOCTYPE html>
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>CTM</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <meta name="google-site-verification" content="KKEoG2WqHoqsH_bzFm7Pdez3xZ-sgH-105V6UO77eQo" />
+
+  <link rel="icon" type="image/x-icon" href="${static.url(static.get_value('favicon_path', settings.FAVICON_PATH))}" />
+  <link rel="stylesheet" href="${static.url('css/main.css')}">
+  <link rel="stylesheet" href="${static.url('css/download.css')}">
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="${static.url('css/font-awesome.min.css')}">
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  
+</head>
+
+<body class="homepage">
+          <!--[if lte IE 9]>
+          <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+          <![endif]-->
+  <div class="banner-bg">
+      <header class="top">
+        <div class="container">
+         <div class="logo">
+            <a href="https://www.iitm.ac.in/" target="_blank"><img src="${static.url('assets/images/iitm.svg')}" alt=""></a>
+            <a href="https://www.iimb.ac.in/" target="_blank" ><img src="${static.url('assets/images/iimb.svg')}" alt=""></a>
+          </div>
+          <div class="navbtn">
+            <div class="bar"></div>
+          </div>
+          <span class="mobile_bg">
+            <nav class="main-nav">
+              <ul class="site-nav">
+                <li>
+                  <a href="/" class="link_home">Home</a>
+                </li>
+                <li>
+                  <a href="/about" class="link_aboutus">About</a>
+		</li>
+                <li>
+                  <a href="/student-profile" class="link_student">Student Profile</a>
+                </li>
+                <li>
+                  <a href="/faq" class="link_faq">FAQs</a>
+                </li>
+                <li>
+                  <a href="#" class="link_contact">Contact</a>
+                </li>
+                <li>
+                  <a href="/partner_with_us" class="link_contact">Partner with us</a>
+                </li> 
+		<li>
+                  <a href="https://www.linkedin.com/pulse/ahead-curve-unique-offering-from-iitm-iimb-certificate-in/" target="_blank" class="link_blog">Blog</a>
+                </li>
+                <li>
+                  <div class="account">
+                    <a href="/login" target="_blank">Sign in</a>
+
+                  </div>
+                </li>
+		<li class="social">
+                  <a href="https://www.facebook.com/Ctm-I-Iitm-I-Iimb-101322758177348" target="blank">
+                  <img src="${static.url('assets/images/facebook.svg')}">
+                  </a>
+                </li>
+                <li class="social">
+                  <a href="https://twitter.com/CTM_IITM_IIMB" target="blank">
+                    <img src="${static.url('assets/images/linkindin-03.svg')}">
+                  </a>
+                </li>
+                   <!--
+                <li class="social">
+                  <a href="https://www.instagram.com/ctm_iimbx/?hl=en" target="blank">
+                    <img src="${static.url('assets/images/instagram.svg')}">
+                  </a>
+                </li>
+                 -->
+                <li class="social">
+                  <a href="https://www.linkedin.com/in/certificate-in-technology-and-management/" target="blank">
+                    <img src="${static.url('assets/images/linkdin.svg')}">
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </span>
+        </div>
+      </header>
+      
+    
+      <!-- banner -->
+      <div class="banner">
+        <div class="container">
+          <div class="banner_content">
+            <div class="banner_text">
+              <h1>Certificate Programme in <span>
+                  <strong>Technology</strong>
+                  and
+                  <strong>Management</strong>
+                </span>
+              </h1>
+              <p>A blended Certificate Programme in Technology and Management jointly offered by IIM Bangalore and IIT
+                Madras</p>
+              <div class="actions">
+                <a href="#" target="_blank" class="download_brochure">Download Brochure</a>
+                <a href="https://www.iimb.ac.in/regn/ctm" target="_blank" class="applynow">Apply Now</a>
+              </div>
+              
+              <!--<div class="actions">
+                <span class="registercta">Last date of registration:- 15th June 2020</span>
+              </div>-->
+               <div class="actions">
+                <span class="blinking"><a href="https://www.businesstoday.in/magazine/indias-best-b-schools-2019/ahead-of-the-curve/story/384506.html" target="blank">CTM in the media</a></span>
+              </div>
+	</div>
+            <div class="banner_animation">
+              <div class="img_animation">
+                <div class="slider anim-banner">
+                  <div><img src="${static.url('assets/images/anim-1.png')}" alt=""></div>
+                  <div><img src="${static.url('assets/images/anim-2.png')}" alt=""></div>
+                  <div><img src="${static.url('assets/images/anim-3.png')}" alt=""></div>
+                  <div><img src="${static.url('assets/images/anim-4.png')}" alt=""></div>
+                  <div><img src="${static.url('assets/images/anim-5.png')}" alt=""></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end banner -->
+    </div>
+    <!-- banner bg end -->
+  <section class="section programe-structure">
+            <div class="container full-width">
+              <h3 class="section_heading">Programme Structure</h3>
+              <p class="section_para">CTM is a 11-month long programme, offered in four modules. Each module spans for about three months, comprising technical and management courses. At the end of each module, proctored exams will be conducted. On successful completion of the programme,
+                the candidate receives a ‘Certificate in Technology and Management.
+              </p>
+              <div class="section_table">
+                <div class="table-bg">
+                  <table class="table">
+                    <thead>
+                      <th>Domain</th>
+                      <th>Streams</th>
+                      <th>Module 1</th>
+                      <th>Module 2</th>
+                      <th>Module 3</th>
+                      <th>Module 4</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="th">Management</td>
+                        <td></td>
+                        <td>
+                          <ul class="list">
+                            <li>Accounting & Finance</li>
+                              <li>Managerial Economics</li>
+                          </ul>
+                        </td>
+                        <td>
+                          <ul class="list">
+                            <li>Marketing Management</li>
+      
+                          </ul>
+                        </td>
+                        <td>
+                          <ul class="list">
+                            <li>Operations Management</li>
+                          </ul>
+                        </td>
+                        <td>
+                          <ul class="list">
+                            <li>Organizational Design </li>
+                              <li>Strategic Management</li>
+                          </ul>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="th">Technology</td>
+                        <td>
+                          <ul class="list bold">
+                            <li>Data Sciences</li>
+                          </ul>
+                        </td>
+                        <td>
+                          <ul class="list">
+                            <li>Data Visualization</li>
+                          </ul>
+                        </td>
+                        <td>
+                          <ul class="list">
+                            <li>Probability and Statistics for Data Sciences</li>
+                          </ul>
+                        </td>
+                        <td>
+                          <ul class="list">
+                            <li>Parameter Estimation and Linear Regression</li>
+                          </ul>
+                        </td>
+                        <td>
+                          <ul class="list">
+                            <li>Introduction to Machine Learning</li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+      
+          <section class="video-box">
+                  <div class="container">
+        
+                    <div class="video">
+                      <div class="controls" id="main_video">
+                        <button class="play"><img src="${static.url('assets/images/icon_play.svg')}" alt=""></button>
+                        <span>Click here to play video</span>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+        
+  <section class="course_curriculum">
+            <div class="container">
+              <h3 class="section_heading">Course Curriculum</h3>
+              <p class="section_para">The programme comprises online courses from Technology and Management disciplines.</p>
+            </div>
+          </section>
+          
+          <section class="courses">
+            <div class="container">
+              <div class="row">
+          
+                <div class="col-md-4">
+                  <h3 class="sub_section_heading">Technical Domain</h4>
+                </div>
+                <div class="col-md-8">
+          
+                  <div class="content">
+                    <h5 class="sub-heading"><span class="head">Data Sciences</span> <span class="line">
+                        <hr></span></h5>
+                    <p>The Data Science stream will equip you to venture into data-driven computing and will cover all the essential topics such as Mathematical Foundations, Data Visualization and Machine Learning.</p>
+                    <ul class="card-list">
+                      <li class="card_container">
+                        <a href="#" id="data_visualisation" class="card">
+                          <div class="card_head">
+                            <img src="${static.url('assets/images/data_visualisation.svg')}" alt="">
+                            <span class="card_topic">Data Visualisation</span>
+                          </div>
+                          <ul class="person_details">
+                            <li class="person">
+                              <img src="${static.url('assets/images/faculties/kathirmani.jpg')}" alt="">
+                            </li>
+                            <li>Mr. Kathirmani</li>
+                            <li>Co-founder, Quelit</li>
+                          </ul>
+                        </a>
+                      </li>
+                      <li class="card_container">
+                        <a href="#" id="prob_stat" class="card">
+                          <div class="card_head">
+                            <img src="${static.url('assets/images/data_science.svg')}" alt="">
+                            <span class="card_topic"> Probability and Statistics for Data Sciences</span>
+                          </div>
+                          <ul class="person_details">
+                            <li class="person">
+                              <img src="${static.url('assets/images/faculties/nandan_sudarshanam.jpg')}" alt="">
+                            </li>
+                            <li>Prof. Nandan Sudarsanam</li>
+                            <li>IIT Madras</li>
+                          </ul>
+                        </a>
+                      </li>
+                      <li class="card_container">
+                        <a href="#" id="para_est" class="card">
+                          <div class="card_head">
+                            <img src="${static.url('assets/images/parameter_estimation.svg')}" alt="">
+                            <span class="card_topic">Parameter Estimation and Linear Regression</span>
+                          </div>
+                          <ul class="person_details">
+                            <li class="person">
+                              <img src="${static.url('assets/images/faculties/arun_tangirala.jpg')}" alt="">
+          
+                            </li>
+                            <li>Prof. Arun Tangirala</li>
+                            <li>IIT Madras</li>
+                          </ul>
+                        </a>
+                      </li>
+                      <li class="card_container">
+                        <a href="#" id="intro_machine" class="card">
+                          <div class="card_head">
+                            <img src="${static.url('assets/images/machine_learning.svg')}" alt="">
+                            <span class="card_topic">Introduction to Machine Learning</span>
+                          </div>
+                          <ul class="person_details">
+                            <li class="person">
+                              <img src="${static.url('assets/images/faculties/balaraman_ravindran.jpg')}" alt="">
+                            </li>
+                            <li>Prof. Balaraman Ravindran,</li>
+                            <li>IIT Madras</li>
+                          </ul>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+          
+                </div>
+              </div>
+          
+            </div>
+          
+          </section>
+          
+  <section class="business_management domain">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4">
+                    <h3 class="sub_section_heading">Management Domain</h4>
+                      <p class="main_para">The Management Domain will help the students to gain a broad overview of the key concepts, tools and techniques needed to successfully meet the challenges of today’s global business environment.</p>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="content">
+                      <h5 class="sub-heading"><span class="head">Business and Management</span><span class="line">
+                          <hr></span></h5>
+                      <ul class="card-list domain-slider">
+                        <li class="card_container">
+                          <a href="#" id="acc_fin" class="card">
+                            <div class="card_head">
+                              <img src="${static.url('assets/images/accounting_finance.svg')}" alt="">
+                              <span class="card_topic">Accounting and FInance</span>
+                            </div>
+                            <ul class="person_details">
+                              <li class="person">
+                                <img src="${static.url('assets/images/faculties/narasimhan.jpg')}" alt="">
+                              </li>
+                              <li>Prof. Narasimhan</li>
+                              <li>IIM Bangalore</li>
+                            </ul>
+                          </a>
+                        </li>
+                        <li class="card_container">
+                          <a href="#" id="man_eco" class="card">
+                            <div class="card_head">
+                              <img src="${static.url('assets/images/managerial_economics.svg')}" alt="">
+                              <span class="card_topic">Managerial Economics</span>
+                            </div>
+                            <ul class="person_details">
+                              <li class="person">
+                                <img src="${static.url('assets/images/faculties/subhashish_gupta.jpg')}" alt="">
+            
+                              </li>
+                              <li>Prof. Subhashish Gupta</li>
+                              <li>IIM Bangalore</li>
+                            </ul>
+            
+                          </a>
+                        </li>
+                        <li class="card_container">
+                          <a href="#" id="mar_man" class="card">
+                            <div class="card_head">
+                              <img src="${static.url('assets/images/marketing_management.svg')}" alt="">
+                              <span class="card_topic">Marketing Management</span>
+                            </div>
+                            <ul class="person_details">
+                              <li class="person">
+                                <img src="${static.url('assets/images/faculties/ashis_mishra.jpg')}" alt="">
+                              </li>
+                              <li>Prof. Ashis Mishra</li>
+                              <li>IIM Bangalore</li>
+                            </ul>
+                          </a>
+                        </li>
+                        <li class="card_container">
+                          <a href="#" id="ope_man" class="card">
+                            <div class="card_head">
+                              <img src="${static.url('assets/images/operational_management.svg')}" alt="">
+                              <span class="card_topic">Operations Management</span>
+                            </div>
+                            <ul class="person_details">
+                              <li class="person">
+                                <img src="${static.url('assets/images/faculties/mahadevan.jpg')}" alt="">
+                              </li>
+                              <li>Prof. B Mahadevan</li>
+                              <li>IIM Bangalore</li>
+                            </ul>
+                          </a>
+                        </li>
+            
+                        <li class="card_container">
+                          <a href="#" id="org_des" class="card">
+                            <div class="card_head">
+                              <img src="${static.url('assets/images/organisational_design.svg')}" alt="">
+                              <span class="card_topic">Organizational Design</span>
+                            </div>
+                            <ul class="person_details">
+                              <li class="person">
+                                <img src="${static.url('assets/images/faculties/sourav_mukherji.jpg')}" alt="">
+                              </li>
+                              <li>Prof. Sourav Mukherji</li>
+                              <li>IIM Bangalore</li>
+                            </ul>
+                          </a>
+                        </li>
+            
+            
+                        <li class="card_container">
+                          <a href="#" id="str_man" class="card">
+                            <div class="card_head">
+                              <img src="${static.url('assets/images/strategic_management.svg')}" alt="">
+                              <span class="card_topic">Strategic Management</span>
+                            </div>
+                            <ul class="person_details">
+                              <li class="person">
+                                <div class="persons">
+                                  <img src="${static.url('assets/images/faculties/rejie_george.jpg')}" alt="">
+                                  <img src="${static.url('assets/images/faculties/pd_jose.jpg')}" alt="">
+                                  <img src="${static.url('assets/images/faculties/sai_yayavaram.jpg')}" alt="">
+            
+                                </div>
+                              </li>
+                              <li>Rejie George Pallathita, P D Jose, Sai Yayavaram</li>
+                              <li>Professors, IIM Bangalore</li>
+                            </ul>
+                          </a>
+                        </li>
+            
+                      </ul>
+                    </div>
+            
+                  </div>
+                </div>
+              </div>
+            </section>
+            
+  <section class="admission" id="admission" name="admission">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-xl-4">
+                      <h3 class="sub_section_heading">Admission Criteria</h3>
+                      <p class="main_para">The programme follows a comprehensive admission procedure to ensure that the learners’ goals are oriented towards a challenging experience, simultaneously achieving diversity in both technical and management aspects. Participants are carefully chosen through interview and an aptitude test</p>
+                      <a href="#" title="" class="readmore admission_criteria_readmore">Read more</a>
+                      <div class="admission_criteria_content">
+                        <h4>Eligibility</h4>
+                        <ul>
+                          <li>An undergraduate degree in any stream.</li>
+                          <li>At least 2 years of work experience.</li>
+                          <li>There might be pre-requisites for a few courses.</li>
+                        </ul>
+                      
+                      </div>
+                    </div>
+                    <div class="col-xl-8">
+                      <div class="fees">
+                        <h4 class="table_heading">Fees</h4>
+                        <div class="table-bg">
+                          <table class="feestable">
+                            <thead>
+                              <tr>
+                                <th>Fees</th>
+                                <th>Indian Students</th>
+                                <th>International Students</th>
+                                <th>Deadline</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>On confirmation</td>
+                                <td>50,000 INR</td>
+                                <td>1000 USD</td>
+                                <td>On Accepting the Offer</td>
+                              </tr>
+                              <tr>
+                                <td>1st Instalment</td>
+                                <td>2,00,000 INR</td>
+                                <td>3500 USD</td>
+                                <td>15th June 2020</td>                                
+                              </tr>
+                              <tr>
+                                <td>2nd Instalment</td>
+                                <td>2,50,000 INR</td>
+                                <td>4500 USD</td>
+                                <td>30th November 2020</td>
+                              </tr>
+                            </tbody>
+              
+                          </table>
+                          <span class="info"></span>
+                          <div class="more_info">
+                            <ul>
+                              <li>The programme is priced at Rs.5,00,000 (Exclusive of taxes) for Indian students and USD 9000 for international students.
+              </li>
+              <li>Payment can be made in multiple instalments. Refer table.
+              </li>
+              <li>In case of cancellation, the fee will be refunded only if the request is received at least 10 days prior to the start of the programme.
+              </li>
+              <li>Cancellations during the run of the programme will not be refunded.
+              </li>
+              <li>Financial assistance will be provided to deserving candidates upon request.</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+              
+                    </div>
+                  </div>
+                </div>
+              </section>
+              
+              
+  
+                
+                
+                
+                  <section class="pedagogy-box">
+                          <div class="container">
+                            <div class="row">
+                              <div class="col-md-12 col-lg-6 col-xl-5 pedagogy">
+                                <h3 class="sub_section_heading">Pedagogy</h3>
+                                <p>A balanced mix of asynchronous sessions comprising videos and synchronous interactive sessions, along with projects and case discussions for a hands-on experience. During each module, the following methods of teaching are adopted.</p>
+                                <ul class="thumbnails">
+                                  <li>
+                                    <img src="${static.url('assets/images/icon_videos.svg')}" alt="">
+                                    <span class="title">Videos</span>
+                                  </li>
+                                  <li>
+                                    <img src="${static.url('assets/images/icon_campus.svg')}" alt="">
+                                    <span class="title">Campus Connect</span>
+                                     <a href="#" class="readmore campus_connect_readmore">Read more</a>
+                                  </li>
+                                  <li>
+                                    <img src="${static.url('assets/images/icon_webinar.svg')}" alt="">
+                                    <span class="title">Webinars</span>
+                                  </li>
+                                </ul>
+                <div class="campus_connect_readmore_content">
+                  <h5>Campus Connect</h5>
+                  <p>A unique learning element of this programme is the opportunity to interact with the course instructors in person at IITM and IIMB campuses at least once during the run of each module.
+                In addition, in each course, a Teaching Assistant (a subject matter expert) will guide you through the online learning journey through email and online discussion forums.</p>
+                
+                </div>
+                              </div>
+                              <div class="col-md-12 col-lg-6 col-xl-7 stackable">
+                                <h3 class="sub_section_heading">Sample Certificate</h3>
+                                <img src="${static.url('assets/images/certificate@2x.jpg')}" alt="" class="stack">
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                
+  <section class="news">
+                          <div class="container">
+                            <h3 class="section_heading">Top stories on CTM</h3>
+                  
+                  
+                            <div class="row justify-content-center ">
+                              <div class="col-md-4 col-xl-3">
+                                <div class="thumbnail thumbnail-trigger" id="gallery">
+                  
+                                  <img src="${static.url('assets/images/blog-thumb.jpg')}" alt="">
+                                  <p>Sneak peek - life as a CTM student </p>
+                                  <a class="news_link" href="#">Gallery</a>
+                                </div>
+                              </div>
+                              <div class="col-md-4 col-xl-3">
+                                <div class="thumbnail" id="videonews">
+                                  <div class="controls">
+                                  <button class="play"><img src="${static.url('assets/images/icon_play.svg')}" alt=""></button>
+                                </div>
+                                  <img src="${static.url('assets/images/video_testimonial.jpg')}" alt="">
+                                  <p>Certificate Programme in Technology and Management (CTM);
+                  Testimonial by Ranjeet Singh.</p>
+                                  <a class="news_link" href="#">Testimonial</a>
+                                </div>
+                              </div>
+                              <div class="col-md-4 col-xl-3">
+                                <div class="thumbnail thumbnail-trigger" id="testimonials">
+                                  <img src="${static.url('assets/images/testimonial.jpg')}" alt="">
+                                  <p>A beautifully crafted course that balances regular and online coursework to fit in
+                  with our work...</p>
+                                  <a class="news_link"  id="testimonials" href="#">Hear from our students</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                  
+  <div id="button">Goto Top</div>
+                    
+                    <footer>
+                      <div class="container">
+                       
+                        <div class="row">
+                        <div class="col-md-3">
+                          <div class="footer_logo">
+                           <a href="https://rbcdsai.iitm.ac.in/" target="_blank"><img src="${static.url('assets/images/rbc.png')}" alt=""></a>
+                           <a href="https://www.iimbx.edu.in/" target="_blank"><img src="${static.url('assets/images/iimbx.png')}" alt=""></a>
+                            
+                          </div>
+                        </div>
+                        <div class="col-md-7">
+                    
+                              <ul class="links">
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/about">About Us</a></li>
+                                <li><a href="/faq">FAQs</a></li>
+				<li><a href="/partner_with_us">Partner with us</a></li>
+                              </ul>
+                    
+                    
+                        </div>
+                        <div class="col-md-2">
+                          <!-- <ul class="links">
+                              <li title="Follow us on twitter">
+                                <a href="https://twitter.com/CTM_IITM_IIMB" target="_blank" class="social_twitter"><i class="fa fa-twitter"></i></a>
+                              </li>     
+                              <li title="Follow us on linkedin">
+                                <a href="https://www.linkedin.com/in/certificate-in-technology-and-management/" target="_blank" class="social_linkdin"><i class="fa fa-linkedin"></i>
+                                </a>
+                              </li>
+                          </ul> -->
+
+                    <!--
+                          <ul class="social desktop">
+                            <li><a href="https://www.facebook.com/iimbxonline/" target="_blank" class="fb">Facebook</a></li>
+                            <li><a href="https://www.youtube.com/channel/UCQ6YVMIgJLKLMKXDzivYraQ"  target="_blank"  class="yt">Youtube</a></li>
+                          </ul>
+                    -->
+                        </div>
+                      </div>
+                      </div>
+                      <div class="dark-bg">
+                        <div class="container">
+                          <div class="row">
+                    
+                            <div class="col-md-3"></div>
+                            <div class="col-md-7">
+                              <ul class="contact">
+                              <li>Email : <a href="mailto:ctm-admissions@iimb.ac.in">ctm-admissions@iimb.ac.in</a></li>
+                              <li>Phone : <a href="tel:+9180-26993894">+9180-26993894</a></li>
+                            </ul>
+                          </div>
+                            <div class="col-md-2">
+                    <!--
+                              <ul class="social">
+                                <li class="mobile"><a href="https://www.facebook.com/iimbxonline/" target="_blank" class="fb">Facebook</a></li>
+                                <li  class="mobile"><a href="https://www.youtube.com/channel/UCQ6YVMIgJLKLMKXDzivYraQ"  target="_blank"  class="yt">Youtube</a></li>
+                                <li><a href="https://play.google.com/store/apps/details?id=org.app.iimbx"  target="_blank"   class="gplay">google play</a></li>
+                              </ul>
+                    -->
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                    <div class="footer_message">
+                      <p>Copyright © IIM Bangalore. All Rights Reserved.</p>
+                    </div>
+                    </footer>
+                    
+      <script src="${static.url('assets/js/enquire-min.js')}"></script>
+                          <script src="${static.url('assets/js/jquery.bxslider-min.js')}"></script>
+                          <script src="${static.url('assets/js/main-min.js')}"></script>
+  <div class="card_modal">
+                        <button class="modal_close">close</button>
+                        <div class="modal-content"></div>
+                        </div>
+                        <div class="modal-bg"></div>
+                        <div class="overlay">
+         <div class="overlay_header">
+            <h3>Please fill in the details to know more about the programme</h3>
+            <button class="modal_close">X</button>
+         </div>
+         <div class="overlay_content">
+            <form name="submit-to-google-sheet" target="_blank" action="assets/ctm_brochure.pdf" method="POST" onsubmit="return brochure()">
+               <ul class="form">
+                  <li class="form-group">
+                     <label for="name">Name <span class="man">*</span></label>
+                     <input name="name" type="text" id="name" required>
+                  </li>
+                  <li class="form-group">
+                     <label for="email">Email <span class="man">*</span></label>
+		     <input name="email" type="email" id="email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required>                  
+		  </li>
+                  <li class="form-group">
+                     <label for="number ">Phone</label>
+                     <input name="contact"type="tel" id="phone" name="phone" pattern="[1-9]{1}[0-9]{9}">
+                  </li>
+                  <li class="form-group">
+                     <p for="Updates">Would you like to receive updates about the programme?</p>
+                     <br/>
+                     <div>
+                        <input type="radio" id="yes" name="updates" value="Yes" required>
+                        <label for="updates">Yes</label><br>
+                     </div>
+                     <div>
+                        <input type="radio" id="no" name="updates" value="No">
+                        <label for="updates">No</label><br>
+                     </div>
+                  </li>
+                  <li class="overlay_actions">
+                     <!-- <button class="btn-link">cancel</button> -->
+                     <input type="submit" class="btn-main" value="Download Brochure">
+                     <!-- <button class="btn-main">Ok</button> -->
+                     <!-- <input type="submit" class="btn-main" value="Submit" onclick="window.open('file:///C:/Users/pakhi/Desktop/ctm-new/assets/ctm_brochure.pdf','_blank');">  -->
+                  </li>
+               </ul>
+            </form>
+         </div>
+      </div>
+      <div class="overlay_bg"></div>
+<script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbxajm_P85zAimzLt6G2AVK1oHS0DYRzg9A1ztPZ7nNcUbuh--I/exec'
+      //  const scriptURL = 'https://script.google.com/macros/s/AKfycbyqIv2wxLEpyoQ7U5q2c6dB873P0LhTcSoFVHuCcP6NayvgyP4/exec'
+      const form = document.forms['submit-to-google-sheet']
+      form.addEventListener('submit', e => {
+       e.preventDefault()
+       fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+         .then(response => console.log('Success!', response))
+         .catch(error => console.error('Error!', error.message))
+      })
+   </script>
+   <script type="text/javascript">
+      function brochure() {
+        window.open('https://ctm-iitm.iimbx.edu.in/static/ctm-iimb-red-theme/assets/CTM_Brochure_Batch_3.69c9ba37d635.pdf','_blank');
+        return false;
+      }
+      
+   </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-165069384-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-165069384-2');
+</script>
+
+</body>
+
+</html>
+

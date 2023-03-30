@@ -1,0 +1,71 @@
+## mako
+<%page expression_filter="h"/>
+<%!
+  from django.utils.translation import ugettext as _
+  from lms.djangoapps.branding .api import get_footer
+  from django.conf import settings
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<%namespace name='static' file='static_content.html'/>
+ <footer>
+    <div class="container">
+     
+      <div class="row">
+      <div class="col-md-3">
+        <div class="footer_logo">
+         <a href="https://rbcdsai.iitm.ac.in/" target="_blank"><img src="${static.url('assets/images/rbc.png')}" alt=""></a>
+         <a href="https://www.iimbx.edu.in/" target="_blank"><img src="${static.url('assets/images/iimbx.png')}" alt=""></a>
+          
+        </div>
+      </div>
+      <div class="col-md-7">
+  
+            <ul class="links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="https://iimbx.iimb.ac.in/faq/">FAQs</a></li>
+	      <li><a href="/partner_with_us">Partner with us</a></li>
+            </ul>
+  
+  
+      </div>
+      <div class="col-md-2">
+        <!-- <ul class="links">
+          <li title="Follow us on twitter">
+            <a href="https://twitter.com/CTM_IITM_IIMB" target="_blank" class="social_twitter"><i class="fa fa-twitter"></i></a>
+          </li>     
+          <li title="Follow us on linkedin">
+            <a href="https://www.linkedin.com/in/certificate-in-technology-and-management/" target="_blank" class="social_linkdin"><i class="fa fa-linkedin"></i>
+            </a>
+          </li>
+        </ul> -->
+      </div>
+    </div>
+    </div>
+    <div class="dark-bg">
+      <div class="container">
+        <div class="row">
+  
+          <div class="col-md-3"></div>
+          <div class="col-md-7">
+            <ul class="contact">
+            <li>Email : <a href="mailto:ctm-admissions@iimb.ac.in">ctm-admissions@iimb.ac.in</a></li>
+            <li>Phone : <a href="tel:+9180-26993894">+9180-26993894</a></li>
+          </ul>
+        </div>
+          <div class="col-md-2">
+  <!--
+            <ul class="social">
+              <li class="mobile"><a href="https://www.facebook.com/iimbxonline/" target="_blank" class="fb">Facebook</a></li>
+              <li  class="mobile"><a href="https://www.youtube.com/channel/UCQ6YVMIgJLKLMKXDzivYraQ"  target="_blank"  class="yt">Youtube</a></li>
+              <li><a href="https://play.google.com/store/apps/details?id=org.app.iimbx"  target="_blank"   class="gplay">google play</a></li>
+            </ul>
+  -->
+          </div>
+        </div>
+      </div>
+      </div>
+  <div class="footer_message">
+    <p>Copyright © IIM Bangalore. All Rights Reserved.</p>
+  </div>
+  </footer>

@@ -1,0 +1,124 @@
+.ctm-students-profile-page {
+  margin-top: 100px;
+}
+
+.ctm-students-profile-page .top {
+  background: #2a2888;
+  background: -webkit-gradient(
+    left top,
+    right bottom,
+    color-stop(0%, #2a2888),
+    color-stop(100%, #4ab4ba)
+  );
+  background: -webkit-linear-gradient(-45deg, #2a2888 0%, #4ab4ba 100%);
+  background: -webkit-linear-gradient(315deg, #2a2888 0%, #4ab4ba 100%);
+  background: linear-gradient(135deg, #2a2888 0%, #4ab4ba 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2a2888', endColorstr='#4ab4ba', GradientType=1);
+  -webkit-overflow-scrolling: touch;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.ctm-profiles {
+  list-style-type: none;
+
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .ctm-profiles {
+    margin: 70px 0 0;
+  }
+}
+
+.ctm-p_linkedin {
+  background: url(../images/linkedin.svg) no-repeat 0 0;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: block;
+}
+
+.profile_item {
+  background: #fff;
+  box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 100%;
+  margin: 0 0 30px 0;
+  padding: 20px;
+  position: relative;
+  min-height: 215px;
+}
+
+@media (min-width: 992px) {
+  .profile_item {
+    /* margin: 15px; */
+  }
+}
+
+.ctm-profile {
+  display: flex;
+}
+
+.ctm-profile_picture {
+  width: 30px;
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .ctm-profile_picture {
+    width: 70px;
+  }
+}
+
+@media (min-width: 1360px) {
+  .ctm-profile_picture {
+    width: 120px;
+  }
+}
+
+.p_details {
+  list-style-type: none;
+  margin: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-weight: 400;
+}
+
+.p_details .name {
+  color: #4086a2;
+  font-size: 20px;
+  padding-right: 30px;
+}
+
+.p_details .desg {
+  color: #4086a2;
+}
+
+.p_details .p_batch {
+  color: #4086a2;
+  font-weight: 600;
+}
+
+.p_details .p_readmore,
+.p_readless {
+  color: #4086a2;
+  display: inline;
+  cursor: pointer;
+}
+
+.p_readless {
+  display: none;
+}
+
+.p_more {
+  display: none;
+}
